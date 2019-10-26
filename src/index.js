@@ -1,6 +1,7 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router'
-import echarts from 'echarts'
+import VueRouter from 'vue-router';
+import echarts from 'echarts';
+import ElementUI from 'element-ui';
 import App from './app.vue';
 import Venue from './pages/Venue.vue';
 import FirstPage from './pages/FirstPage.vue';
@@ -12,6 +13,8 @@ import ActivityContainer from './pages/ActivityContainer.vue';
 
 
 Vue.use(VueRouter);
+
+Vue.use(ElementUI);
 
 Vue.prototype.$echarts = echarts
 

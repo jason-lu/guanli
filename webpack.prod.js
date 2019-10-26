@@ -28,7 +28,11 @@ module.exports = merge(common,{
                         outputPath: 'images/',
                     }
                 }
-            }
+            },
+            {
+                test: /\.(eot|woff|woff2|ttf)([\\?]?.*)$/,
+                loader: "file-loader"
+            },
         ]
     },
     plugins:[
