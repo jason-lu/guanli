@@ -12,8 +12,8 @@
                     <input type="text" v-model="username" placeholder="用户名"/>
                     <input type="password" v-model="password" placeholder="密码"/>
                     <input type="password" v-model="passwordRepeat"  placeholder="重复密码"/>
-                    <button :disabled="!isRegisertCompeleted" @click="switchShowProfile">注册</button>
-                    <p class="message">已有账号？ <span @click="register">登录</span></p>
+                    <button :disabled="!isRegisertCompeleted" @click="register">注册</button>
+                    <p class="message">已有账号？ <span @click="switchShowProfile">登录</span></p>
                 </form>
             </div>
         </div>

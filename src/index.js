@@ -1,15 +1,19 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
+import echarts from 'echarts'
 import App from './app.vue';
 import Venue from './pages/Venue.vue';
 import FirstPage from './pages/FirstPage.vue';
 import Login from './pages/Login.vue';
 import Profile from './pages/Profile.vue';
 import ActivityContainer from './pages/ActivityContainer.vue';
-import store from './store/store.js';
+// import store from './store/store.js';
+
 
 
 Vue.use(VueRouter);
+
+Vue.prototype.$echarts = echarts
 
 const routes = [
     { path: '/', component: FirstPage },
