@@ -43,7 +43,7 @@ body {
 }
 
 #main-container {
-  position:fixed;
+  /* position:fixed; */
   overflow:auto;
   width: 100%;
   background-image: url('./assets/img/mainbackground.png');
