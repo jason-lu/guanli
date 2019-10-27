@@ -5,7 +5,8 @@
             <div class="content">
                 {{item.title}} <br />
                 {{item.type}}
-                <button id="detail">详情</button>
+                <router-link id="detail" to="/activityListDetail">详情</router-link>
+                <!-- <button id="detail">详情</button> -->
             </div>
         </div>
     </div>
@@ -77,6 +78,7 @@ export default {
     position: absolute;
     right: 20px;
     bottom: 20px;
-
+    color: #fff;
+    
 }
 </style>

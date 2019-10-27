@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="myChart" :style="{width: this.width, height: this.height}"></div>
+        <div :id="id" :style="{width: this.width, height: this.height}"></div>
     </div>
 </template>
 <script>
@@ -17,11 +17,14 @@ export default {
         },
         options: {
             default:{}
-        }
+        },
+        id: {
+            default: "mycharts"
+        },
     },
     methods: {
         drawLine() {
-              let myChart = this.$echarts.init(document.getElementById('myChart'))
+              let myChart = this.$echarts.init(document.getElementById(this.id))
               myChart.setOption(this.options);
         }
     }
