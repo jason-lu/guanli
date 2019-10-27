@@ -2,8 +2,8 @@
 <div>
     <div id="firstpaneDiv" class="menu_list">
     <h3 class="menu_head current">系统管理</h3>
-    <h3 class="menu_head">场馆预定</h3>
-    <h3 class="menu_head">活动预定</h3>
+    <h3 class="menu_head">场馆管理</h3>
+    <h3 class="menu_head">活动管理</h3>
     <h3 class="menu_head">实时战况</h3>
     <h3 class="menu_head">装备管理</h3>
     </div>
