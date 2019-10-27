@@ -1,11 +1,11 @@
 <template>
     <div id="nav-container">
-        <button class="nav-btn" @click="clickHandler('/',$event)">首页</button>
-        <button class="nav-btn" @click="clickHandler('/activities',$event)"> 活动</button>
-        <button class="nav-btn" @click="clickHandler('/venue',$event)">场馆</button>
+        <router-link to="/"><button class="nav-btn">首页</button></router-link> 
+        <router-link to="/activities"><button class="nav-btn"> 活动</button></router-link>
+        <router-link to="/venue"><button class="nav-btn">场馆</button></router-link>
         <span>军民融合</span>
-        <button class="nav-btn">作战视频</button>
-        <button class="nav-btn">活动回顾</button>
+        <router-link to="/venue"><button class="nav-btn">作战视频</button></router-link>
+        <router-link to="/venue"><button class="nav-btn">活动回顾</button></router-link>
         <div class="right">
             <button v-if="!user" class="nav-btn left-btn" @click="clickHandler('/login',$event)">登录</button>
             <div v-else class="dropdown">
