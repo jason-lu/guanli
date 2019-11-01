@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div id="news-title">热点新闻</div>
+    <div style="background-color: #ffffff;">
+        <div id="news-title">近期活动</div>
         <el-carousel indicator-position="outside">
                 <el-carousel-item v-for="(item,index) in urls" :key="index">
                     <img :src="urls[index]" style="width: 100%;" />

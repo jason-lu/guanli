@@ -1,13 +1,10 @@
 <template>
     <div class="joinTeam">
-        <el-form ref="form" :model="form" label-width="100px">
+        <!-- <el-form ref="form" :model="form" label-width="100px">
             <el-form-item label="选择队伍：">
                 <el-checkbox-group v-model="form.type">
                     <el-checkbox v-for="(item,index) in teamMemberList" :key="index" border :label="item.id"
-                        name="type">{{item.name}}</el-checkbox>
-                    <!-- <el-checkbox label="地推活动" border name="type"></el-checkbox>
-                <el-checkbox label="线下主题活动" border name="type"></el-checkbox>
-                <el-checkbox label="单纯品牌曝光" border name="type"></el-checkbox> -->
+                        name="type">{{item.name}}</el-checkbox>->
                 </el-checkbox-group>
             </el-form-item>
 
@@ -15,7 +12,7 @@
                 <el-button type="danger" @click="onSubmit('1')">加入红队</el-button>
                 <el-button type="primary" @click="onSubmit('2')">加入蓝队</el-button>
             </el-form-item>
-        </el-form>
+        </el-form> -->
         <!-- 队员展示 -->
         <div class="member">
             <el-table :data="teamMemberList" stripe style="width: 100%">
@@ -77,6 +74,12 @@
                         <!-- <el-option label="区域二" value="beijing"></el-option> -->
                     </el-select>
                 </el-form-item>
+                <el-form-item label="选择队伍：" :label-width="formLabelWidth">
+                    <el-select v-model="editForm.team" placeholder="请选择队伍">
+                        <el-option v-for="(item,index) in teamList" :key="index" :label="item.name" :value="item.id">
+                        </el-option>
+                    </el-select>
+            </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -92,6 +95,7 @@
             return {
                 formLabelWidth: '120px',
                 form: {
+                    team:'',
                     name: '',
                     region: '',
                     date1: '',
@@ -143,7 +147,8 @@
                     id:'',
                     name:'',
                     arms: '123',
-                    job: '1d'
+                    job: '1d',
+                    team: '',
                 },
                 // 武器列表
                 armsList: [
@@ -178,6 +183,16 @@
                         id: 3,
                         name: '军长'
                     }
+                ],
+                teamList: [
+                    {
+                        id:1,
+                        name:'红队'
+                    },
+                    {
+                        id:2,
+                        name:'蓝队'
+                    },
                 ],
                 editMember:{},//当前编辑成员
             }

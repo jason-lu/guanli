@@ -20,17 +20,7 @@ module.exports = merge(common,{
                 ]
             },
             {
-                test: /\.(jpg|png|gif)$/, // 打包图片
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        name: '[name]_[hash].[ext]',
-                        outputPath: 'images/',
-                    }
-                }
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)(\?\S*)?$/,
                 loader: 'file-loader'
             }
         ]
