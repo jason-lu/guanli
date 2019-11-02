@@ -6,7 +6,7 @@
         </div>
         <div class="main">
             <div class="title">热门活动</div>
-            <News />
+            <Activities />
             <div>
                 活动列表
             </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-    import News from './frontComponent/News.vue';
+    import Activities from './frontComponent/Activities.vue';
 export default {
     mounted(){
     },
@@ -30,7 +30,7 @@ export default {
         return {};
     },
     components: {
-        News,
+        Activities,
     }
 }
 </script>
