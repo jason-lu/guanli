@@ -55,11 +55,14 @@ export default {
 }
 #nav-container {
     position: sticky;
-    top: 4px;
+    top: 0;
+    padding-top:4px;
+    padding-bottom: 4px;
     color:white; 
     text-align:center;
     margin-bottom: 8px;
     z-index: 10;
+    background-color: #000000;
 }
 .right {
     float: right;
