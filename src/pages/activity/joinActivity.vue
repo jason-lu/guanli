@@ -15,8 +15,9 @@
         </el-form> -->
         <!-- 队员展示 -->
         <div class="member">
-            <el-table :data="teamMemberList" stripe style="width: 100%">
-
+            <el-table :data="teamMemberList" stripe style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55">
+                </el-table-column>
                 <el-table-column prop="id" label="成员编号" align="center">
                 </el-table-column>
                 <el-table-column prop="name" label="成员姓名" align="center">
@@ -33,7 +34,8 @@
                     <template slot-scope="scope">
                         <div v-if="typeof scope.row.gunNumber=='string'"><span style="color:#c0c4cc">暂未选择</span></div>
                         <div v-else>
-                            <span v-for="(item,index) in armsList" v-if="scope.row.gunNumber==item.id">{{item.name}}</span>
+                            <span v-for="(item,index) in armsList"
+                                v-if="scope.row.gunNumber==item.id">{{item.name}}</span>
                         </div>
                     </template>
                 </el-table-column>
@@ -51,6 +53,8 @@
                     </template>
                 </el-table-column>
             </el-table>
+            <el-button type="danger" @click="onSubmit('1')">加入红队</el-button>
+                <el-button type="primary" @click="onSubmit('2')">加入蓝队</el-button>
         </div>
 
         <el-dialog title="编辑成员" :visible.sync="dialogFormVisible" width="30%">
@@ -79,7 +83,7 @@
                         <el-option v-for="(item,index) in teamList" :key="index" :label="item.name" :value="item.id">
                         </el-option>
                     </el-select>
-            </el-form-item>
+                </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -95,7 +99,7 @@
             return {
                 formLabelWidth: '120px',
                 form: {
-                    team:'',
+                    team: '',
                     name: '',
                     region: '',
                     date1: '',
@@ -144,8 +148,8 @@
                 ],
                 dialogFormVisible: false,
                 editForm: {
-                    id:'',
-                    name:'',
+                    id: '',
+                    name: '',
                     arms: '123',
                     job: '1d',
                     team: '',
@@ -186,29 +190,31 @@
                 ],
                 teamList: [
                     {
-                        id:1,
-                        name:'红队'
+                        id: 1,
+                        name: '红队'
                     },
                     {
-                        id:2,
-                        name:'蓝队'
+                        id: 2,
+                        name: '蓝队'
                     },
                 ],
-                editMember:{},//当前编辑成员
+                editMember: {},//当前编辑成员
+                multipleSelection: []//多选数据
             }
         },
         methods: {
             onSubmit(tag) {
-                this.teamMemberList.forEach((item, index) => {
-                    if (this.form.type.includes(item.id)) {
-                        item.team = tag;
-                    }
-                })
-                this.form.type = [];
+                // this.teamMemberList.forEach((item, index) => {
+                //     if (this.form.type.includes(item.id)) {
+                //         item.team = tag;
+                //     }
+                // })
+                // this.form.type = [];
+                this.$refs.multipleTable.clearSelection();
             },
             editMsg(id) {
                 this.dialogFormVisible = true;
-                this.editMember = this.teamMemberList.filter((item)=>{
+                this.editMember = this.teamMemberList.filter((item) => {
                     return item.id === id;
                 })[0]
                 this.editForm.id = this.editMember.id;
@@ -216,14 +222,17 @@
                 this.editForm.arms = this.editMember.gunNumber;
                 this.editForm.job = this.editMember.job;
             },
-            submitEdit(){
+            submitEdit() {
                 this.dialogFormVisible = false;
-                this.teamMemberList.forEach((item,index)=>{
-                    if(item.id==this.editMember.id){
-                        item.gunNumber=this.editForm.arms;
+                this.teamMemberList.forEach((item, index) => {
+                    if (item.id == this.editMember.id) {
+                        item.gunNumber = this.editForm.arms;
                         item.job = this.editForm.job;
                     }
                 })
+            },
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
             }
         }
     }

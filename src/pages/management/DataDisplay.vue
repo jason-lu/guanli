@@ -25,14 +25,14 @@
             <echart-vue height="300px" width="100%" :options="activityOptions" class="charts"  id="mycharts-activity"/>
         </div>
         <div style="flex-grow: 1; margin-left: 8px; color: #ffffff;">
-            <News />
+            <!-- <Activities /> -->
         </div>
     </div>
 </template>
 
 <script>
 import EchartVue from '../util/EchartVue.vue';
-import News from './frontComponent/News.vue';
+// import Activities from './frontComponent/Activities.vue';
 export default {
     mounted(){
     },
@@ -132,7 +132,7 @@ export default {
     },
     components: {
         EchartVue,
-        News,
+        // Activities,
     }
 }
 </script>
