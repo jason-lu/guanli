@@ -10,6 +10,7 @@ import ActivityContainer from './pages/ActivityContainer.vue';
 import activityListDetail from './pages/activity/activityListDetail.vue';
 import joinActivity from './pages/activity/joinActivity.vue';
 import RealTime from './pages/management/RealTime.vue';
+import DataDisplay from './pages/management/DataDisplay.vue';
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -32,6 +33,7 @@ const routes = [
     { path: '/activityListDetail', component: activityListDetail},//活动详情
     { path: '/joinActivity', component: joinActivity},// 加入活动 即活动组队 
     { path: '/management/realtime', component: RealTime},
+    { path: '/management/datadisplay', component: DataDisplay},
 ];
 
 const router = new VueRouter({
