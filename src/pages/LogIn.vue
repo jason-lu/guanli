@@ -3,17 +3,20 @@
         <div v-if="!isShowProfile" class="login-container">
             <div class="form">
                 <form v-if="isExist" class="login-form">
-                    <input type="text" v-model="username" placeholder="用户名"/>
+                    <input type="text" v-model="phone" placeholder="手机"/>
                     <input type="password" v-model="password" placeholder="密码"/>
                     <button :disabled="!isLoginCompleted" @click="login">登录</button>
                     <p class="message">没有账号？ <span @click="switchExist">注册</span></p>
                 </form>
                 <form v-else class="register-form">
                     <input type="text" v-model="username" placeholder="用户名"/>
+                    <input type="text"  v-model="phone" placeholder="手机号码"/>
+                    <input type="text"  v-model="email" placeholder="邮箱"/>
                     <input type="password" v-model="password" placeholder="密码"/>
                     <input type="password" v-model="passwordRepeat"  placeholder="重复密码"/>
+                    <input type="text" v-model="verifyCodeInput" placeholder="验证码"/>
                     <button :disabled="!isRegisertCompeleted" @click="register">注册</button>
-                    <p class="message">已有账号？ <span @click="switchShowProfile">登录</span></p>
+                    <p class="message">已有账号？ <span @click="switchExist">登录</span></p>
                 </form>
             </div>
         </div>
@@ -31,60 +34,94 @@
     </div>
 </template>
 <script>
+    import axios from 'axios';
+    import qs from 'qs';
 export default {
     data() {
         return {
             username:'',
             password:'',
+            phone:'',
+            email:'',
             passwordRepeat:'',
             isExist:true,
-            isShowProfile: false
+            isShowProfile: false,
+            verifyData:null,
+            verifyCodeInput:'',
         }
     },
     computed: {
         isLoginCompleted() {
-            return this.username.length>3 && this.password.length>=6;
+            return this.phone.length>3 && this.password.length>=6;
         },
         isRegisertCompeleted() {
             const regex = RegExp(/\w+@\w+.{1}\w+/);
-            return this.username.length>3 && this.password.length>=6 && this.password === this.passwordRepeat
+            return this.username.length>3 && this.password.length>=6 
+            && this.password === this.passwordRepeat && this.email.length > 3;
         }
     },
     methods: {
         login() {
-            let userList = JSON.parse(localStorage.getItem('userList')) || {}
-            let user = userList[this.username];
-            if(user){
-                if(user.password === this.password) {
-                    localStorage.setItem('currentUser', JSON.stringify({
-                    username: this.username,
-                    isAdmin: user.isAdmin
-                    }));
-                    this.$emit('login');
-                    this.$router.push('/profile');
-                } 
-            } 
-                this.username = '';
+            13212344567
+            axios({
+                url:`http://47.104.128.89/api/v1/passwdLogin`,
+                method: 'post',
+                data: qs.stringify({
+                    phone: this.phone,
+                    passwd: this.password
+                })
+            }).then(res => {
+                if(res.data.respBody.isSuccess){
+                    let token = res.data.respHeader.token;
+                    localStorage.setItem('token',token);
+                    let user = {name: this.username}
+                    console.log(user)
+                }
+                
+            })
+            if(false){
+                this.phone = '';
                 this.password = '';
                 this.passwordRepeat = '';
+            }
         },
         switchShowProfile() {
             this.isShowProfile = true;
         },
         register() {
-            let userList = JSON.parse(localStorage.getItem('userList')) || {};
-            userList[this.username] = {
-                username: this.username,
-                password: this.password,
-                isAdmin: this.username === "admin"
-            };
-            localStorage.setItem('userList',JSON.stringify(userList));
-            this.isExist = !this.isExist;
+            //request param, 需要用qs做转换
+            axios({
+                url:`http://47.104.128.89/api/v1/register2`,
+                method: 'post',
+                data: qs.stringify({
+                    name:this.username,
+                    phone: this.phone,
+                    email: this.email,
+                    passwd: this.password,
+                })
+            }).then(res => {
+                console.log(res)
+                if(res.data.respBody.isSuccess){
+                    
+                    this.isExist = !this.isExist;
+                } else {
+                    alert('用户创建失败，请稍后再试');
+                }
+            }).catch(err => {
+                alert("账户注册失败，请稍候再试")
+            });
         },
         switchExist() {
+            axios.post("http://47.104.128.89/api/getVerifyCode")
+            .then(res => {
+                //验证码以及验证码图片
+                this.verifyData = res.data;
+                this.verifyCodeInput = this.verifyData.code;
+            });
             this.username = '';
             this.password = '';
             this.passwordRepeat = '';
+            this.email = '';
             this.isExist = !this.isExist
         }
     }
