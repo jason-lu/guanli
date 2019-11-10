@@ -74,8 +74,10 @@ export default {
                 if(res.data.respBody.isSuccess){
                     let token = res.data.respHeader.token;
                     localStorage.setItem('token',token);
-                    let user = {name: atob(token.split('.')[1]).name || "admin"}
+                    let user = {name: atob(token.split('.')[1]).name || "admin"};
                     console.log(user)
+                    this.$emit('login');
+                    this.$router.push('/profile');
                 }
                 
             }).catch ( _ => {

@@ -10,7 +10,11 @@ import Home from './pages/Home.vue';
 import Navbar from "./pages/Navbar.vue";
 export default {
   mounted() {
-      this.user = JSON.parse(localStorage.getItem('currentUser'));
+    let userStr = localStorage.getItem('token').split('.')[1];
+    if(userStr){
+      this.user = JSON.parse(atob(userStr));
+      console.log(this.user)
+    }
   },
   data() {
     return {
@@ -25,8 +29,8 @@ export default {
   },
   methods: {
     login() {
-      console.log('login')
       this.user = JSON.parse(localStorage.getItem('currentUser'));
+      console.log(this.user);
     },
     logout() {
       this.user = null;

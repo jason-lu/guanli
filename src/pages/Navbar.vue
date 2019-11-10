@@ -11,7 +11,7 @@
             <button v-if="!user" class="nav-btn left-btn" @click="clickHandler('/login',$event)">登录</button>
             <div v-else class="dropdown">
                     你好
-                <button class="dropbtn">{{user.username}}
+                <button class="dropbtn">{{user.name}}
                 </button>
                 <div class="dropdown-content">
                     <span @click="clickHandler('/profile',$event)">个人中心</span>
