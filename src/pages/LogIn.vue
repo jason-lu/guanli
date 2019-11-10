@@ -74,16 +74,15 @@ export default {
                 if(res.data.respBody.isSuccess){
                     let token = res.data.respHeader.token;
                     localStorage.setItem('token',token);
-                    let user = {name: this.username}
+                    let user = {name: atob(token.split('.')[1]).name || "admin"}
                     console.log(user)
                 }
                 
-            })
-            if(false){
+            }).catch ( _ => {
                 this.phone = '';
                 this.password = '';
                 this.passwordRepeat = '';
-            }
+            });
         },
         switchShowProfile() {
             this.isShowProfile = true;
