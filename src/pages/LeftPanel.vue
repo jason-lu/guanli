@@ -3,7 +3,7 @@
     <div id="firstpaneDiv" class="menu_list">
     <h3 class="menu_head current">系统管理</h3>
     <h3 class="menu_head">场馆管理</h3>
-    <h3 class="menu_head">活动管理</h3>
+    <router-link to="/management/activityMa"><h3 class="menu_head">活动管理</h3></router-link>
     <router-link to="/management/realtime"><h3 class="menu_head">实时战况</h3></router-link>
     <h3 class="menu_head">装备管理</h3>
     </div>
