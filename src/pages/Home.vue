@@ -27,7 +27,8 @@ export default {
     },
     computed:{
         showLeft() {
-            return this.user? this.user.isAdmin  && this.$route.path !== '/': false;
+            // return this.user? this.user.isAdmin  && this.$route.path !== '/': false;
+            return true;
         }
     }
 }

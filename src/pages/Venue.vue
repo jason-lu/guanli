@@ -1,9 +1,9 @@
 <template>
     <div class="venuePage">
         <div style="width: 1200px;margin: auto;">
-            <img style="width: 100%;"  @click="showDetail=true" src="../assets/img/points.png" />
+            <img style="width: 100%;"  @click="showVenue" src="../assets/img/points.png" />
         </div>
-        <div class="flow-top" @click="showDetail = !showDetail">
+        <div class="flow-top" @click="showDetail=false">
             <div class="venueContainer "v-if="showDetail">
                     <div class="baseMessage">
                         <div class="left">
@@ -56,11 +56,25 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default{
+        created() {
+            axios.get("http://47.104.128.89:8002/gym/getAllGym")
+            .then(res =>{
+                this.venueList = res.data;
+            })
+        },
         data(){
             return {
                 value5:5,
                 showDetail:false,
+                venueList: [],
+                vuene:null //选中展示的场馆
+            }
+        },
+        methods: {
+            showVenue() {
+                this.showDetail = !this.showDetail
             }
         }
     }
