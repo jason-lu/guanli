@@ -55,6 +55,8 @@ export default {
     background: #90cafa8c;
 }
 #nav-container {
+    line-height: 70px;
+    height: 70px;
     position: sticky;
     top: 0;
     padding-top:4px;
