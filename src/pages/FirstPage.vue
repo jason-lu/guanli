@@ -4,7 +4,7 @@
         <div class="w">
             <div class="navchange">
                 <ul class="navUl">
-                    <li v-for="(item,index) in tabArr">{{item}}</li>
+                    <li v-for="(item,index) in tabArr"><a href="#">{{item}}</a></li>
                 </ul>
             </div>
             <div class="first-container">
@@ -22,9 +22,145 @@
                         </el-carousel-item>
                     </el-carousel>
                 </div>
-                <div class="news_right">123</div>
+                <div class="news_right">
+                    <div class="news_right_one">
+                        <p class="bigtitle">山东理工大学组织军训新生参观国教主题园</p>
+                        <p class="new-content">近日，山东理工大学组织参加军训的新生参观国教主题园，进一步坚定学生爱党、爱国、爱军的理想信念。</p>
+                    </div>
+                    <div>
+                        <p>
+                            <router-link to="#">山东理工大学组织军训新生参观国教主题园</router-link>
+                        </p>
+                        <p>
+                            <router-link to="#">山东理工大学组织军训新生参观国教主题园</router-link>
+                        </p>
+                        <p>
+                            <router-link to="#">山东理工大学组织军训新生参观国教主题园</router-link>
+                        </p>
+                        <p>
+                            <router-link to="#">山东理工大学组织军训新生参观国教主题园</router-link>
+                        </p>
+                    </div>
+                </div>
             </div>
+            <!-- container -->
+            <div>
+                <div class="contentFirst">
+                    <div>
+                        <p class="content_t">
+                            <router-link class="content_title" to="#">动态信息</router-link>
+                        </p>
+                        <p class="content-name">
+                            <router-link class="content-name-link" to="#">打开营门弘扬前辈精神，数十家单位参观这个旅史馆</router-link>
+                        </p>
+                        <span class="descripte">国庆前夕，第83集团军某旅打开营门，迎接驻地人员走进旅史馆参观。</span>
+                        <ul class="contentFirstUl">
+                            <li>● 教师节致军校教员|当时光流过三尺讲台</li>
+                            <li>● 解放军总医院举办“忠诚的力量”强军故事会</li>
+                            <li>● “和平方舟”号医院船举行航海日开放活动</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="content_t">
+                            <router-link class="content_title" to="#">典型风采</router-link>
+                        </p>
+                        <p class="content-name">
+                            <router-link class="content-name-link" to="#">特战"武教头"何少军：入伍18年,四获"勇士勋章"</router-link>
+                        </p>
+                        <span class="descripte">面对暴徒，他是一名虎胆英雄。面对人民，他是一名忠诚卫士</span>
+                        <ul class="contentFirstUl">
+                            <li>● 教师节致军校教员|当时光流过三尺讲台</li>
+                            <li>● 解放军总医院举办“忠诚的力量”强军故事会</li>
+                            <li>● “和平方舟”号医院船举行航海日开放活动</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contentFirst">
+                    <div>
+                        <p class="content_t">
+                            <router-link class="content_title" to="#">学校国防教育</router-link>
+                        </p>
+                        <div class="content-pic">
+                            <img src="../assets/img/one-page-content.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>
+                        <p class="content_t">
+
+                        </p>
+                        <p class="content-name">
+                            <router-link class="content-name-link" to="#">打开营门弘扬前辈精神，数十家单位参观这个旅史馆</router-link>
+                        </p>
+                        <span class="descripte">国庆前夕，第83集团军某旅打开营门，迎接驻地人员走进旅史馆参观。</span>
+                        <ul class="contentFirstUl">
+                            <li>● 教师节致军校教员|当时光流过三尺讲台</li>
+                            <li>● 解放军总医院举办“忠诚的力量”强军故事会</li>
+                            <li>● “和平方舟”号医院船举行航海日开放活动</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="contentFirst">
+                    <div>
+                        <p class="content_t">
+                            <router-link class="content_title" to="#">教育基地</router-link>
+                        </p>
+                        <div class="content-box">
+                            <div class="div-box">
+                                <router-link to="#">
+                                    <div><img src="../assets/img/page-one-content2.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">准备好了吗？来，一起感受一下“谍海穿越”是一种什么体验!</p>
+                                </router-link>
+                            </div>
+                            <div class="div-box">
+                                <router-link to="#">
+                                    <div><img src="../assets/img/page-one-content2.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">准备好了吗？来，一起感受一下“谍海穿越”是一种什么体验!</p>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="content_t">
+
+                        </p>
+                        <div class="content-box">
+                            <div class="div-box">
+                                <router-link to="#">
+                                    <div><img src="../assets/img/page-one-content2.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">准备好了吗？来，一起感受一下“谍海穿越”是一种什么体验!</p>
+                                </router-link>
+                            </div>
+                            <div class="div-box">
+                                <router-link to="#">
+                                    <div><img src="../assets/img/page-one-content2.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">准备好了吗？来，一起感受一下“谍海穿越”是一种什么体验!</p>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+    </div>
     </div>
 </template>
 
@@ -57,6 +193,122 @@
 </script>
 
 <style scoped>
+    .news_right_one{
+        border-bottom: 1px solid #000;
+    }
+    .new-content{
+        margin: 20px 0 50px 0;
+        text-indent: 2em;
+    }
+    .bigtitle{
+        font-size: 18px;
+    }
+    .content-end {
+        margin-top: 25px;
+        text-indent: 2rem;
+        color: #999;
+        font-size: 14px;
+    }
+
+    .content-box-m {
+        float: left;
+        font-size: 18px;
+        width: 120px;
+        height: 70px;
+        overflow: hidden;
+    }
+
+    .content-box-m:hover {
+
+        color: #005541;
+    }
+
+    .smallbox-m {
+        float: right;
+        color: #fff;
+        background-color: #4CBAA1;
+        width: 35px;
+        height: 22px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .content-middle {
+        overflow: hidden;
+        margin-top: 50px;
+    }
+
+    .div-box img {
+        width: 100%;
+    }
+
+    .content-box {
+        display: flex;
+    }
+
+    .content-box .div-box {
+        margin-right: 10px;
+        flex: 1;
+        width: 287px;
+        height: 434px;
+    }
+
+    .content-pic img {
+        padding: 20px;
+        height: 270px;
+        width: 475px;
+    }
+
+    .descripte {
+        color: #999999;
+    }
+
+    .contentFirstUl {
+        margin-top: 60px;
+    }
+
+    .contentFirstUl li {
+        color: #6C91B4;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    .content-name-link {
+        color: #6C91B4;
+        font-size: 20px;
+    }
+
+    .content-name {
+        margin: 45px 0 30px 0;
+    }
+
+    .contentFirst {
+        display: flex;
+        margin: 50px 0 20px;
+    }
+
+    .contentFirst div {
+        flex: 1;
+    }
+
+    .content_t {
+        line-height: 40px;
+        height: 40px;
+
+    }
+
+    .content_title {
+        color: #42716F;
+        font-size: 24px;
+        font-weight: 700;
+
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
     .tabchange {
         height: 75px;
     }
@@ -88,6 +340,9 @@
     }
 
     .news_right {
+        box-sizing: border-box;
+        padding: 25px;
+        color: #fff;
         background-color: #009C79;
         height: 380px;
         margin-top: 20px;
@@ -142,7 +397,29 @@
         text-align: center;
         line-height: 30px;
     }
-    .navchange{
+
+    .navchange {
         height: 75px;
+        line-height: 75px;
+    }
+
+    .navUl li {
+        font-size: 18px;
+        width: 120px;
+        float: left;
+    }
+
+    .navUl a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .contentFirst {
+        /* background-color: pink; */
     }
 </style>
