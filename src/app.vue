@@ -10,8 +10,9 @@ import Home from './pages/Home.vue';
 import Navbar from "./pages/Navbar.vue";
 export default {
   mounted() {
-    let userStr = localStorage.getItem('token').split('.')[1];
-    if(userStr){
+    let tokenStr = localStorage.getItem('token');
+    if(tokenStr){
+      let userStr = tokenStr.split('.')[1];
       this.user = JSON.parse(atob(userStr));
       console.log(this.user)
     }
