@@ -1,59 +1,16 @@
 <template>
     <div class="first-container">
-        <div class="side">
-            <div class="title">热点新闻</div>
-            <div class="news-container">
-                <div v-for="(item,index) in newsList" :key=index style="padding-top: 6px;">
-                    <div v-if="item.url">
-                        <img src="../assets/img/news_preview.jpg" style="width: 90%; display: block;" alt="新闻图片">
-                        <div class="news-title">{{item.title}}</div>
-                        <div class="news-date"> {{getDate(0)}}</div>
-                    </div>
-                    <div v-else>
-                        <div class="news-title">{{item.title}}</div>
-                        <div class="news-date"> {{getDate(0)}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="title">热门活动</div>
-            <Activities />
-            <div>
-                活动列表
-            </div>
-        </div>
-        <div class="side">
-            <div class="title">金牌教员</div>
-            <ul class="personMsg">
-                <li>
-                    <img src="../assets/img/img2.jpg" alt="">
-                    <div class="name">杨教官</div>
-                </li>
-                <li>
-                    <img src="../assets/img/img2.jpg" alt="">
-                    <div class="name">张教官</div>
-                </li>
-                <li>
-                    <img src="../assets/img/img2.jpg" alt="">
-                    <div class="name">李教官</div>
-                </li>
-            </ul>
-            <div class="title">王牌战士</div>
-            <ul class="personMsg">
-                <li>
-                    <img src="../assets/img/img2.jpg" alt="">
-                    <div class="name">杨xx</div>
-                </li>
-                <li>
-                    <img src="../assets/img/img2.jpg" alt="">
-                    <div class="name">张xx</div>
-                </li>
-                <li>
-                    <img src="../assets/img/img2.jpg" alt="">
-                    <div class="name">李xx</div>
-                </li>
-            </ul>
+        <div class="news-container">
+            <el-carousel height="300px" width="500px">
+                <el-carousel-item v-for="(item,index) in newsList" :key="index">
+                  <img :src="item.url" style="width: 50%; height: 300px; margin: auto; display: block;">
+                  <span style="width:50%; position: absolute; padding: top 10px; display: block; 
+                  text-align: center;
+                  transform: translatex(50%); 
+                  z-index: 1; color: #ffffff; 
+                  bottom: 20px;margin: auto; background-color: #00000094;"> {{item.title}} </span>
+                </el-carousel-item>
+            </el-carousel>
         </div>
     </div>
 </template>
@@ -72,18 +29,10 @@ export default {
     data() {
         return {
             newsList:[
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0, url:'../assets/img/img1.jpg'},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
-                {title:'习近平接见联勤保障部队第一次党代会代表',date:0},
+                {title:'山东理工大学组织军训新生参观国教主题园',date:0, url:require('../assets/img/activity1.jpg')},
+                {title:'重阳节，武警官兵到驻地看望慰问老兵',date:0, url:require('../assets/img/activity2.jpg')},
+                {title:'来了！解放军首个汽车团迎来军运会圣火',date:0, url:require('../assets/img/activity3.jpg')},
+                {title:'新疆军区某团八连到驻地学校开展国防教育活动',date:0, url:require('../assets/img/activity4.jpg')},
             ]
         };
     },
@@ -118,22 +67,13 @@ export default {
 }
 
 .news-container {
-    background-color: #ffffffee;
-    margin-top:4px;
-    height: 100vh;
-    overflow: auto;
+    background-color: #f5f5f5;
+    height: 300px;
+    width: 100%;
     position: relative;
+    margin-top: 20px;
 }
 
-.news-title{
-    display: inline-block;
-}
-.news-date {
-    display: inline-block;
-    position: absolute;
-    color: #969595;
-    right:0;
-}
 
 .title{
         text-align: center;
