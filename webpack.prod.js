@@ -22,6 +22,10 @@ module.exports = merge(common,{
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)(\?\S*)?$/,
                 loader: 'file-loader'
+            },
+            {
+                test: /\.less$/,
+                use: ['vue-style-loader','css-loader','less-loader']
             }
         ]
     },
