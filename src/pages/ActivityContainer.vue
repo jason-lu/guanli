@@ -1,29 +1,11 @@
 <template>
     <div class="actContainer">
         <!-- 热点活动 -->
-        <div class="activity-title">
-            活动列表
+        <div class="hotActivity">
+            热点活动
         </div>
         <div class="activity-container">
-            <ul class="activity-list">
-                <li class="content">
-                    <div class="left">
-                        <img src="../assets/img/activities-preview.jpg" alt="">
-                    </div>
-                    <div class="right">
-                        <div class="theme"></div>
-                        <div class="title"></div>
-                        <div class="des"></div>
-                        <div class="time"><span>2011-11-11</span> 至 <span>2011-11-13</span></div>
-                        <div class="status">状态</div>
-                    </div>
-                    <div class="edit">
-                        <button>编辑</button>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- <div class="box" v-for="(item, index) in hotActivityList" :key="index">
+            <div class="box" v-for="(item, index) in hotActivityList" :key="index">
                 <img class="preview" src="../assets/img/activities-preview.jpg" />
                 <div class="content">
                     {{item.title}} <br />
@@ -31,8 +13,24 @@
                     热度：<el-rate v-model="value5" disabled show-score text-color="#ff9900" score-template="{value}">
                     </el-rate>
                     <router-link id="detail" to="/activityListDetail">详情</router-link>
+                    <!-- <button id="detail">详情</button> -->
                 </div>
-            </div> -->
+            </div>
+        </div>
+        <!-- 全部活动 -->
+        <div class="allActivity">
+            全部活动
+        </div>
+        <div class="activity-container">
+            <div class="box" v-for="(item, index) in activityList" :key="index">
+                <img class="preview" src="../assets/img/activities-preview.jpg" />
+                <div class="content">
+                    {{item.title}} <br />
+                    {{item.type}}
+                    <router-link id="detail" to="/activityListDetail">详情</router-link>
+                    <!-- <button id="detail">详情</button> -->
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -63,26 +61,7 @@
     }
 </script>
 
-<style lang="less" scoped>
-    .actContainer {
-
-        .activity-title {
-            width: 600px;
-            height: 80px;
-            line-height: 80px;
-            margin: auto;
-            text-align: center;
-            border-bottom: 1px solid #fff;
-            color: #fff;
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
-
-        
-    }
-
-
-    
+<style scoped>
     .activity-container {
         width: 100%;
         height: 100%;
@@ -114,6 +93,7 @@
         flex-grow: 1;
     }
 
+
     .content {
         flex-grow: 1;
         padding: 20px;
@@ -129,4 +109,16 @@
 
     }
 
+    .actContainer .hotActivity,
+    .actContainer .allActivity {
+        width: 600px;
+        height: 80px;
+        line-height: 80px;
+        margin: auto;
+        text-align: center;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
 </style>
