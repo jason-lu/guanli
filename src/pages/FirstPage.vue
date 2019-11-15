@@ -17,7 +17,7 @@
                                         text-align: center;
                                         transform: translatex(50%); 
                                         z-index: 1; color: #ffffff; 
-                                        bottom: 20px;margin: auto; background-color: #00000094;"> {{item.title}}
+                                        bottom: 20px;margin: auto; background-color: #00000054;"> {{item.title}}
                             </span>
                         </el-carousel-item>
                     </el-carousel>
@@ -27,19 +27,19 @@
                         <p class="bigtitle">山东理工大学组织军训新生参观国教主题园</p>
                         <p class="new-content">近日，山东理工大学组织参加军训的新生参观国教主题园，进一步坚定学生爱党、爱国、爱军的理想信念。</p>
                     </div>
-                    <div>
-                        <p>
-                            <router-link to="#">山东理工大学组织军训新生参观国教主题园</router-link>
-                        </p>
-                        <p>
-                            <router-link to="#">山东理工大学组织军训新生参观国教主题园</router-link>
-                        </p>
-                        <p>
-                            <router-link to="#">山东理工大学组织军训新生参观国教主题园</router-link>
-                        </p>
-                        <p>
-                            <router-link to="#">山东理工大学组织军训新生参观国教主题园</router-link>
-                        </p>
+                    <div class=" news-link">
+                        <div>
+                            <router-link to="#" class="new-link">重阳节，武警官兵到驻地看望慰问老兵</router-link>
+                        </div>
+                        <div>
+                            <router-link to="#" class="new-link">来了！解放军首个汽车团迎来军运会圣火</router-link>
+                        </div>
+                        <div>
+                            <router-link to="#" class="new-link">新疆军区某团八连到驻地学校开展国防教育活动</router-link>
+                        </div>
+                        <div>
+                            <router-link to="#" class="new-link">-30℃严寒，边防官兵乘骑战马巡逻祖国的边防线</router-link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,15 +193,26 @@
 </script>
 
 <style scoped>
+    .news-link{
+        margin-top: 20px;
+    }
+    .news-link div{
+        height: 50px;
+    }
+    .new-link{
+        color: #fff;
+        font-size: 20px;
+    }
     .news_right_one{
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #008578;
     }
     .new-content{
         margin: 20px 0 50px 0;
         text-indent: 2em;
+        color: #DDECEA;
     }
     .bigtitle{
-        font-size: 18px;
+        font-size: 22px;
     }
     .content-end {
         margin-top: 25px;
@@ -346,7 +357,7 @@
         background-color: #009C79;
         height: 380px;
         margin-top: 20px;
-        width: 40%;
+        width: 45%;
     }
 
     .main {
@@ -362,7 +373,7 @@
     .news-container {
         background-color: #f5f5f5;
         height: 380px;
-        width: 60%;
+        width: 55%;
         position: relative;
         margin-top: 20px;
     }
