@@ -4,7 +4,9 @@
         <div class="w">
             <div class="navchange">
                 <ul class="navUl">
-                    <li v-for="(item,index) in tabArr"><a href="#">{{item}}</a></li>
+                    <li v-for="(item,index) in tabArr">
+                        <router-link :to="item.src">{{item.title}}</router-link>
+                    </li>
                 </ul>
             </div>
             <div class="first-container">
@@ -183,7 +185,11 @@
                     { title: '来了！解放军首个汽车团迎来军运会圣火', date: 0, url: require('../assets/img/activity3.jpg') },
                     { title: '新疆军区某团八连到驻地学校开展国防教育活动', date: 0, url: require('../assets/img/activity4.jpg') },
                 ],
-                tabArr: ['国防教育', "动态信息", "典型风采", '学校国防教育', '教育基地', '师资教材', '热点专题', '社会国防教育', '视频推荐']
+                tabArr: [
+                    { title: '国防教育', src: '#' }, { title: "动态信息", src: '#' }, { title: "典型风采", src: '#' },
+                    { title: '学校国防教育', src: '#' }, { title: '装备介绍', src: '#' }, { title: '师资教材', src: '#' },
+                    { title: '热点专题', src: '#' }, { title: '社会国防教育', src: '#' }, { title: '视频推荐', src: '#' },
+                ]
             };
         },
         components: {
@@ -193,27 +199,33 @@
 </script>
 
 <style scoped>
-    .news-link{
+    .news-link {
         margin-top: 20px;
     }
-    .news-link div{
+
+    .news-link div {
         height: 50px;
     }
-    .new-link{
+
+    .new-link {
         color: #fff;
         font-size: 20px;
     }
-    .news_right_one{
+
+    .news_right_one {
         border-bottom: 1px solid #008578;
     }
-    .new-content{
+
+    .new-content {
         margin: 20px 0 50px 0;
         text-indent: 2em;
         color: #DDECEA;
     }
-    .bigtitle{
+
+    .bigtitle {
         font-size: 22px;
     }
+
     .content-end {
         margin-top: 25px;
         text-indent: 2rem;
@@ -416,10 +428,13 @@
 
     .navUl li {
         font-size: 18px;
-        width: 120px;
+       padding: 0 20px;
         float: left;
+        height: 100%;
     }
-
+    .navUl li:hover{
+        color: #009C79;
+    }
     .navUl a {
         text-decoration: none;
         color: #000;
