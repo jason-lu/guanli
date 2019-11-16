@@ -167,7 +167,7 @@
 </template>
 
 <script>
-    import Activities from './frontComponent/Activities.vue';
+ 
     export default {
         mounted() {
         },
@@ -192,9 +192,7 @@
                 ]
             };
         },
-        components: {
-            Activities,
-        }
+ 
     }
 </script>
 
