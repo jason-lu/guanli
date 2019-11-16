@@ -27,6 +27,10 @@ module.exports = merge(common, {
                 test: /\.mp4$/,
                 use: 'file-loader',
             },
+            {
+                test: /\.qlv$/,
+                use: 'file-loader',
+            },
         ]
     },
 })
