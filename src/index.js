@@ -16,6 +16,8 @@ import navintroduce from './pages/homePages/NavIntroduce.vue';
 // 作战视频
 import operationalVideo from './pages/operationalVideo.vue'
 
+import GLOBAL  from './pages/util/constants';
+
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // import store from './store/store.js';
@@ -25,8 +27,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(VueRouter);
 Vue.use(ElementUI)
 
-
-Vue.prototype.$echarts = echarts
+//引入全局echarts
+Vue.prototype.$echarts = echarts;
+//引入全局变量
+Vue.prototype.GLOBAL  = GLOBAL;
 
 const routes = [
     { path: '/', component: FirstPage },
