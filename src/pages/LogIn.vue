@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         login() {
-            13212344567
+            // 13212344567
             axios({
                 url:`http://47.104.128.89/api/v1/member/passwdLogin`,
                 method: 'post',
@@ -75,7 +75,7 @@ export default {
                     let token = res.data.respHeader.token;
                     localStorage.setItem('token',token);
                     let user = {name: atob(token.split('.')[1]).name || "admin"};
-                    console.log(user)
+                    // console.log(user)
                     this.$emit('login');
                     this.$router.push('/profile');
                 }
