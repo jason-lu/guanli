@@ -50,7 +50,7 @@
                 <div class="contentFirst">
                     <div>
                         <p class="content_t">
-                            <router-link class="content_title" to="#">动态信息</router-link>
+                            <router-link class="content_title" to="#">全国国防教育基地</router-link>
                         </p>
                         <p class="content-name">
                             <router-link class="content-name-link" to="#">打开营门弘扬前辈精神，数十家单位参观这个旅史馆</router-link>
@@ -63,10 +63,12 @@
                         </ul>
                     </div>
                     <div>
-                        <p class="content_t">
-                            <router-link class="content_title" to="#">典型风采</router-link>
+                        <p class="content_t clearfix">
+                            <router-link class="content_title fl" to="#">武器装备</router-link>
+                            <router-link class="content_title fr" to="/homePages/navintroduce">更多</router-link>
+
                         </p>
-                        <p class="content-name">
+                        <!-- <p class="content-name">
                             <router-link class="content-name-link" to="#">特战"武教头"何少军：入伍18年,四获"勇士勋章"</router-link>
                         </p>
                         <span class="descripte">面对暴徒，他是一名虎胆英雄。面对人民，他是一名忠诚卫士</span>
@@ -74,7 +76,50 @@
                             <li>● 教师节致军校教员|当时光流过三尺讲台</li>
                             <li>● 解放军总医院举办“忠诚的力量”强军故事会</li>
                             <li>● “和平方舟”号医院船举行航海日开放活动</li>
-                        </ul>
+                        </ul> -->
+                        <div>
+                            <div class="clearfix gunContent">
+                                <div class="fl">海军装备</div>
+                                <div class="fr ">
+                                    <a href="#">海军1</a>
+                                    <a href="#">海军2</a>
+                                    <a href="#">海军3</a>
+                                    <a href="#">海军3</a>
+                                    <a href="#">海军3</a>
+                                </div>
+                            </div>
+                            <div class="clearfix gunContent">
+
+                                <div class="fl">海军装备</div>
+                                <div class="fr ">
+                                    <a href="#">海军1</a>
+                                    <a href="#">海军2</a>
+                                    <a href="#">海军3</a>
+                                    <a href="#">海军3</a>
+                                    <a href="#">海军3</a>
+                                </div>
+                            </div>
+                            <div class="clearfix gunContent">
+                                <div class="fl">海军装备</div>
+                                <div class="fr ">
+                                    <a href="#">海军1</a>
+                                    <a href="#">海军2</a>
+                                    <a href="#">海军3</a>
+                                    <a href="#">海军3</a>
+                                    <a href="#">海军3</a>
+                                </div>
+                            </div>
+                            <div class="clearfix gunContent">
+                                    <div class="fl">海军装备</div>
+                                    <div class="fr ">
+                                        <a href="#">海军1</a>
+                                        <a href="#">海军2</a>
+                                        <a href="#">海军3</a>
+                                        <a href="#">海军3</a>
+                                        <a href="#">海军3</a>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                 </div>
                 <div class="contentFirst">
@@ -167,7 +212,7 @@
 </template>
 
 <script>
- 
+
     export default {
         mounted() {
         },
@@ -192,11 +237,43 @@
                 ]
             };
         },
- 
+
     }
 </script>
 
 <style scoped>
+    .gunContent {
+        color: #6C91B4;
+        margin-top: 45px;
+        font-size: 20px;
+    }
+    .gunContent a{
+        color: #6C91B4;
+
+    }
+    /* 清除浮动 */
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        *zoom: 1;
+    }
+
+    .fr {
+        float: right;
+    }
+
+    .fl {
+        float: left;
+    }
+
     .news-link {
         margin-top: 20px;
     }
@@ -426,13 +503,15 @@
 
     .navUl li {
         font-size: 18px;
-       padding: 0 20px;
+        padding: 0 20px;
         float: left;
         height: 100%;
     }
-    .navUl li:hover{
+
+    .navUl li:hover {
         color: #009C79;
     }
+
     .navUl a {
         text-decoration: none;
         color: #000;
@@ -441,9 +520,5 @@
     * {
         margin: 0;
         padding: 0;
-    }
-
-    .contentFirst {
-        /* background-color: pink; */
     }
 </style>
