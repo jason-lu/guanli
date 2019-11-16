@@ -1,5 +1,5 @@
 <template>
     <div>
-        123456
+        123
     </div>
 </template>
