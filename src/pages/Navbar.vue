@@ -4,7 +4,7 @@
         <router-link to="/activities"><button class="nav-btn"> 活动</button></router-link>
         <router-link to="/venue"><button class="nav-btn">场馆</button></router-link>
         <!-- <span>军民融合</span> -->
-        <router-link to="/venue"><button class="nav-btn">作战视频</button></router-link>
+        <router-link to="/operationalVideo"><button class="nav-btn">作战视频</button></router-link>
         <router-link to="/venue"><button class="nav-btn">活动回顾</button></router-link>        
         <router-link to="/management/datadisplay"><button class="nav-btn">军民大数据</button></router-link>
         <div class="right">
