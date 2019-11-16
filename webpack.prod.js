@@ -32,7 +32,7 @@ module.exports = merge(common,{
                 use: 'file-loader',
                 loader: 'file-loader?name=videos/[name].[ext]',
             },
-    },
+        ],
     plugins:[
         new MiniCssExtractPlugin({
             filename:'style.css'
