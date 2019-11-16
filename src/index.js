@@ -12,6 +12,11 @@ import joinActivity from './pages/activity/joinActivity.vue';
 import RealTime from './pages/management/RealTime.vue';
 import DataDisplay from './pages/management/DataDisplay.vue';
 import activityMa from './pages/activityMa.vue';
+import navintroduce from './pages/homePages/NavIntroduce.vue';
+// 作战视频
+import operationalVideo from './pages/operationalVideo.vue'
+
+import GLOBAL  from './pages/util/constants';
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -22,8 +27,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(VueRouter);
 Vue.use(ElementUI)
 
-
-Vue.prototype.$echarts = echarts
+//引入全局echarts
+Vue.prototype.$echarts = echarts;
+//引入全局变量
+Vue.prototype.GLOBAL  = GLOBAL;
 
 const routes = [
     { path: '/', component: FirstPage },
@@ -36,6 +43,8 @@ const routes = [
     { path: '/management/realtime', component: RealTime},
     { path: '/management/datadisplay', component: DataDisplay},
     { path: '/management/activityMa', component: activityMa},
+    { path: '/homePages/navintroduce', component: navintroduce},
+    { path: '/operationalVideo', component: operationalVideo},//作战视频
 ];
 
 const router = new VueRouter({

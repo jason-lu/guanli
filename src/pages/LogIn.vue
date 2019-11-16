@@ -64,7 +64,7 @@ export default {
         login() {
             // 13212344567
             axios({
-                url:`http://47.104.128.89/api/v1/member/passwdLogin`,
+                url:`${this.GLOBAL.baseUrl}api/v1/member/passwdLogin`,
                 method: 'post',
                 data: qs.stringify({
                     phone: this.phone,
@@ -92,7 +92,7 @@ export default {
         register() {
             //request param, 需要用qs做转换
             axios({
-                url:`http://47.104.128.89/api/v1/member/register2`,
+                url:`${this.GLOBAL.baseUrl}api/v1/member/register2`,
                 method: 'post',
                 data: qs.stringify({
                     name:this.username,
@@ -113,7 +113,7 @@ export default {
             });
         },
         switchExist() {
-            axios.post("http://47.104.128.89/api/getVerifyCode")
+            axios.post("${this.GLOBAL.baseUrl}api/getVerifyCode")
             .then(res => {
                 //验证码以及验证码图片
                 this.verifyData = res.data;
