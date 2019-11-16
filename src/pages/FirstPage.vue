@@ -187,7 +187,7 @@
                 ],
                 tabArr: [
                     { title: '国防教育', src: '#' }, { title: "动态信息", src: '#' }, { title: "典型风采", src: '#' },
-                    { title: '学校国防教育', src: '#' }, { title: '装备介绍', src: '#' }, { title: '师资教材', src: '#' },
+                    { title: '学校国防教育', src: '#' }, { title: '装备介绍', src: 'homePages/navintroduce' }, { title: '师资教材', src: '#' },
                     { title: '热点专题', src: '#' }, { title: '社会国防教育', src: '#' }, { title: '视频推荐', src: '#' },
                 ]
             };

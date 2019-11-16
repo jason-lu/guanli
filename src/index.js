@@ -12,6 +12,7 @@ import joinActivity from './pages/activity/joinActivity.vue';
 import RealTime from './pages/management/RealTime.vue';
 import DataDisplay from './pages/management/DataDisplay.vue';
 import activityMa from './pages/activityMa.vue';
+import navintroduce from './pages/homePages/NavIntroduce.vue';
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -36,6 +37,7 @@ const routes = [
     { path: '/management/realtime', component: RealTime},
     { path: '/management/datadisplay', component: DataDisplay},
     { path: '/management/activityMa', component: activityMa},
+    { path: '/homePages/navintroduce', component: navintroduce},
 ];
 
 const router = new VueRouter({
