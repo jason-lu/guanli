@@ -224,6 +224,7 @@ a {
   background-color: #51a9f18c;
   border: 1px solid #fff;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .icon {

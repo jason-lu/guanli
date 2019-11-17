@@ -33,7 +33,7 @@
         },
         methods:{
             join(){
-                this.$router.push('/joinActivity');
+                this.$router.push('/activities/joinActivity');
             }
         }
     }

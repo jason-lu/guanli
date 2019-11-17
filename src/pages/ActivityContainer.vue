@@ -12,7 +12,7 @@
                     {{item.type}} <br /> <br />
                     热度：<el-rate v-model="value5" disabled show-score text-color="#ff9900" score-template="{value}">
                     </el-rate>
-                    <router-link id="detail" to="/activityListDetail">详情</router-link>
+                    <router-link id="detail" to="/activities/activityListDetail">详情</router-link>
                     <!-- <button id="detail">详情</button> -->
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="content">
                     {{item.title}} <br />
                     {{item.type}}
-                    <router-link id="detail" to="/activityListDetail">详情</router-link>
+                    <router-link id="detail" to="/activities/activityListDetail">详情</router-link>
                     <!-- <button id="detail">详情</button> -->
                 </div>
             </div>

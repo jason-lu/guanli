@@ -2,7 +2,7 @@
   <div id="nav-container">
     <ul class="clearfix">
       <li>
-        <router-link to="/" class>首页</router-link>
+        <router-link to="/homePages" class>首页</router-link>
       </li>
       <li>
         <router-link to="/activities" class>活动</router-link>
@@ -23,10 +23,11 @@
     <div class="right">
       <a v-if="!user" class="loginbtn" @click="clickHandler('/login',$event)">登录</a>
       <div v-else class="dropdown">
-        你好
+        <span class="hello">你好</span>
         <a class="dropbtn">{{user.name}}</a>
         <div class="dropdown-content">
           <span @click="clickHandler('/profile',$event)">个人中心</span>
+          <br />
           <span @click="clickHandler(null,$event)">退出</span>
         </div>
       </div>
@@ -63,28 +64,38 @@ export default {
   color: #fff;
   text-align: center;
   z-index: 10;
-  background-color: #000000;
+  background-color: rgb(31, 31, 31);
 
   ul {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    height: 100%;
 
     li {
+        height: 100%;
       float: left;
-      border: 1px solid #f1f1f1;
-      background: #61b0f08c;
-      margin-right: 10px;
-      border-radius: 5px;
+    //   border: 1px solid #ccc;
+    //   background: #61b0f08c;
+    //   border-radius: 5px;
+      overflow: hidden;
       //   background: linear-gradient(to top, #61b0f08c, #98b8d38c);
 
       a {
-        height: 20px;
-        line-height: 20px;
-        padding: 5px 25px;
+        height: 100%;
+        line-height: 70px;  
+        padding: 0 25px;
         float: left;
-        color: white;
+        color: #c9c9dd;
+        box-sizing: border-box;
+
+        &:hover {
+          background: linear-gradient(to top, #61b0f08c, rgba(0,0,0,0));
+        }
+        &.router-link-active {
+          background: linear-gradient(to top, #61b0f08c, rgba(0,0,0,0));
+        }
       }
     }
   }
@@ -100,17 +111,17 @@ export default {
     }
 
     .dropdown {
-      margin-top: 70px;
+  cursor: pointer;
+      margin-right: 10px;
 
-      .dropdown-content {
-        // display: none;
-        position: absolute;
-        right: 0;
-        border-radius: 4px;
-        background-color: #61b0f08c;
-        color: #ffffff;
-        width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      .dropbtn {
+        border: 1px solid #fff;
+        // float: right;
+        margin-left: 5px;
+        padding: 5px 10px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 5px;
       }
     }
   }
@@ -126,53 +137,23 @@ export default {
     color: white;
   }
 }
-
-// .right {
-//   float: right;
-//   margin-right: 5px;
-// }
-
-// div.dropdown {
-//   position: relative;
-//   display: inline-block;
-// }
-// span {
-//   font-weight: bold;
-// }
-// button.dropbtn {
-//   background-color: #ffffff00;
-//   border: 1px solid #ffffff;
-//   border-radius: 4px;
-//   outline: none;
-//   color: white;
-//   cursor: pointer;
-// }
-// div.dropdown-content {
-//   display: none;
-//   position: absolute;
-//   right: 0;
-//   border-radius: 4px;
-//   background-color: #61b0f08c;
-//   color: #ffffff;
-//   width: 160px;
-//   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-// }
-// .dropdown-content span {
-//   display: block;
-//   text-decoration: none;
-//   color: #ffffff;
-//   padding: 12px 15px;
-//   cursor: pointer;
-//   font-weight: normal !important;
-// }
-// /*注意这里不是.dropbtn:hover，因为dropbtn是一个button,不能够用hover*/
-// .dropdown:hover .dropdown-content {
-//   display: block;
-// }
-// .dropdown-content a:hover {
-//   background-color: #90cafa8c;
-// }
-// .dropdown:hover .dropbtn {
-//   background-color: #90cafa8c;
-// }
+.dropdown-content {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  border-radius: 4px;
+  background-color: #61b0f08c;
+  color: #ffffff;
+  width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: right top;
+  transition: all 0.3s;
+}
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  transform: scale(1);
+}
 </style>

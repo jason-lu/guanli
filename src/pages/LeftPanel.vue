@@ -41,7 +41,7 @@ export default {
   cursor: pointer;
   color: #fff;
   text-decoration: none;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #ccc;
   font-weight: bold;
   background-color: #51a9f18c;
 }
