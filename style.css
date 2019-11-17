@@ -22,8 +22,8 @@ body
     align-items: center;
     background: #060c21;
 }
-.box:before
-{
+
+.box:before{
     content: '';
     position: absolute;
     top: -2px;
