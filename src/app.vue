@@ -1,7 +1,7 @@
 <template>
   <div id="main-container" class="clearfix">
     <Navbar :user="user" @logout="logout"></Navbar>
-    <Home :user="user" @login="login" />
+    <Home style="margin-top: 78px;" :user="user" @login="login" />
   </div>
 </template>
 
@@ -47,6 +47,10 @@ body {
   margin: 0;
   height: 100vh;
 }
+* {
+  margin: 0;
+  padding: 0;
+}
 
 #main-container {
   /* position:fixed; */
@@ -68,6 +72,20 @@ body {
 
 ul {
   list-style: none;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+// 清除浮动
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: "";
+}
+.clearfix::after {
+  clear: both;
 }
 
 // 多行溢出
