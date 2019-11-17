@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      vue: "vue-webpack",
+      vue: "vue-webpack", 
       isAdmin: false,
       user:null,
     };

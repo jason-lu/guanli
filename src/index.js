@@ -21,16 +21,20 @@ import GLOBAL  from './pages/util/constants';
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // import store from './store/store.js';
-
+// ----------------------------------------------------
+import axios from 'axios';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production'? '/api/v1/':'http://47.104.128.89/api/v1/';
+Vue.prototype.$http= axios;
+// ----------------------------------------------------
 
 
 Vue.use(VueRouter);
-Vue.use(ElementUI)
+Vue.use(ElementUI) 
 
 //引入全局echarts
 Vue.prototype.$echarts = echarts;
 //引入全局变量
-Vue.prototype.GLOBAL  = GLOBAL;
+// Vue.prototype.GLOBAL  = GLOBAL;
 
 const routes = [
     { path: '/', component: FirstPage },
@@ -48,7 +52,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-    // mode: 'history',
+    // mode: 'history', 
     routes // (缩写) 相当于 routes: routes
   })
 
