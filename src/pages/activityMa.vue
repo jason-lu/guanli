@@ -25,7 +25,7 @@
           <div class="content">
             <div class="theme">{{item.theme}}</div>
             <div class="title">{{item.name}}</div>
-            <p class="desc">活动描述：{{item.description}}</p>
+            <p class="desc ellipsis">活动描述：{{item.description}}</p>
             <div class="time">
               活动时间：
               <span>{{item.begin_time}}</span>至
@@ -63,6 +63,16 @@
     <!-- 点击“新增/编辑活动”弹出的复用模态框 -->
     <el-dialog title="提示" :visible.sync="editDialogVisible" width="30%">
       <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="活动场馆">
+          <el-select v-model="value" placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="活动主题">
           <el-input></el-input>
         </el-form-item>
@@ -90,6 +100,19 @@
               style="width: 100%;"
             ></el-date-picker>
           </el-col>
+        </el-form-item>
+        <el-form-item label="活动状态">
+          <el-select v-model="value" placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="活动图片">
+          <!-- 添加上传图片 -->
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -158,204 +181,50 @@ export default {
     //   this.delDialogVisible = true;
     // },
     async delAct() {
-      try{
+      try {
         await this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
-        })
+        });
         this.$message({
           type: "success",
           message: "删除成功!"
-        })
-      }catch{
+        });
+      } catch {
         this.$message({
           type: "info",
           message: "已取消删除"
-        })        
+        });
       }
-
     }
   }
-}
+};
 </script>
 
-<style lang="less">
-.activity-container {
-  // 修改默认的elementui的搜索框样式
-  .input-with-select {
-    float: left;
-    width: 300px;
-    line-height: 30px;
-    margin-right: 50px;
 
-    .el-input__inner {
-      background-color: #51a9f14f;
-      height: 32px;
-      line-height: 30px;
-      border: 1px solid #fff;
-      color: #fff;
-    }
-    .el-input-group__append {
-      background: #51a9f18c;
-      height: 30px;
-      border: 1px solid #fff;
-      .el-icon-search {
-        color: #fff;
-      }
-    }
-  }
-  // 修改默认的elementui的分页器样式
-  .el-pagination {
-    margin-bottom: 70px;
-    background-color: #51a9f14f;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: 1px solid #fff;
-
-    .el-pagination__total,
-    .el-pagination__jump {
-      color: #fff;
-    }
-  }
-}
-</style>
 
 <style lang="less" scoped>
-// 页面标题
-.activity-title {
-  width: 600px;
-  height: 80px;
-  line-height: 80px;
-  margin: 0 auto;
-  text-align: center;
-  border-bottom: 1px solid #fff;
-  color: #fff;
-  font-size: 26px;
-  margin-bottom: 20px;
-}
-
 // 页面内容主盒子
-.activity-container {
-  line-height: 1.5;
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: wrap;
-
-  .addBtn {
-    float: right;
+.activity-container .activity-list .box .content {
+  .theme {
+    font-size: 20px;
   }
 
-  // 活动列表
-  .activity-list {
-      padding-left: 0;
-    .box {
-      position: relative;
-      margin: 20px;
-      display: flex;
-      flex-grow: 1;
-      justify-content: center;
-      flex-direction: row;
-      background: #060c2188;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  .desc {
+    margin: 20px 0;
+  }
 
-      // 左侧的展示图片
-      .preview img {
-        width: 300px;
-        display: block;
-      }
-
-      // 右侧具体活动内容
-      .content {
-        padding: 10px 50px;
-        padding-right: 100px;
-        position: relative;
-
-        .theme {
-          font-size: 20px;
-        }
-
-        .desc {
-          margin: 20px 0;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          overflow: hidden;
-        }
-
-        .state {
-          .notstarted {
-            color: #4a68bb;
-          }
-          .finished {
-            color: #bd4c4c;
-          }
-          .underWay {
-            color: #108167;
-          }
-        }
-
-        .modifyBtn {
-          position: absolute;
-          right: 100px;
-          bottom: 20px;
-        }
-
-        .delBtn {
-          position: absolute;
-          right: 210px;
-          bottom: 20px;
-          background-color: rgba(247, 71, 71, 0.5);
-        }
-      }
+  .state {
+    .notstarted {
+      color: #33a1c9;
+    }
+    .finished {
+      color: rgb(207, 106, 69);
+    }
+    .underWay {
+      color: #03a89e;
     }
   }
-}
-// 按钮通用
-.btn {
-  color: #fff;
-  padding: 0 20px;
-  font-size: 14px;
-  text-align: center;
-  line-height: 30px;
-  background-color: #51a9f18c;
-  border: 1px solid #fff;
-  cursor: pointer;
-}
-
-.icon {
-  padding-right: 10px;
-}
-
-// 添加活动图片
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
-}
-.avatar {
-  width: 178px;
-  height: 178px;
-  display: block;
 }
 </style>
