@@ -50,7 +50,6 @@
                 verifyCodeInput: '',
             }
         },
-<<<<<<< HEAD
         computed: {
             isLoginCompleted() {
                 return this.phone.length > 3 && this.password.length >= 6;
@@ -113,36 +112,6 @@
                         this.verifyCodeInput = this.verifyData.code;
                     });
                 this.username = '';
-=======
-        isRegisertCompeleted() {
-            const regex = RegExp(/\w+@\w+.{1}\w+/);
-            return this.username.length>3 && this.password.length>=6 
-            && this.password === this.passwordRepeat && this.email.length > 3;
-        }
-    },
-    methods: {
-        login() {
-            // 13212344567
-            axios({
-                url:`${this.GLOBAL.baseUrl}api/v1/member/passwdLogin`,
-                method: 'post',
-                data: qs.stringify({
-                    phone: this.phone,
-                    passwd: this.password
-                })
-            }).then(res => {
-                if(res.data.respBody.isSuccess){
-                    let token = res.data.respHeader.token;
-                    localStorage.setItem('token',token);
-                    let user = {name: atob(token.split('.')[1]).name || "admin"};
-                    // console.log(user)
-                    this.$emit('login');
-                    this.$router.push('/profile');
-                }
-                
-            }).catch ( _ => {
-                this.phone = '';
->>>>>>> bcb70f0b8287192d3b2b3cca717c5e10907a6b80
                 this.password = '';
                 this.passwordRepeat = '';
                 this.email = '';
