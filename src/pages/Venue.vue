@@ -59,10 +59,10 @@
     import axios from 'axios';
     export default{
         created() {
-            axios.get("http://47.104.128.89:8002/gym/getAllGym")
-            .then(res =>{
-                this.venueList = res.data;
-            })
+            // axios.get("http://47.104.128.89:8002/gym/getAllGym")
+            // .then(res =>{
+            //     this.venueList = res.data;
+            // })
         },
         data(){
             return {

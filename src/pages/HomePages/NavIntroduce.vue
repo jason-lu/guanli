@@ -1,6 +1,7 @@
 <template>
     <div class="plate">
         <div class="w">
+            <button @click="aaa">点击获取数据</button>
             <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item>装备介绍</el-breadcrumb-item>
@@ -283,10 +284,16 @@
 
 </template>
 <script>
-
+import qs from 'qs';
     export default {
         methods: {
-
+            async  aaa (){
+           const data=await  this.$http.get('gym/getAllGym', qs.stringify( {
+                    phone:13212312311,
+                    passwd:123456,
+                }));
+                console.log(data);  
+            }
         },
         data() {
             return {
@@ -302,7 +309,7 @@
         margin-top: 20px;
        
         /* border:5px solid rgba(0, 0, 0, 0.2); */
-        box-shadow:6px -6px 5px rgba(0, 0, 0, 0.2);
+        box-shadow:0px 15px 30px  rgba(0, 0, 0, 0.2);
     }
     .rightbox_up{
         padding: 20px;
@@ -464,7 +471,7 @@
 
     .leftbox {
         padding: 20px;
-        box-shadow: 3px 0px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 15px 30px  rgba(0, 0, 0, 0.2);
         width: 700px;
         float: left;
     }
