@@ -24,7 +24,11 @@ module.exports = merge(common, {
                 use: ['vue-style-loader','css-loader','less-loader']
             },
             {
-                test: /\.mp4$/,
+                test: /\.(mp4|qlv)$/,
+                use: 'file-loader',
+            },
+            {
+                test: /\.qlv$/,
                 use: 'file-loader',
             },
         ]
