@@ -1,7 +1,7 @@
 <template>
     <div class="box">
 
-        <div class="w">
+        <div class="w clearfix">
             <div class="navchange">
                 <ul class="navUl">
                     <li v-for="(item,index) in tabArr">
@@ -15,11 +15,12 @@
                     <el-carousel height="380px">
                         <el-carousel-item v-for="(item,index) in newsList" :key="index">
                             <img :src="item.url" style="width: 100%; height: 380px; margin: auto; display: block;">
-                            <span style="width:50%; position: absolute; padding: top 10px; display: block; 
+                            <span style="width:50%; position: absolute; padding:  10px; display: block; 
+                                        border-radius: 20px;
                                         text-align: center;
                                         transform: translatex(50%); 
                                         z-index: 1; color: #ffffff; 
-                                        bottom: 20px;margin: auto; background-color: #00000054;"> {{item.title}}
+                                        bottom: 20px;margin: auto; background-color: #00000064;"> {{item.title}}
                             </span>
                         </el-carousel-item>
                     </el-carousel>
@@ -68,15 +69,7 @@
                             <router-link class="content_title fr" to="/homePages/navintroduce">更多</router-link>
 
                         </p>
-                        <!-- <p class="content-name">
-                            <router-link class="content-name-link" to="#">特战"武教头"何少军：入伍18年,四获"勇士勋章"</router-link>
-                        </p>
-                        <span class="descripte">面对暴徒，他是一名虎胆英雄。面对人民，他是一名忠诚卫士</span>
-                        <ul class="contentFirstUl">
-                            <li>● 教师节致军校教员|当时光流过三尺讲台</li>
-                            <li>● 解放军总医院举办“忠诚的力量”强军故事会</li>
-                            <li>● “和平方舟”号医院船举行航海日开放活动</li>
-                        </ul> -->
+                   
                         <div>
                             <div class="clearfix gunContent">
                                 <div class="fl">海军装备</div>
@@ -88,7 +81,7 @@
                                     <a href="#">海军3</a>
                                 </div>
                             </div>
-                            <div class="clearfix gunContent">
+                            <div class="clearfix gunContent"> 
 
                                 <div class="fl">海军装备</div>
                                 <div class="fr ">
@@ -110,15 +103,15 @@
                                 </div>
                             </div>
                             <div class="clearfix gunContent">
-                                    <div class="fl">海军装备</div>
-                                    <div class="fr ">
-                                        <a href="#">海军1</a>
-                                        <a href="#">海军2</a>
-                                        <a href="#">海军3</a>
-                                        <a href="#">海军3</a>
-                                        <a href="#">海军3</a>
-                                    </div>
+                                <div class="fl">海军装备</div>
+                                <div class="fr ">
+                                    <a href="#">海军1</a>
+                                    <a href="#">海军2</a>
+                                    <a href="#">海军3</a>
+                                    <a href="#">海军3</a>
+                                    <a href="#">海军3</a>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -237,20 +230,23 @@
                 ]
             };
         },
+        
 
     }
 </script>
 
 <style scoped>
     .gunContent {
-        color: #6C91B4;
+        color: #333;
         margin-top: 45px;
         font-size: 20px;
     }
-    .gunContent a{
-        color: #6C91B4;
+
+    .gunContent a {
+        color: #333;
 
     }
+
     /* 清除浮动 */
     .clearfix:before,
     .clearfix:after {
@@ -292,7 +288,8 @@
     }
 
     .new-content {
-        margin: 20px 0 50px 0;
+        margin: 20px 0;
+        line-height: 30px;
         text-indent: 2em;
         color: #DDECEA;
     }
@@ -335,7 +332,10 @@
         overflow: hidden;
         margin-top: 50px;
     }
+.div-box{
+    box-shadow:0px 15px 20px  rgba(0, 0, 0, 0.2);
 
+}
     .div-box img {
         width: 100%;
     }
@@ -366,13 +366,13 @@
     }
 
     .contentFirstUl li {
-        color: #6C91B4;
+        color: #333;
         height: 30px;
         font-size: 20px;
     }
 
     .content-name-link {
-        color: #6C91B4;
+        color: #333;
         font-size: 20px;
     }
 
