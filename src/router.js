@@ -16,6 +16,7 @@ import base from './pages/homePages/Base.vue';
 import operationalVideo from './pages/operationalVideo.vue';
 import main from './pages/Main.vue';
 import ActiveEdit from './pages/activity/activeEdit.vue';
+import ActiveBack from './pages/ActiveBack.vue';
 
 Vue.use(VueRouter);
 
@@ -37,6 +38,7 @@ const routes = [
     { path: '/homePages/base', component: base },
     { path: '/main', component: main },//作战视频
     { path: '/activityMa/activeEdit', component: ActiveEdit },
+    { path: '/ActiveBack', component: ActiveBack },
 ];
 
 const router = new VueRouter({

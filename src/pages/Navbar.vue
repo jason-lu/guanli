@@ -14,7 +14,7 @@
         <router-link to="/operationalVideo" class>作战视频</router-link>
       </li>
       <li>
-        <router-link to="/venue" class>活动回顾</router-link>
+        <router-link to="/ActiveBack" class>活动回顾</router-link>
       </li>
       <li>
         <router-link to="/management/datadisplay" class>军民大数据</router-link>
