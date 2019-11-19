@@ -272,7 +272,7 @@
                                 <a href="#">• C-17“环球霸王Ⅲ”</a>
                                 <a href="#">• C-17“环球霸王Ⅲ”</a>
                                 <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
+                                <a href="#">• C-17“环球霸王Ⅲ”</a> 
                                 <a href="#">• C-17“环球霸王Ⅲ”</a>
                             </div>
                         </div>
@@ -288,7 +288,7 @@ import qs from 'qs';
     export default {
         methods: {
             async  aaa (){
-           const data=await  this.$http.get('gym/getAllGym', qs.stringify( {
+           const data=await  this.$http.post('member/passwdLogin', qs.stringify( {
                     phone:13212312311,
                     passwd:123456,
                 }));

@@ -54,7 +54,7 @@
             isLoginCompleted() {
                 return this.phone.length > 3 && this.password.length >= 6;
             },
-            isRegisertCompeleted() {
+            isRegisertCompeleted() { 
                 const regex = RegExp(/\w+@\w+.{1}\w+/);
                 return this.username.length > 3 && this.password.length >= 6
                     && this.password === this.passwordRepeat && this.email.length > 3;
@@ -69,7 +69,7 @@
                         if (res.data.respBody.isSuccess) {
                             let token = res.data.respHeader.token;
                             localStorage.setItem('token', token);
-                            let user = { name: atob(token.split('.')[1]).name || "admin" };
+                            let user = { name: atob(token.split('.')[1]).name || "admin" }; 
                             console.log(user)
                             this.$emit('login');
                             this.$router.push('/profile');
