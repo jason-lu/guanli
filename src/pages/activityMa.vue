@@ -16,7 +16,7 @@
       </div>
       <!-- 列表展示部分 -->
       <ul class="activity-list">
-        <li class="box" v-for="item in activityList" :key="item.gym_id">
+        <li class="box clearfix" v-for="item in activityList" :key="item.gym_id">
           <!-- 活动图片 -->
           <div class="preview">
             <img :src="item.pic_address" />
@@ -78,7 +78,7 @@
         </el-form-item>
         <el-form-item label="活动标题">
           <el-input></el-input>
-        </el-form-item>
+        </el-form-item> 
         <el-form-item label="活动描述">
           <el-input type="textarea"></el-input>
         </el-form-item>

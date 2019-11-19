@@ -50,18 +50,18 @@
                 <h2 class="datarighttop">战场实况</h2>
                 <div class="datarightbox">数据数据</div>
                 <div>
-                    <video width="255" height="160" controls>
-                        <source src="movie.mp4" type="video/mp4">
+                    <video width="255" height="160" autoplay controls>
+                        <source src="https://apd-24802b2fef8a270d75796421c369858c.v.smtcdns.com/vhot2.qqvideo.tc.qq.com/A5irJgEJvsruW1df3FwozYk7lPVrJUDFJu90K79LpuC0/uwMROfz2r5zEIaQXGdGnC2dfDmafRkP9ujxgqKjuATzMrE-2/z3004dsnf4q.mp4?sdtfrom=v1010&guid=41f927d2f51633de1037d5c6e00061e3&vkey=4F37893D1261247A1BF74FEDCD9E627F72168B14E9140AE2BD1364ECD18C0524E35BBC84E654D5E9D1A8760D7C99611113A46E3CBB6B3FAF4CD3F2A5F56DC8ABB8FE63C952B3D272F674CC31C925C654451476E90F813EEBC73CC8CAD10A2E919A443F3ABACD57890813D7F804F3B505726B838E59CCF917AD9527C84377B4A8" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
-                    <video width="255" height="160" controls>
-                        <source src="movie.mp4" type="video/mp4">
+                    <video width="255" height="160" autoplay controls>
+                        <source src="../../assets/video/a.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
-                        您的浏览器不支持 HTML5 video 标签。
+                        您的浏览器不支持 HTML5 video 标签。 
                     </video>
-                    <video width="255" height="160" controls>
-                        <source src="movie.mp4" type="video/mp4">
+                    <video width="255" height="160" autoplay controls>
+                        <source src="https://ugcws.video.gtimg.com/uwMROfz2r5zEIaQXGdGnC2dfJ6rBbB0u18Msl1j33cNgltoG/x0170vyslr8.p702.1.mp4?sdtfrom=v1010&guid=41f927d2f51633de1037d5c6e00061e3&vkey=F84CF69829CE98FFE5B6ED89F66764D896442D7AF9F8E8A92888862B906943278AADC787ECBC856AB72675B0C00FCAD3D40ED027E3599FFBFF52F3BE13A58B86911C126E0C31DF1CE751F1EA8E456D0D3F610D277C57B485D3BCE889FF3EA1965D000B0AA13E31F79819E064D967B661FC4CE6BB6254D1D4D98CAAC3A47AE6E1" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
@@ -76,26 +76,7 @@
         </div>
 
         <div class="border">
-            <P style="color: white; margin: auto; display: block; font-size: 1.3rem;">军民大数据</P>
-            <div style="display: flex; flex-direction: row; justify-content: space-between; margin-top:10px;">
-                <div>
-                    <div class="summary-title">会员总人数</div>
-                    <div class="summary-number">52360</div>
-                </div>
-                <div>
-                    <div class="summary-title">教员数</div>
-                    <div class="summary-number">525</div>
-                </div>
-                <div>
-                    <div class="summary-title">场馆数</div>
-                    <div class="summary-number">100</div>
-                </div>
-                <div>
-                    <div class="summary-title">装备数</div>
-                    <div class="summary-number">20000</div>
-                </div>
-
-            </div>
+            
             <echart-vue height="300px" width="100%" :options="option" class="charts" id="mycharts-top" />
             <echart-vue height="300px" width="100%" :options="activityOptions" class="charts" id="mycharts-activity" />
         </div>

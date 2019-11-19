@@ -15,13 +15,14 @@ import navintroduce from './pages/homePages/NavIntroduce.vue';
 import base from './pages/homePages/Base.vue';
 // 作战视频
 import operationalVideo from './pages/operationalVideo.vue';
+import main from './pages/Main.vue'
 Vue.use(VueRouter);
 
 const routes = [
     { path: '/', redirect: '/homePages' },
     { path: '/homePages', component: FirstPage },
+    { path: '/homePages/navintroduce', component: navintroduce },
     { path: '/venue', component: Venue },//场馆展示
-    { path: '/management/venueMa', component: VenueMa },//场馆展示
     { path: '/login', component: Login },
     { path: '/profile', component: Profile },//用户中心
     { path: '/activities', component: ActivityContainer },//活动列表页面
@@ -30,9 +31,13 @@ const routes = [
     { path: '/management/realtime', component: RealTime },
     { path: '/management/datadisplay', component: DataDisplay },
     { path: '/management/activityMa', component: activityMa },
-    { path: '/homePages/navintroduce', component: navintroduce },
+    { path: '/management/venueMa', component: VenueMa },//场馆管理
     { path: '/operationalVideo', component: operationalVideo },//作战视频
+<<<<<<< HEAD
     { path: '/homePages/base', component: base },//作战视频
+=======
+    { path: '/main', component: main },//作战视频
+>>>>>>> fc949ac46e9d4605a54136f7291507ef1e7b9d68
 ];
 
 const router = new VueRouter({
@@ -40,4 +45,15 @@ const router = new VueRouter({
     routes // (缩写) 相当于 routes: routes
 })
 
-export default router; 
+
+// 路由拦截
+router.beforeEach((to, from, next) => {
+    const regex = RegExp(/^\/homePages/);
+    if(to.path === '/login' || regex.test(to.path) || localStorage.getItem('token')) {
+        next();
+    } else {
+        next('/login');
+    }
+})
+
+export default router;

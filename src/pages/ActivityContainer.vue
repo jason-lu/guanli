@@ -1,7 +1,6 @@
 <template>
     <div class="actContainer">
-        <!-- 热点活动 -->
-        <div class="hotActivity">
+        <!-- <div class="hotActivity">
             热点活动
         </div>
         <div class="activity-container">
@@ -13,10 +12,9 @@
                     热度：<el-rate v-model="value5" disabled show-score text-color="#ff9900" score-template="{value}">
                     </el-rate>
                     <router-link id="detail" to="/activities/activityListDetail">详情</router-link>
-                    <!-- <button id="detail">详情</button> -->
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- 全部活动 -->
         <div class="allActivity">
             全部活动

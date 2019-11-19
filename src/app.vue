@@ -118,7 +118,7 @@ a {
     background-color: #51a9f14f;
     padding: 10px 20px;
     border-radius: 5px;
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
 
     .el-pagination__total,
     .el-pagination__jump {
@@ -156,7 +156,7 @@ a {
 .activity-container,
 .venue-container {
   line-height: 1.5;
-  color: #fff;
+  color: #eee;
   font-family: "Poppins", sans-serif;
   width: 100%;
   height: 100%;
@@ -178,24 +178,40 @@ a {
     .box {
       position: relative;
       margin: 20px;
-      display: flex;
-      flex-grow: 1;
-      justify-content: center;
-      flex-direction: row;
+      // display: flex;
+      // flex-grow: 1;
+      // justify-content: center;
+      // flex-direction: row;
       background: #060c2188;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+      overflow: hidden;
 
       // 左侧的展示图片
+      .preview {
+        overflow: hidden;
+        // float: left;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
       .preview img {
         width: 300px;
         display: block;
+        transition: all 0.5s;
+      }
+
+      .preview img:hover {
+        transform: scale(1.1);
       }
 
       // 右侧具体活动内容
       .content {
-        padding: 10px 50px;
-        padding-right: 100px;
+        padding: 10px 0px;
+        padding-right: 50px;
         position: relative;
+        margin-left: 320px;
+        // float: left;
 
         .modifyBtn {
           position: absolute;
@@ -208,6 +224,10 @@ a {
           right: 210px;
           bottom: 20px;
           background-color: rgba(247, 71, 71, 0.5);
+
+          &:hover {
+            background-color: rgba(247, 71, 71, 0.4);
+          }
         }
       }
     }
@@ -222,9 +242,14 @@ a {
   text-align: center;
   line-height: 30px;
   background-color: #51a9f18c;
-  border: 1px solid #fff;
+  border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px;
+  transition: all 0.4s;
+
+  &:hover {
+    background-color: #51a9f154;
+  }
 }
 
 .icon {

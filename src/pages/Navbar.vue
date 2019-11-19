@@ -46,6 +46,8 @@ export default {
       if (path) {
         this.$router.push(path);
       } else {
+        this.$router.push("/homePages");
+        localStorage.removeItem("token");
         this.$emit("logout");
       }
     }
@@ -64,7 +66,7 @@ export default {
   color: #fff;
   text-align: center;
   z-index: 10;
-  background-color: rgb(31, 31, 31);
+  background-color: rgba(31, 31, 31, 0.95);
 
   ul {
     position: absolute;
@@ -74,27 +76,29 @@ export default {
     height: 100%;
 
     li {
-        height: 100%;
+      height: 100%;
       float: left;
-    //   border: 1px solid #ccc;
-    //   background: #61b0f08c;
-    //   border-radius: 5px;
+      //   border: 1px solid #ccc;
+      //   background: #61b0f08c;
+      //   border-radius: 5px;
       overflow: hidden;
       //   background: linear-gradient(to top, #61b0f08c, #98b8d38c);
 
       a {
         height: 100%;
-        line-height: 70px;  
+        line-height: 70px;
         padding: 0 25px;
         float: left;
         color: #c9c9dd;
         box-sizing: border-box;
 
         &:hover {
-          background: linear-gradient(to top, #61b0f08c, rgba(0,0,0,0));
+          background: linear-gradient(to top, #61b0f08c, rgba(0, 0, 0, 0));
+          color: #fff;
         }
         &.router-link-active {
-          background: linear-gradient(to top, #61b0f08c, rgba(0,0,0,0));
+          color: #fff;
+          background: linear-gradient(to top, #61b0f08c, rgba(0, 0, 0, 0));
         }
       }
     }
@@ -108,10 +112,11 @@ export default {
 
     .loginbtn {
       float: left;
+      cursor: pointer;
     }
 
     .dropdown {
-  cursor: pointer;
+      cursor: pointer;
       margin-right: 10px;
 
       .dropbtn {
@@ -143,7 +148,7 @@ export default {
   right: 10px;
   top: 60px;
   border-radius: 4px;
-  background-color: #61b0f08c;
+
   color: #ffffff;
   width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -151,6 +156,18 @@ export default {
   transform: scale(0);
   transform-origin: right top;
   transition: all 0.3s;
+  overflow: hidden;
+
+  span {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background-color: #61b0f08c;
+    transition: all 0.2s;
+  }
+  span:hover {
+    background-color: #3376ac8c;
+  }
 }
 .dropdown:hover .dropdown-content {
   opacity: 1;

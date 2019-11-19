@@ -23,10 +23,11 @@ export default {
   width: 150px;
   position: fixed;
   top: 50%;
-  left: 10px;
+  left: 20px;
   /*偏移*/
   transform: translateY(-50%);
   color: #fff;
+  box-shadow: 2px 2px 15px 2px rgb(99, 99, 99);
 }
 
 .menu_head {
@@ -39,10 +40,10 @@ export default {
   text-align: center;
   font-size: 14px;
   cursor: pointer;
-  color: #fff;
+  color: #ddd;
   text-decoration: none;
-  border: 1px solid #ccc;
-  font-weight: bold;
+  border: 1px solid #2149698c;
+  // font-weight: bold;
   background-color: #51a9f18c;
 }
 
@@ -56,6 +57,7 @@ a {
   &.router-link-exact-active {
     background-color: #51a9f136;
   }
+
 }
 .menu_list .current {
   background: #51a9f18c;
