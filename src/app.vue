@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      vue: "vue-webpack", 
+      vue: "vue-webpack",
       isAdmin: false,
       user: null
     };
@@ -89,11 +89,17 @@ a {
 }
 
 // 多行溢出
-.ellipsis {
+.ellipsis(@line: 2) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: @line;
   overflow: hidden;
+}
+.ellipsis-2 {
+  .ellipsis();
+}
+.ellipsis-3 {
+  .ellipsis(3);
 }
 
 // 场馆及活动管理页面标题
@@ -125,6 +131,23 @@ a {
       color: #fff;
     }
   }
+  // 修改默认的elementui选择器样式
+  .theme-select {
+    .el-input__inner {
+      line-height: 32px;
+      height: 32px;
+      border: 1px solid #fff;
+      background-color: #51a9f14f;
+      color: #ccc;
+    }
+
+    .el-input__prefix,
+    .el-input__suffix {
+      // line-height: 32px;
+      height: 37px;
+    }
+  }
+
   // 修改默认的elementui的搜索框样式
   .input-with-select {
     float: left;
@@ -189,6 +212,8 @@ a {
       // 左侧的展示图片
       .preview {
         overflow: hidden;
+        width: 300px;
+        height: 210px;
         // float: left;
         position: absolute;
         top: 50%;
@@ -196,7 +221,9 @@ a {
       }
 
       .preview img {
-        width: 300px;
+        min-width: 300px;
+        min-height: 210px;
+        height: 210px;
         display: block;
         transition: all 0.5s;
       }

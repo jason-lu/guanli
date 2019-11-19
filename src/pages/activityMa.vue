@@ -25,7 +25,7 @@
           <div class="content">
             <div class="theme">{{item.theme}}</div>
             <div class="title">{{item.name}}</div>
-            <p class="desc ellipsis">活动描述：{{item.description}}</p>
+            <p class="desc ellipsis-2">活动描述：{{item.description}}</p>
             <div class="time">
               活动时间：
               <span>{{item.begin_time}}</span>至
@@ -78,7 +78,7 @@
         </el-form-item>
         <el-form-item label="活动标题">
           <el-input></el-input>
-        </el-form-item> 
+        </el-form-item>
         <el-form-item label="活动描述">
           <el-input type="textarea"></el-input>
         </el-form-item>
@@ -133,61 +133,61 @@ export default {
         {
           id: 1,
           gym_id: 1,
-          theme: "活动主题1",
-          name: "活动名称1",
+          theme: "合作类",
+          name: "舞动中华鼓动随心",
           pic_address: require("../assets/img/activity1.jpg"),
           begin_time: "2019-11-12",
           end_time: "2019-11-18",
           description:
-            "1中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
+            "中国鼓不只是聚力团队的一种活动形式，更是我们中国传统文化的一种精神的传承与发扬！中国鼓助长中华民族志气，彰显中华民族威风，满足人民一定的精神文化生活需求。弘扬中华民族鼓文化所蕴含的团结协作、拼搏奋进、自强不息的中华民族精神，对于提高中华民族素质，增强民族自信心、自豪感，丰富民族文化都有十分重要而深远的意义。上海勇拓体验根据多年团建行业经验，集合中国鼓文化的多元性特和操作形式，特推出大型主题活动——中国鼓。本项目一经推出，受到各合作企业的一致好评，既凝聚了团队、提示了士气，同时也是对我们中国文化和中国鼓精神的一种传承与发扬。",
           status: 1 //进行中
         },
         {
           id: 2,
           gym_id: 2,
-          theme: "活动主题2",
-          name: "活动名称2",
+          theme: "对抗类",
+          name: "优棒团队",
           pic_address: require("../assets/img/activity2.jpg"),
           begin_time: "2019-11-12",
           end_time: "2019-11-13",
           description:
-            "2中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
+            "中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
           status: 2 //结束
         },
         {
           id: 3,
           gym_id: 3,
-          theme: "活动主题3",
-          name: "活动名称3",
+          theme: "合作类",
+          name: "古镇定向寻宝",
           pic_address: require("../assets/img/activity3.jpg"),
           begin_time: "2019-11-20",
           end_time: "2019-11-21",
           description:
-            "3中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
+            "利用目的地的风土民情，以及周边的独特地形地貌，结合活动的主要目标，设计以特定主题作为主线的经典文化定向活动，是上海勇拓特色主题课程。一方面强化本次活动的主题，使之更加深入人心，同时在活动的过程中进一步熔炼团队精神，另一方面也让员工通过另外一种独特的方式了解目的地的一些名胜古迹，风土民情，即达到了融合团队的目的，又不留痕迹，形式上不失活泼，跳出了传统拓展训练的框架，以全新的方式向人们展示企业员工的风采！",
           status: 0 //未开始
         },
-         {
+        {
           id: 4,
           gym_id: 4,
-          theme: "活动主题4",
-          name: "活动名称4",
-          pic_address: require("../assets/img/activity3.jpg"),
+          theme: "训练类",
+          name: "鼓舞飞扬",
+          pic_address: require("../assets/img/activity1.jpg"),
           begin_time: "2019-11-20",
           end_time: "2019-11-21",
           description:
-            "4中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
+            "活力、热情、实力、激情与快乐是本次活动的特征，因此我们特别为本次参训人员制定了大型团队活动---鼓舞飞扬，让本次参加训练的员工可以建立一个团队、一个声音、知行合一、合而不同的团队合作精神，并且以主人翁的心态推动和完成本职工作。在此基础上，有助于打破人与人的隔阂，更加高效的协调工作，以顺利完成在工作中的合作目标。",
           status: 0 //未开始
         },
-         {
-          id: 5,
-          gym_id: 5,
-          theme: "活动主题5",
-          name: "活动名称5",
-          pic_address: require("../assets/img/activity3.jpg"),
+        {
+          id: 4,
+          gym_id: 4,
+          theme: "对抗类",
+          name: "七剑闯同里",
+          pic_address: require("../assets/img/activity2.jpg"),
           begin_time: "2019-11-20",
           end_time: "2019-11-21",
           description:
-            "5中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
+            "本次《七剑闯同里》古镇定向活动，是上海勇拓体验结合同里古镇江南特色和线下定向寻宝的经验而研发的线上app团建活动（手机扫描二维码进入活动），是目前火遍全国各大城市的网红团建方式，深受年轻人喜欢。不仅可以学员快速融入团队，更好的感受团队协作的重要性，更可以让学员快速融入企业文化，各部门间配合更加默契。",
           status: 0 //未开始
         }
       ],
@@ -201,12 +201,12 @@ export default {
     showEditDialog() {
       this.editDialogVisible = true;
     },
-        handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
-      },
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    },
     // showDelDialog() {
     //   this.delDialogVisible = true;
     // },

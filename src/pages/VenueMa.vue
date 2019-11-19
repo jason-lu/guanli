@@ -32,7 +32,7 @@
               score-template="{value}"
             ></el-rate>
             <div
-              class="desc ellipsis"
+              class="desc ellipsis-2"
             >场馆简介：{{item.instruction}}</div>
             <div class="address">地址：{{item.address}}</div>
             <div class="message">联系方式：{{item.contactinfo}} {{item.contactname}}</div>
