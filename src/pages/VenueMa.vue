@@ -19,13 +19,8 @@
         <li class="box clearfix" v-for="item in venueList" :key="item.id">
           <!-- 场馆图片 -->
           <div class="preview">
-<<<<<<< HEAD
-            <img src="../assets/img/img1.jpg" />
-          </div> 
-=======
             <img :src=item.pictureurl />
           </div>
->>>>>>> fc949ac46e9d4605a54136f7291507ef1e7b9d68
           <div class="content">
             <div class="name">{{item.name}}</div>
             <!-- 场馆评分 -->

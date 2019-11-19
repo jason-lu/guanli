@@ -33,11 +33,8 @@ const routes = [
     { path: '/management/activityMa', component: activityMa },
     { path: '/management/venueMa', component: VenueMa },//场馆管理
     { path: '/operationalVideo', component: operationalVideo },//作战视频
-<<<<<<< HEAD
     { path: '/homePages/base', component: base },//作战视频
-=======
     { path: '/main', component: main },//作战视频
->>>>>>> fc949ac46e9d4605a54136f7291507ef1e7b9d68
 ];
 
 const router = new VueRouter({
