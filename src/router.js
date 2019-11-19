@@ -42,13 +42,13 @@ const router = new VueRouter({
 
 
 // 路由拦截
-router.beforeEach((to, from, next) => {
-    const regex = RegExp(/^\/homePages/);
-    if(to.path === '/login' || regex.test(to.path) || localStorage.getItem('token')) {
-        next();
-    } else {
-        next('/login');
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     const regex = RegExp(/^\/homePages/);
+//     if(to.path === '/login' || regex.test(to.path) || localStorage.getItem('token')) {
+//         next();
+//     } else {
+//         next('/login');
+//     }
+// })
 
 export default router;
