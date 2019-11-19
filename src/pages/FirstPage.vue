@@ -197,7 +197,7 @@
                     </div>
                 </div>
                 <!-- 底部区域 -->
-                <div class="glzjfoot">
+                <!-- <div class="glzjfoot">
                     <div class="glzj_foot">
                         <a rel="nofollow" href="#" target="_blank">关于游侠</a> | <a rel="nofollow" href="#"
                             target="_blank">广告合作</a> | <a rel="nofollow" href="#" target="_blank">人才招聘</a> | <a href="#"
@@ -210,7 +210,7 @@
                         ALi213.Net All Right
                         Reserved 游侠网 版权所有
                     </div>
-                </div>
+                </div> -->
                 <!-- 底部返回小盒子 -->
                 <div class="backtop " @click="goback" :class="{showbox:isshowbox}">
                     <em>返回</em>
@@ -248,12 +248,21 @@
             window.addEventListener('scroll', this.handleScroll, true)
         },
         methods: {
-            goback() {
+            // goback() {
+            //     this.$nextTick(() => {
+            //         window.scrollTo(0, 0)
                 
-             
+            // })
+         
 
-            },
+            // },
+            goback(){
+                // console.log('goback函数被执行')
+                window.scrollTo(0, 0);
+                },
             handleScroll(e) {
+                // console.log(e.target.scrollTop);
+                
                 if (e.target.scrollTop > 300) {
                     this.isshowbox = false;
                 } else {

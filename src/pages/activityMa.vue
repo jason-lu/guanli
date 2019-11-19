@@ -10,7 +10,7 @@
         <!-- “新增活动”按钮 -->
         <button class="addBtn btn" @click="showEditDialog">新增活动</button>
         <!-- “搜索活动”按钮 -->
-        <el-input placeholder="请输入活动主题..." v-model="input3" class="input-with-select">
+        <el-input placeholder="请输入活动名称..." v-model="input3" class="input-with-select">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
       </div>
@@ -73,7 +73,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="活动主题">
+        <el-form-item label="活动名称">
           <el-input></el-input>
         </el-form-item>
         <el-form-item label="活动标题">
