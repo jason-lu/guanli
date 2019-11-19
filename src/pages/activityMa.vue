@@ -10,7 +10,7 @@
         <!-- “新增活动”按钮 -->
         <button class="addBtn btn" @click="showEditDialog">新增活动</button>
         <!-- “搜索活动”按钮 -->
-        <el-input placeholder="请输入活动主题..." v-model="input3" class="input-with-select">
+        <el-input placeholder="请输入活动名称..." v-model="input3" class="input-with-select">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
       </div>
@@ -73,7 +73,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="活动主题">
+        <el-form-item label="活动名称">
           <el-input></el-input>
         </el-form-item>
         <el-form-item label="活动标题">
@@ -133,8 +133,8 @@ export default {
         {
           id: 1,
           gym_id: 1,
-          theme: "活动主题1",
-          name: "活动名称1",
+          theme: "活动名称1",
+          name: "活动类型1",
           pic_address: require("../assets/img/activity1.jpg"),
           begin_time: "2019-11-12",
           end_time: "2019-11-18",
@@ -145,8 +145,8 @@ export default {
         {
           id: 2,
           gym_id: 2,
-          theme: "活动主题2",
-          name: "活动名称2",
+          theme: "活动名称2",
+          name: "活动类型2",
           pic_address: require("../assets/img/activity2.jpg"),
           begin_time: "2019-11-12",
           end_time: "2019-11-13",
@@ -157,8 +157,8 @@ export default {
         {
           id: 3,
           gym_id: 3,
-          theme: "活动主题3",
-          name: "活动名称3",
+          theme: "活动名称3",
+          name: "活动类型3",
           pic_address: require("../assets/img/activity3.jpg"),
           begin_time: "2019-11-20",
           end_time: "2019-11-21",
@@ -169,8 +169,8 @@ export default {
          {
           id: 4,
           gym_id: 4,
-          theme: "活动主题4",
-          name: "活动名称4",
+          theme: "活动名称4",
+          name: "活动类型4",
           pic_address: require("../assets/img/activity3.jpg"),
           begin_time: "2019-11-20",
           end_time: "2019-11-21",
@@ -181,8 +181,8 @@ export default {
          {
           id: 5,
           gym_id: 5,
-          theme: "活动主题5",
-          name: "活动名称5",
+          theme: "活动名称5",
+          name: "活动类型5",
           pic_address: require("../assets/img/activity3.jpg"),
           begin_time: "2019-11-20",
           end_time: "2019-11-21",

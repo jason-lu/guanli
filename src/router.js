@@ -13,9 +13,10 @@ import activityMa from './pages/activityMa.vue';
 import VenueMa from './pages/VenueMa.vue';
 import navintroduce from './pages/homePages/NavIntroduce.vue';
 import base from './pages/homePages/Base.vue';
-// 作战视频
 import operationalVideo from './pages/operationalVideo.vue';
-import main from './pages/Main.vue'
+import main from './pages/Main.vue';
+import ActiveEdit from './pages/activity/activeEdit.vue';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -33,8 +34,9 @@ const routes = [
     { path: '/management/activityMa', component: activityMa },
     { path: '/management/venueMa', component: VenueMa },//场馆管理
     { path: '/operationalVideo', component: operationalVideo },//作战视频
-    { path: '/homePages/base', component: base },//作战视频
+    { path: '/homePages/base', component: base },
     { path: '/main', component: main },//作战视频
+    { path: '/activityMa/activeEdit', component: ActiveEdit },
 ];
 
 const router = new VueRouter({
