@@ -48,19 +48,22 @@
             </div>
             <!-- container -->
             <div>
-                <div class="contentFirst">
+                <div class="contentFirst ">
                     <div>
-                        <p class="content_t">
-                            <router-link class="content_title" to="#">全国国防教育基地</router-link>
+                        <p class="content_t  clearfix">
+                            <router-link class=" content_title fl" to="#">国防教育基地</router-link>
+                            <router-link class="content_title fr margin" to="/homePages/base">更多分类</router-link>
                         </p>
-                        <p class="content-name">
+
+                        <!-- <p class="content-name">
                             <router-link class="content-name-link" to="#">打开营门弘扬前辈精神，数十家单位参观这个旅史馆</router-link>
                         </p>
-                        <span class="descripte">国庆前夕，第83集团军某旅打开营门，迎接驻地人员走进旅史馆参观。</span>
+                        <span class="descripte">国庆前夕，第83集团军某旅打开营门，迎接驻地人员走进旅史馆参观。</span> -->
                         <ul class="contentFirstUl">
-                            <li>● 教师节致军校教员|当时光流过三尺讲台</li>
-                            <li>● 解放军总医院举办“忠诚的力量”强军故事会</li>
-                            <li>● “和平方舟”号医院船举行航海日开放活动</li>
+                            <li><a href="#">● 训练基地</a></li>
+                            <li><a href="#">● 国防教育基地</a></li>
+                            <li><a href="#">● 红色教育基地</a></li>
+                            <li><a href="#">● 招募基地</a></li>
                         </ul>
                     </div>
                     <div>
@@ -69,37 +72,34 @@
                             <router-link class="content_title fr" to="/homePages/navintroduce">更多</router-link>
 
                         </p>
-                   
+
                         <div>
                             <div class="clearfix gunContent">
-                                <div class="fl">海军装备</div>
+                                <div class="fl">陆军装备</div>
                                 <div class="fr ">
-                                    <a href="#">海军1</a>
-                                    <a href="#">海军2</a>
-                                    <a href="#">海军3</a>
-                                    <a href="#">海军3</a>
-                                    <a href="#">海军3</a>
+                                    <a href="#">陆军装备1</a>
+                                    <a href="#">陆军装备2</a>
+                                    <a href="#">陆军装备3</a>
+
                                 </div>
                             </div>
-                            <div class="clearfix gunContent"> 
+                            <div class="clearfix gunContent">
 
                                 <div class="fl">海军装备</div>
                                 <div class="fr ">
-                                    <a href="#">海军1</a>
-                                    <a href="#">海军2</a>
-                                    <a href="#">海军3</a>
-                                    <a href="#">海军3</a>
-                                    <a href="#">海军3</a>
+                                    <a href="#">海军装备1</a>
+                                    <a href="#">海军装备2</a>
+                                    <a href="#">海军装备3</a>
+
                                 </div>
                             </div>
                             <div class="clearfix gunContent">
-                                <div class="fl">海军装备</div>
+                                <div class="fl">空军装备</div>
                                 <div class="fr ">
-                                    <a href="#">海军1</a>
-                                    <a href="#">海军2</a>
-                                    <a href="#">海军3</a>
-                                    <a href="#">海军3</a>
-                                    <a href="#">海军3</a>
+                                    <a href="#">战斗机</a>
+                                    <a href="#">无人机</a>
+                                    <a href="#">运输机</a>
+
                                 </div>
                             </div>
                             <div class="clearfix gunContent">
@@ -148,7 +148,7 @@
                         <div class="content-box">
                             <div class="div-box">
                                 <router-link to="#">
-                                    <div><img src="../assets/img/page-one-content2.png" alt=""></div>
+                                    <div><img src="../assets/img/pic-gun1.png" alt=""></div>
                                     <div class="content-middle">
                                         <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
                                         <div class="smallbox-m">></div>
@@ -158,7 +158,7 @@
                             </div>
                             <div class="div-box">
                                 <router-link to="#">
-                                    <div><img src="../assets/img/page-one-content2.png" alt=""></div>
+                                    <div><img src="../assets/img/pic-gun3.png" alt=""></div>
                                     <div class="content-middle">
                                         <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
                                         <div class="smallbox-m">></div>
@@ -175,7 +175,7 @@
                         <div class="content-box">
                             <div class="div-box">
                                 <router-link to="#">
-                                    <div><img src="../assets/img/page-one-content2.png" alt=""></div>
+                                    <div><img src="../assets/img/pic-gun4.png" alt=""></div>
                                     <div class="content-middle">
                                         <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
                                         <div class="smallbox-m">></div>
@@ -185,7 +185,7 @@
                             </div>
                             <div class="div-box">
                                 <router-link to="#">
-                                    <div><img src="../assets/img/page-one-content2.png" alt=""></div>
+                                    <div><img src="../assets/img/pic-gun5.png" alt=""></div>
                                     <div class="content-middle">
                                         <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
                                         <div class="smallbox-m">></div>
@@ -196,27 +196,37 @@
                         </div>
                     </div>
                 </div>
+                <!-- 底部区域 -->
+                <div class="glzjfoot">
+                    <div class="glzj_foot">
+                        <a rel="nofollow" href="#" target="_blank">关于游侠</a> | <a rel="nofollow" href="#"
+                            target="_blank">广告合作</a> | <a rel="nofollow" href="#" target="_blank">人才招聘</a> | <a href="#"
+                            target="_blank" rel="nofollow">意见建议</a> | <a rel="nofollow" href="#"
+                            target="_blank">联系我们</a> | <a href="#" target="_blank">网站地图</a> | <a rel="nofollow" href="#"
+                            target="_blank">
+                        </a> | <a rel="nofollow" href="#" target="_blank">版权保护投诉指引</a><br>增值电信业务经营许可证 浙B2-20120287 | <a
+                            href="#" target="_blank" rel="nofollow">浙ICP备12018679号-4</a> | 浙网文[2015]0882-251 | <a
+                            rel="nofollow" href="#" target="_blank">浙公网安备 33010502000468号</a><br>CopyRight © 1999-2019
+                        ALi213.Net All Right
+                        Reserved 游侠网 版权所有
+                    </div>
+                </div>
+                <!-- 底部返回小盒子 -->
+                <div class="backtop " @click="goback" :class="{showbox:isshowbox}">
+                    <em>返回</em>
+                </div>
 
             </div>
-
         </div>
-    </div>
     </div>
 </template>
 
 <script>
 
     export default {
-        mounted() {
-        },
-        methods: {
-            getDate(i) {
-                let date = new Date();
-                return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDay()}`;
-            }
-        },
         data() {
             return {
+                isshowbox: true,
                 newsList: [
                     { title: '山东理工大学组织军训新生参观国教主题园', date: 0, url: require('../assets/img/activity1.jpg') },
                     { title: '重阳节，武警官兵到驻地看望慰问老兵', date: 0, url: require('../assets/img/activity2.jpg') },
@@ -225,17 +235,77 @@
                 ],
                 tabArr: [
                     { title: '国防教育', src: '#' }, { title: "动态信息", src: '#' }, { title: "典型风采", src: '#' },
-                    { title: '学校国防教育', src: '#' }, { title: '装备介绍', src: 'homePages/navintroduce' }, { title: '师资教材', src: '#' },
+                    { title: '国防教育基地', src: 'homePages/base' }, { title: '装备介绍', src: 'homePages/navintroduce' }, { title: '师资教材', src: '#' },
                     { title: '热点专题', src: '#' }, { title: '社会国防教育', src: '#' }, { title: '视频推荐', src: '#' },
                 ]
             };
-        },
-        
 
+
+        },
+
+        mounted() {
+
+            window.addEventListener('scroll', this.handleScroll, true)
+        },
+        methods: {
+            goback() {
+                
+             
+
+            },
+            handleScroll(e) {
+                if (e.target.scrollTop > 300) {
+                    this.isshowbox = false;
+                } else {
+                    this.isshowbox = true;
+                }
+
+            }
+        },
+        destroyed() {
+            window.removeEventListener('scroll', this.handleScroll, true);
+        },
     }
+
+
+
 </script>
 
 <style scoped>
+    .showbox {
+        display: none;
+    }
+
+    .backtop {
+        position: fixed;
+        bottom: 100px;
+        right: 140px;
+        height: 45px;
+        width: 45px;
+        background-color: #005541;
+        color: #fff;
+        text-align: center;
+    }
+
+    .backtop:hover {
+        cursor: pointer;
+    }
+
+    .backtop em {
+        line-height: 45px;
+        font-style: normal;
+    }
+
+    .glzjfoot {
+        text-align: center;
+        margin: 50px 0;
+        color: #333;
+    }
+
+    .margin {
+        margin-right: 20px;
+    }
+
     .gunContent {
         color: #333;
         margin-top: 45px;
@@ -332,10 +402,12 @@
         overflow: hidden;
         margin-top: 50px;
     }
-.div-box{
-    box-shadow:0px 15px 20px  rgba(0, 0, 0, 0.2);
 
-}
+    .div-box {
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+
+    }
+
     .div-box img {
         width: 100%;
     }
@@ -366,6 +438,7 @@
     }
 
     .contentFirstUl li {
+        margin-top: 10px;
         color: #333;
         height: 30px;
         font-size: 20px;

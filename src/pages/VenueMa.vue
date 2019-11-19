@@ -20,7 +20,7 @@
           <!-- 活动图片 -->
           <div class="preview">
             <img src="../assets/img/img1.jpg" />
-          </div>
+          </div> 
           <div class="content">
             <div class="name">场馆名称</div>
             <el-rate

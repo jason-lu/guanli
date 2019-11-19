@@ -12,6 +12,7 @@ import DataDisplay from './pages/management/DataDisplay.vue';
 import activityMa from './pages/activityMa.vue';
 import VenueMa from './pages/VenueMa.vue';
 import navintroduce from './pages/homePages/NavIntroduce.vue';
+import base from './pages/homePages/Base.vue';
 // 作战视频
 import operationalVideo from './pages/operationalVideo.vue';
 Vue.use(VueRouter);
@@ -31,6 +32,7 @@ const routes = [
     { path: '/management/activityMa', component: activityMa },
     { path: '/homePages/navintroduce', component: navintroduce },
     { path: '/operationalVideo', component: operationalVideo },//作战视频
+    { path: '/homePages/base', component: base },//作战视频
 ];
 
 const router = new VueRouter({

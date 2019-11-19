@@ -6,14 +6,14 @@
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item>装备介绍</el-breadcrumb-item>
                 <el-breadcrumb-item>全球 · 兵器库</el-breadcrumb-item>
-                <el-breadcrumb-item>飞行器</el-breadcrumb-item>
+                <el-breadcrumb-item>枪械与单兵</el-breadcrumb-item>
             </el-breadcrumb>
             <div class="content">
                 <div class="leftbox">
                     <div class="content_up">
-                        <div class="choose">飞行器 - 筛选</div>
+                        <span class="choose">枪械与单兵 - 筛选</span>
                         <div class="classAll">
-                            <div class="classRow">
+                            <div class="classRow" :class="{h70:ish70}">
                                 <div class="classRow_l">大分类：</div>
                                 <div class="classRow_m">
                                     <a href="#">不限</a>
@@ -31,39 +31,51 @@
                                     <a href="#">加油机</a>
                                     <a href="#">通用飞机</a>
                                     <a href="#">干线支线</a>
-
-
-                                </div>
-                                <div class="classRow_r"><a href="#">更多</a></div>
-                            </div>
-                            <div class="classRow">
-                                <div class="classRow_l">原产国:</div>
-                                <div class="classRow_m">
-                                    <a href="#">不限</a>
-                                    <a href="#">战斗机</a>
-                                    <a href="#">攻击机</a>
-                                    <a href="#">预警机</a>
-                                    <a href="#">反潜机</a>
-                                    <a href="#">电子战机</a>
-                                    <a href="#">无人机</a>
-                                    <a href="#">运输机</a>
-                                    <a href="#">试验机</a>
-                                    <a href="#">加油机</a>
-                                    <a href="#">通用飞机</a>
+                                    <a href="#">干线支线</a>
                                     <a href="#">干线支线</a>
 
 
                                 </div>
-                                <div class="classRow_r"><a href="#">更多</a></div>
+                                <div class="classRow_r"><a href="#" @click="changclass">{{ish70==true?"更多":"收起"}}</a></div>
+                            </div>
+                            <div class="classRow" :class="{h70n:ish70n}">
+                                <div class="classRow_l">原产国:</div>
+                                <div class="classRow_m">
+                                    <a href="#">不限</a>
+                                    <a href="#">中国</a>
+                                    <a href="#">美国</a>
+                                    <a href="#">英国</a>
+                                    <a href="#">俄罗斯</a>
+                                    <a href="#">法国</a>
+                                    <a href="#">德国</a>
+                                    <a href="#">日本</a>
+                                    <a href="#">印度</a>
+                                    <a href="#">韩国</a>
+                                    <a href="#">意大利</a>
+                                    <a href="#">巴西</a>
+                                    <a href="#">俄罗斯</a>
+                                    <a href="#">法国</a>
+                                    <a href="#">德国</a>
+                                    <a href="#">日本</a>
+                                    <a href="#">印度</a>
+                                    <a href="#">韩国</a>
+                                    <a href="#">意大利</a>
+                                    <a href="#">巴西</a>
+                                    <a href="#">巴西</a>
+
+
+                                </div>
+                                <div class="classRow_r"><a href="#" @click="changclass2">{{ish70n==true?"更多":"收起"}}</a></div>
                             </div>
                             <div class="classRowend">
                                 <div class="classRow_l">诞生期:</div>
                                 <div class="classRow_m">
                                     <a href="#">不限</a>
-                                    <a href="#">战斗机</a>
-                                    <a href="#">攻击机</a>
-                                    <a href="#">预警机</a>
-                                    <a href="#">反潜机</a>
+                                    <a href="#">二战前</a>
+                                    <a href="#">二战期间</a>
+                                    <a href="#">二战后至冷战期间</a>
+                                    <a href="#">冷战后至今</a>
+                                    <a href="#">未知</a>
                                 </div>
                                 <div class="classRow_r"></div>
                             </div>
@@ -117,9 +129,9 @@
                             <div class="fl">
                                 <div class="sort">
                                     <span>排序：</span>
-                                    <button>123</button>
-                                    <button>123</button>
-                                    <button>123</button>
+                                    <button>近期关注</button>
+                                    <button>最新更新</button>
+                                    <button>首字母</button>
                                 </div>
 
                             </div>
@@ -141,7 +153,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="../../assets/img/pageone-introduce.png" alt="">
+                                        <img src="../../assets/img/pic-gun1.png" alt="">
                                         <div class="content_pic_m">
                                             <div>雅克-130</div>
                                             <div>合作开发</div>
@@ -153,7 +165,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="../../assets/img/pageone-introduce.png" alt="">
+                                        <img src="../../assets/img/pic-gun2.png" alt="">
                                         <div class="content_pic_m">
                                             <div>雅克-130</div>
                                             <div>合作开发</div>
@@ -165,7 +177,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="../../assets/img/pageone-introduce.png" alt="">
+                                        <img src="../../assets/img/pic-gun3.png" alt="">
                                         <div class="content_pic_m">
                                             <div>雅克-130</div>
                                             <div>合作开发</div>
@@ -177,7 +189,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="../../assets/img/pageone-introduce.png" alt="">
+                                        <img src="../../assets/img/pic-gun4.png" alt="">
                                         <div class="content_pic_m">
                                             <div>雅克-130</div>
                                             <div>合作开发</div>
@@ -189,7 +201,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="../../assets/img/pageone-introduce.png" alt="">
+                                        <img src="../../assets/img/pic-gun5.png" alt="">
                                         <div class="content_pic_m">
                                             <div>雅克-130</div>
                                             <div>合作开发</div>
@@ -201,7 +213,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="../../assets/img/pageone-introduce.png" alt="">
+                                        <img src="../../assets/img/pic-gun6.png" alt="">
                                         <div class="content_pic_m">
                                             <div>雅克-130</div>
                                             <div>合作开发</div>
@@ -213,7 +225,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="../../assets/img/pageone-introduce.png" alt="">
+                                        <img src="../../assets/img/pic-gun7.png" alt="">
                                         <div class="content_pic_m">
                                             <div>雅克-130</div>
                                             <div>合作开发</div>
@@ -225,7 +237,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="../../assets/img/pageone-introduce.png" alt="">
+                                        <img src="../../assets/img/pic-gun8.png" alt="">
                                         <div class="content_pic_m">
                                             <div>雅克-130</div>
                                             <div>合作开发</div>
@@ -250,30 +262,30 @@
                         <div class="total">全部分类</div>
                         <div class="rightContent">
                             <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
-                            <a href="#">• 飞行器</a>
+                            <a href="#">• 舰船舰艇</a>
+                            <a href="#">• 枪械与单兵</a>
+                            <a href="#">• 坦克装甲车辆</a>
+                            <a href="#">• 火炮</a>
+                            <a href="#">• 导弹武器</a>
+                            <a href="#">• 太空装备</a>
+                            <a href="#">• 爆炸物</a>
+                            <a href="#">• 军事术语</a>
+                            <!-- <a href="#">• 飞行器</a> -->
                         </div>
                     </div>
                     <div class="rightbox_down">
-                            <div class="sortOder">飞行器排行</div>
+                            <div class="sortOder">枪械与单兵排行</div>
                             <div class="leftContent">
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
-                                <a href="#">• C-17“环球霸王Ⅲ”</a> 
-                                <a href="#">• C-17“环球霸王Ⅲ”</a>
+                                <a href="#">• 赫克勒-科赫G36自动步枪</a>
+                                <a href="#">• 沙漠之鹰手枪</a>
+                                <a href="#">• 斯太尔-曼利夏AUG自动步枪</a>
+                                <a href="#">• 赫克勒-科赫G3自动步枪</a>
+                                <a href="#">• 塔沃尔突击步枪</a>
+                                <a href="#">• AK-47突击步枪</a>
+                                <a href="#">• 赫克勒-科赫HK 416自动步</a>
+                                <a href="#">• 卡拉什尼科夫1974(AK-74)</a>
+                                <a href="#">• 95式步枪</a> 
+                                <a href="#">• 柯尔特M1911/M1911A1手</a>
                             </div>
                         </div>
                 </div>
@@ -293,17 +305,30 @@ import qs from 'qs';
                     passwd:123456,
                 }));
                 console.log(data);  
+            },
+            changclass(){
+                this.ish70=!this.ish70;
+            },
+            changclass2(){
+                this.ish70n=!this.ish70n;
             }
         },
         data() {
             return {
-
+                ish70:true,
+                ish70n:true,
             };
         },
 
     }
 </script>
 <style scoped>
+    .h70{
+        height: 70px;
+    }
+    .h70n{
+        height: 70px;
+    }
     .rightbox_down{
         padding: 20px;
         margin-top: 20px;
@@ -359,6 +384,7 @@ import qs from 'qs';
     }
 
     .content_pic_ul li {
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
         margin-bottom: 10px;
         width: 30.3%;
         margin-right: 3%;
@@ -457,7 +483,7 @@ import qs from 'qs';
     .classRow {
         padding-top: 5px;
         overflow: hidden;
-        height: 70px;
+        /* height: 70px; */
         border-bottom: 1px dashed #ccc;
     }
 
@@ -465,7 +491,7 @@ import qs from 'qs';
         text-align: center;
         height: 30px;
         line-height: 30px;
-        width: 120px;
+        padding: 10px;
         border-bottom: 3px solid #FEA432;
     }
 

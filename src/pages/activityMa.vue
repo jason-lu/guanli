@@ -53,10 +53,10 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="currentPage4"
-        :page-sizes="[100, 200, 300, 400]"
+        :page-sizes="[1, 2, 3, 5]"
         :page-size="100"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="400"
+        :total="5"
       ></el-pagination>
     </div>
 
@@ -165,6 +165,30 @@ export default {
           description:
             "3中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
           status: 0 //未开始
+        },
+         {
+          id: 4,
+          gym_id: 4,
+          theme: "活动主题4",
+          name: "活动名称4",
+          pic_address: require("../assets/img/activity3.jpg"),
+          begin_time: "2019-11-20",
+          end_time: "2019-11-21",
+          description:
+            "4中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
+          status: 0 //未开始
+        },
+         {
+          id: 5,
+          gym_id: 5,
+          theme: "活动主题5",
+          name: "活动名称5",
+          pic_address: require("../assets/img/activity3.jpg"),
+          begin_time: "2019-11-20",
+          end_time: "2019-11-21",
+          description:
+            "5中国企业的发展，经过了一段相当长时间的原始积累和个人英雄式的管理，已经进入到依靠团队和系统管理出效益的阶段。很多企业发展的瓶颈出现在人力资源发掘和管理上。如何在较短的时间内建设起一支强大的团队，是目前企业的共同诉求。上海西点卓越军团军事",
+          status: 0 //未开始
         }
       ],
       editDialogVisible: false,
@@ -177,6 +201,12 @@ export default {
     showEditDialog() {
       this.editDialogVisible = true;
     },
+        handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChange(val) {
+        console.log(`当前页: ${val}`);
+      },
     // showDelDialog() {
     //   this.delDialogVisible = true;
     // },
