@@ -65,7 +65,7 @@
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
-                    <video width="255" height="160" autoplay controls>
+                    <video width="255" height="160" autoplay controls >
                         <source src="../../assets/video/zuozhan1.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。

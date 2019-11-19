@@ -48,17 +48,12 @@
             </div>
             <!-- container -->
             <div>
-                <div class="contentFirst ">
+                <!-- <div class="contentFirst ">
                     <div>
                         <p class="content_t  clearfix">
                             <router-link class=" content_title fl" to="#">国防教育基地</router-link>
                             <router-link class="content_title fr margin" to="/homePages/base">更多分类</router-link>
                         </p>
-
-                        <!-- <p class="content-name">
-                            <router-link class="content-name-link" to="#">打开营门弘扬前辈精神，数十家单位参观这个旅史馆</router-link>
-                        </p>
-                        <span class="descripte">国庆前夕，第83集团军某旅打开营门，迎接驻地人员走进旅史馆参观。</span> -->
                         <ul class="contentFirstUl">
                             <li><a href="#">● 训练基地</a></li>
                             <li><a href="#">● 国防教育基地</a></li>
@@ -114,6 +109,123 @@
                             </div>
                         </div>
                     </div>
+                </div> -->
+                <!-- 国防教育基地 -->
+                <div class="contentFirst">
+                    <div>
+                        <p class="content_t  clearfix">
+                            <router-link class=" content_title fl" to="#">国防教育基地</router-link>
+                            <router-link class="content_title fr margin" to="/homePages/base">更多</router-link>
+                        </p>
+                        <div class="content-box">
+                            <div class="div-box">
+                                <router-link to="/homePages/base">
+                                    <div><img src="../assets/img/base1.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">国防教育基地</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">国防教育基地是指对有组织的中小学生开放的基地，是全民国防教育日向社会开放的有关国防教育的基本阵地。</p>
+                                </router-link>
+                            </div>
+                            <div class="div-box">
+                                <router-link to="/homePages/base">
+                                    <div><img src="../assets/img/base2.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">红色教育基地</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">
+                                        红色教育是指以红色作为时代精神内涵的象征、务实的落点在于教育。呼唤有志青年忧国忧民、挑战自我、超越自我、挑战极限、奉献社会的崇高精神。
+                                    </p>
+                                </router-link>
+                            </div>
+                            <div class="div-box">
+                                <router-link to="/homePages/base">
+                                    <div><img src="../assets/img/base3.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">招募基地</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">全市最大最正规的场地！
+
+                                        最好最专业的设备！
+
+                                        最帅最热情的教练！
+
+                                        体验超炫的射击对战！
+
+                                        玩出不一样青春赛场！</p>
+                                </router-link>
+                            </div>
+                            <div class="div-box">
+                                <router-link to="/homePages/base">
+                                    <div><img src="../assets/img/base4.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">训练基地</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">专业野战拓展训练机构专业提供拓展培训课程,户外拓展培训,军事训练基地,真人CS野战,拓展培训课程,体验式拓展训练，</p>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 装备介绍 -->
+                <div class="contentFirst">
+                    <div>
+                            <p class="content_t  clearfix">
+                                    <router-link class=" content_title fl" to="#">装备介绍</router-link>
+                                    <router-link class="content_title fr margin" to="/homePages/base">更多</router-link>
+                        </p>
+                        <div class="content-box">
+                            <div class="div-box">
+                                <router-link to="/homePages/navintroduce">
+                                    <div><img src="../assets/img/sea.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">海军武器装备</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">海军武器装备是海军诸兵种执行作战、训练任务和实施勤务保障的各种战斗装备和技术装备的总称。</p>
+                                </router-link>
+                            </div>
+                            <div class="div-box">
+                                <router-link to="/homePages/navintroduce">
+                                    <div><img src="../assets/img/sky.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">空军武器装备</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">
+                                        空军武器装备，装备空军各兵种的武器装备的统称。空军武器装备主要有各种飞机(包括战斗机、轰炸机、歼击轰炸机、强击机、侦察机、运输机、预警机、直升机、其他特种飞机)
+                                    </p>
+                                </router-link>
+                            </div>
+                            <div class="div-box">
+                                <router-link to="/homePages/navintroduce">
+                                    <div><img src="../assets/img/pic-gun4.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">陆军武器装备</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">陆军武器装备体和系、轻武器、火炮与导弹、坦克装甲车辆、直升机、工程装备、陆军武器装备展望等。</p>
+                                </router-link>
+                            </div>
+                            <div class="div-box">
+                                <router-link to="/homePages/navintroduce">
+                                    <div><img src="../assets/img/space.png" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">太空武器装备</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">
+                                        空军武器装备，装备空军各兵种的武器装备的统称。空军武器装备主要有各种飞机(包括战斗机、轰炸机、歼击轰炸机、强击机、侦察机、运输机、预警机、直升机、其他特种飞机)
+                                    </p>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="contentFirst">
                     <div>
@@ -140,62 +252,7 @@
                     </div>
 
                 </div>
-                <div class="contentFirst">
-                    <div>
-                        <p class="content_t">
-                            <router-link class="content_title" to="#">教育基地</router-link>
-                        </p>
-                        <div class="content-box">
-                            <div class="div-box">
-                                <router-link to="#">
-                                    <div><img src="../assets/img/pic-gun1.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">准备好了吗？来，一起感受一下“谍海穿越”是一种什么体验!</p>
-                                </router-link>
-                            </div>
-                            <div class="div-box">
-                                <router-link to="#">
-                                    <div><img src="../assets/img/pic-gun3.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">准备好了吗？来，一起感受一下“谍海穿越”是一种什么体验!</p>
-                                </router-link>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="content_t">
 
-                        </p>
-                        <div class="content-box">
-                            <div class="div-box">
-                                <router-link to="#">
-                                    <div><img src="../assets/img/pic-gun4.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">准备好了吗？来，一起感受一下“谍海穿越”是一种什么体验!</p>
-                                </router-link>
-                            </div>
-                            <div class="div-box">
-                                <router-link to="#">
-                                    <div><img src="../assets/img/pic-gun5.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">4月15日，推荐你去这几个地方探秘</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">准备好了吗？来，一起感受一下“谍海穿越”是一种什么体验!</p>
-                                </router-link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- 底部区域 -->
                 <!-- <div class="glzjfoot">
                     <div class="glzj_foot">
@@ -212,9 +269,9 @@
                     </div>
                 </div> -->
                 <!-- 底部返回小盒子 -->
-                <div class="backtop " @click="goback" :class="{showbox:isshowbox}">
+                <!-- <div class="backtop " @click="goback" :class="{showbox:isshowbox}">
                     <em>返回</em>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -251,18 +308,18 @@
             // goback() {
             //     this.$nextTick(() => {
             //         window.scrollTo(0, 0)
-                
+
             // })
-         
+
 
             // },
-            goback(){
+            goback() {
                 // console.log('goback函数被执行')
                 window.scrollTo(0, 0);
-                },
+            },
             handleScroll(e) {
                 // console.log(e.target.scrollTop);
-                
+
                 if (e.target.scrollTop > 300) {
                     this.isshowbox = false;
                 } else {
@@ -378,6 +435,7 @@
     }
 
     .content-end {
+        padding: 20px;
         margin-top: 25px;
         text-indent: 2rem;
         color: #999;
@@ -388,7 +446,7 @@
         float: left;
         font-size: 18px;
         width: 120px;
-        height: 70px;
+        /* height: 70px; */
         overflow: hidden;
     }
 
@@ -419,6 +477,7 @@
 
     .div-box img {
         width: 100%;
+        height: 200px;
     }
 
     .content-box {
@@ -428,7 +487,7 @@
     .content-box .div-box {
         margin-right: 10px;
         flex: 1;
-        width: 287px;
+        width: 280px;
         height: 434px;
     }
 
