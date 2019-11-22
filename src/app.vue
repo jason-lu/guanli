@@ -1,5 +1,5 @@
 <template>
-  <div id="main-container" class="clearfix">
+  <div class="main-container clearfix"  :class="{changeBg: isRealtime}">
     <Navbar :user="user" @logout="logout"></Navbar>
     <Home style="margin-top: 78px;" :user="user" @login="login" />
   </div>
@@ -13,7 +13,7 @@ export default {
     let tokenStr = localStorage.getItem("token");
     if (tokenStr) {
       let userStr = tokenStr.split(".")[1];
-      this.user = JSON.parse(atob(userStr));
+      this.user = JSON.parse(atob(userStr));  //解析base64加密的字符串
       console.log(this.user);
     }
   },
@@ -28,6 +28,12 @@ export default {
     Home,
     Navbar
   },
+  computed: {
+    
+    isRealtime() {
+      return this.$route.path === '/management/realtime'? true : false;
+    }
+  },
   methods: {
     login() {
       this.user = JSON.parse(localStorage.getItem("currentUser"));
@@ -35,8 +41,8 @@ export default {
     },
     logout() {
       this.user = null;
-      localStorage.removeItem("currentUser");
-    }
+      localStorage.removeItem("currentUser"); 
+    },
   }
 };
 </script>
@@ -52,7 +58,7 @@ body {
   padding: 0;
 }
 
-#main-container {
+.main-container {
   /* position:fixed; */
   overflow: auto;
   width: 100%;
@@ -63,7 +69,10 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+.changeBg {
+  background-image: url("./assets/img/pk_bg22.png");
+  background-position: 0 0;
+}
 .content-container {
   background: #f1f1f12a;
   flex-grow: 1;

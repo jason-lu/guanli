@@ -52,32 +52,36 @@
 </template>
 
 <style>
-    .videoContainer{
+    .videoContainer {
         margin: 40px 100px;
     }
-    .videoContainer .box{
+    
+    .videoContainer .box {
         overflow: hidden;
     }
-    .videoContainer .box .cell{
+    
+    .videoContainer .box .cell {
         float: left;
-        width:310px;
+        width: 310px;
         margin: 10px;
         background: #060c2188;
         border-bottom: 1px solid #d6d6d6;
     }
-    .videoContainer .box .cell .videoBox{
+    
+    .videoContainer .box .cell .videoBox {
         width: 100%;
-        height:250px;
+        height: 250px;
         background: #000;
         overflow: hidden;
     }
-    .videoContainer .box .cell .discribe{
+    
+    .videoContainer .box .cell .discribe {
         width: 290px;
         height: 210px;
         text-align: left;
         line-height: 30px;
         overflow: hidden;
         padding: 6px 10px 4px;
-        color:#fff;
+        color: #fff;
     }
 </style>
