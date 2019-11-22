@@ -49,6 +49,28 @@ export default {
 
 
 <style lang="less">
+.paly.el-form-item .el-form-item__content{
+        margin-left: 20px!important;
+        width: 70%!important;
+    }
+.editA .el-input__inner,
+.editA .el-textarea__inner
+{
+    width: 70%!important;
+}
+.editA .el-form-item__label {
+    color: #fff!important;
+}
+ .editTep .el-step__title.is-process {
+    font-weight: 700;
+    color: #409EFF!important;
+}
+.editA .el-tabs__item{
+    color: #fff!important;
+}
+.editA .el-tabs__item.is-active {
+    color: #409EFF!important;
+}
 body {
   margin: 0;
   height: 100vh;
@@ -243,6 +265,7 @@ a {
 
       // 右侧具体活动内容
       .content {
+        min-width: 1000px;
         padding: 10px 0px;
         padding-right: 50px;
         position: relative;
