@@ -15,7 +15,9 @@ import navintroduce from './pages/homePages/NavIntroduce.vue';
 import base from './pages/homePages/Base.vue';
 import operationalVideo from './pages/operationalVideo.vue';
 import main from './pages/Main.vue';
+import ActiveAdd from './pages/activity/activeAdd.vue';
 import ActiveEdit from './pages/activity/activeEdit.vue';
+
 import ActiveBack from './pages/ActiveBack.vue';
 
 Vue.use(VueRouter);
@@ -37,7 +39,10 @@ const routes = [
     { path: '/operationalVideo', component: operationalVideo },//作战视频
     { path: '/homePages/base', component: base },
     { path: '/main', component: main },//作战视频
-    { path: '/activityMa/activeEdit', component: ActiveEdit },
+    { path: '/activityMa/activeAdd', component: ActiveAdd},
+    { path: '/activityMa/activeEdit', component: ActiveEdit},
+
+    // { path: '/activityMa/activeAdd/:id', component: ActiveAdd,props: true },
     { path: '/ActiveBack', component: ActiveBack },
 ];
 
