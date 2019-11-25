@@ -135,7 +135,8 @@ a {
 
 // 场馆及活动管理页面标题
 .activity-title,
-.venue-title {
+.venue-title,
+.realtime-title {
   width: 600px;
   height: 80px;
   line-height: 80px;

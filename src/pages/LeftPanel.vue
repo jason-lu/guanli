@@ -31,8 +31,6 @@ export default {
 }
 
 .menu_head {
-  /* margin-left: 50px;  */
-  /* border-radius: 5px; */
   float: left;
   width: 100%;
   height: 47px;

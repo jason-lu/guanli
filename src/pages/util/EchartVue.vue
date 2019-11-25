@@ -13,7 +13,7 @@ export default {
             default:'300px'
         },
         width:{
-            default:'300px'
+            default:'100%'
         },
         options: {
             default:{}

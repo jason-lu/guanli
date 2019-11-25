@@ -176,6 +176,8 @@ export default {
       position: relative;
       padding-right: 20px;
       height: 100%;
+      min-width: 45%;
+
       .name {
         font-size: 20px;
         margin-bottom: 10px;

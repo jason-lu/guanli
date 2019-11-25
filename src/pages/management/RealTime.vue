@@ -1,30 +1,60 @@
 <template>
-  <div
-    class="realtime"
-    style="width: 100%; height: 100%; position: relative;"
-  >
-    <!-- <video class="container-center" width="300" height="200" autoplay controls>
-            <source src="../../assets/video/a.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-            您的浏览器不支持 HTML5 video 标签。
-        </video> -->
+  <div class="realtime">
+    <div class="realtime-title">实时战况</div>
+    <!-- 直播视频及比分模块 -->
+    <div class="live-broadcast">
+      <div class="container-video">
+        <video
+          autoplay
+          controls
+        >
+          <source
+            src="../../assets/video/a.mp4"
+            type="video/mp4"
+          >
+          <source
+            src="movie.ogg"
+            type="video/ogg"
+          >
+          您的浏览器不支持 HTML5 video 标签。
+        </video>
+      </div>
+      <div class="score">
+        <div class="box">
+          <div class="item">
+            <div class="blue-title">
+              蓝队
+            </div>
+            <p>伤亡：{{injureBlue}}&nbsp;&nbsp;&nbsp; 积分： 0</p>
+          </div>
+          <div class="item">
+            <img
+              src="../../assets/img/vs.png"
+              alt=""
+            >
+          </div>
+          <div class="item">
+            <div class="red-title">
+              红队
+            </div>
+            <p>伤亡：{{injureRed}}&nbsp;&nbsp;&nbsp; 积分： 0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 蓝队数据模块 -->
     <div id="container-left">
       <div id="blue-title">
-        蓝队
+        蓝队数据
       </div>
       <div id="blue-content">
-        <p>伤亡：{{injureBlue}}&nbsp;&nbsp;&nbsp; 积分： 0</p>
-        <!-- <el-table :data="blueTeam" style="width: 80%">
-                    <el-table-column prop="player" label="玩家" width="180">
-                    </el-table-column>
-                    <el-table-column width="180" prop="equipment" label="枪支">
-                    </el-table-column>
-                    <el-table-column prop="status" label="状态" width="180">
-                    </el-table-column>
-                    <el-table-column prop="remaining" label="弹药剩余">
-                    </el-table-column>
-                </el-table> -->
-
+        <div class="blueChart">
+          <EchartVue
+            id="mychart"
+            :options="optionsBlue"
+            width="100%"
+          ></EchartVue>
+        </div>
         <table class="team-table">
           <thead>
             <tr>
@@ -67,36 +97,25 @@
             </tr>
           </tbody>
         </table>
-        <div class="clearfix">
-          <EchartVue
-            class="blueChart"
-            id="mychart"
-            :options="options"
-            width="80%"
-          ></EchartVue>
-        </div>
+
       </div>
 
       <!-- <echart-vue height="300px" width="100%" :options="options" class="charts" id="mycharts-top"/> -->
 
     </div>
+    <!-- 红队数据模块 -->
     <div id="container-right">
       <div id="red-title">
-        红队
+        红队数据
       </div>
       <div id="red-content">
-        <p>伤亡：{{injureRed}}&nbsp;&nbsp;&nbsp; 积分： 0</p>
-        <!-- <el-table :data="redTeam" style="width: 80%; position:absolute; right: 0px;">
-                    <el-table-column prop="player" label="玩家" width="180">
-                    </el-table-column>
-                    <el-table-column width="180" prop="equipment" label="枪支">
-                    </el-table-column>
-                    <el-table-column prop="status" label="状态" width="180">
-                    </el-table-column>
-                    <el-table-column prop="remaining" label="弹药剩余">
-                    </el-table-column>
-                </el-table> -->
-
+        <div class="redChart">
+          <EchartVue
+            id="mychart2"
+            :options="optionsRed"
+            width="100%"
+          ></EchartVue>
+        </div>
         <table class="team-table">
           <thead>
             <tr>
@@ -140,17 +159,7 @@
           </tbody>
         </table>
       </div>
-      <div class="clearfix">
-        <EchartVue
-          id="mychart2"
-          class="redChart"
-          :options="options2"
-          width="80%"
-        ></EchartVue>
-      </div>
-
     </div>
-
   </div>
 </template>
 
@@ -166,40 +175,11 @@ export default {
   },
   data() {
     return {
+      // ‘伤亡’数
       injureBlue: 0,
       injureRed: 0,
-      redTeam: [{
-        player: "队员1",
-        equipment: "枪支1",
-        status: '使用中',
-        remaining: "20"
-      },
-      {
-        player: "队员2",
-        equipment: "枪支2",
-        status: '使用中',
-        remaining: "21"
-      },
-      {
-        player: "队员3",
-        equipment: "枪支3",
-        status: '使用中',
-        remaining: "25"
-      },
-      {
-        player: "队员4",
-        equipment: "枪支4",
-        status: '使用中',
-        remaining: "23"
-      },
-      {
-        player: "队员5",
-        equipment: "枪支5",
-        status: '使用中',
-        remaining: "24"
-      },
-      ],
-      options: {
+      // 蓝队柱状图数据
+      optionsBlue: {
         // 修改柱形图背景颜色为渐变色
         color: new this.$echarts.graphic.LinearGradient(
           1, 1, 1, 0,
@@ -209,7 +189,7 @@ export default {
           ]
         ),
         title: {
-          text: '蓝队数据统计',
+          text: '弹药剩余统计',
           textStyle: {
             color: '#fff'
           },
@@ -234,8 +214,8 @@ export default {
           data: ['队员1', '队员2', '队员3', '队员4', '队员5']
         },
         yAxis: {
-          text: "弹药剩余",
-          name: '弹药剩余',
+          text: "剩余数量",
+          name: '剩余数量',
           axisLabel: {
             show: true,
             textStyle: {
@@ -274,7 +254,8 @@ export default {
           data: [4001, 3325, 3130, 2744, 2345]
         }]
       },
-      options2: {
+      // 红队柱状图数据
+      optionsRed: {
         // 修改柱形图背景颜色为渐变色
         color: new this.$echarts.graphic.LinearGradient(
           1, 1, 1, 0,
@@ -284,7 +265,7 @@ export default {
           ]
         ),
         title: {
-          text: '红队数据统计',
+          text: '弹药剩余统计',
           textStyle: {
             color: '#fff'
           },
@@ -309,8 +290,8 @@ export default {
           data: ['队员1', '队员2', '队员3', '队员4', '队员5']
         },
         yAxis: {
-          text: "弹药剩余",
-          name: '弹药剩余',
+          text: "剩余数量",
+          name: '剩余数量',
           axisLabel: {
             show: true,
             textStyle: {
@@ -366,72 +347,121 @@ export default {
   //   background: url(../../assets/img/pk_bg22.png) center center;
   background-size: cover;
 }
-.container-center {
-  position: absolute;
-  top: 0;
+.live-broadcast {
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 600px;
 }
 
-#container-left {
+.container-video {
   height: 100%;
-  width: 50%;
-  // background-color: #ff325050;
   float: left;
+  padding-left: 20px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  video {
+    height: 550px;
+  }
 }
 
+.score {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  .item {
+    color: #fff;
+    font-size: 26px;
+    margin: 60px 0;
+    text-align: center;
+    .red-title,
+    .blue-title {
+      font-size: 30px;
+      text-align: center;
+      text-shadow: 0px 0px 4px rgb(175, 32, 32);
+      color: rgba(241, 94, 94, 0.808);
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+    .blue-title {
+      text-shadow: 0px 0px 4px rgb(35, 78, 194);
+      color: rgba(120, 229, 248, 0.808);
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    img {
+      width: 120px;
+    }
+  }
+}
 #container-right {
   height: 100%;
-  width: 50%;
+  width: 45%;
   // background-color: #5032ff50;
   float: right;
-  position: relative;
+  padding-right: 20px;
+  box-sizing: border-box;
 }
-
+#container-left {
+  height: 100%;
+  width: 45%;
+  // background-color: #5032ff50;
+  float: left;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
 .redChart,
 .blueChart {
-  width: 75%;
-  position: absolute;
+  margin-top: 20px;
+  width: 500px;
+  position: relative;
   left: 50%;
-  transform: translateX(-40%);
+  transform: translateX(-50%);
+  border-radius: 10px;
+  overflow: hidden;
 }
 #blue-title,
 #red-title {
   text-align: center;
   font-size: 1.5rem;
   color: rgba(241, 94, 94, 0.808);
+  text-shadow: 0px 0px 2px rgb(133, 6, 6);
   font-weight: 700;
   margin-top: 20px;
   margin-right: 20px;
 }
 
-#blue-content,
-#red-content {
-  margin-top: 20px;
-  text-align: center;
-  color: rgba(255, 255, 255, 1);
-  font-size: 1.2rem;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-#blue-content {
-  text-shadow: 0px 0px 5px rgb(0, 0, 0);
-}
-
 #blue-title {
+  text-shadow: 0px 0px 4px rgb(35, 78, 194);
   color: rgba(120, 229, 248, 0.808);
   margin-right: 0px;
   margin-left: 20px;
 }
+#blue-content,
+#red-content {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
 
 #red-content {
   margin-left: 20px;
   margin-right: 0px;
-  color: #333;
+  // color: #222;
+  // text-shadow: 0px 0px 5px #ccc;
 }
 
 // 表格样式
