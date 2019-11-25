@@ -47,10 +47,10 @@ export default {
         margin-left: 20px!important;
         width: 70%!important;
     }
-.editA .el-input__inner,
-.editA .el-textarea__inner
+.editAc .el-input__inner,
+.editAc .el-textarea__inner
 {
-    width: 70%!important;
+    width: 50%!important;
 }
 .editA .el-form-item__label {
     color: #fff!important;
@@ -267,7 +267,7 @@ a {
           position: absolute;
           right: 100px;
           bottom: 20px;
-        }
+        } 
 
         .delBtn {
           position: absolute;

@@ -2,94 +2,94 @@
     <div>
         <!-- 卡片区域 -->
         <el-card class="box-card">
-                <h2>添加页面</h2>
-            <!-- 步骤条 -->
-            <el-steps class="editTep" :active="activeName*1" finish-status="success" align-center>
-                <el-step title="活动信息"></el-step>
-                <el-step title="场次信息"></el-step>
-                <el-step title="上传图片"></el-step>
-            </el-steps>
+            <h2>添加页面</h2>
             <!-- 表单区域 -->
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm editA">
-                <!-- tab栏切换 -->
-                <el-tabs v-model="activeName" tab-position="left">
-                    <el-tab-pane label="活动信息" name="0">
-                        <!--活动信息的表单验证  -->
-                        <el-form-item label="活动名称" prop="name">
-                            <el-input v-model="ruleForm.name"></el-input>
-                        </el-form-item>
-                        <el-form-item label="活动主题" prop="theme">
-                            <el-input v-model="ruleForm.theme"></el-input>
-                        </el-form-item>
-                        <el-form-item label="活动时间" required>
-                            <div class="block">
-                                <el-date-picker @change="chooseActiveTime" v-model="ruleForm.date" type="daterange" range-separator="至"
-                                    start-placeholder="开始日期" end-placeholder="结束日期">
-                                </el-date-picker>
-                            </div>
-                        </el-form-item>
-                        <!-- 活动描述 -->
-                        <el-form-item label="活动描述" prop="desc">
-                            <el-input type="textarea" v-model="ruleForm.desc"></el-input>
-                        </el-form-item>
-                    </el-tab-pane>
-                    <!-- 场次 -->
-                    <el-tab-pane label="场次信息" name="1">
-                        <el-form-item class="paly" label="" prop="play">
-                            <el-date-picker v-model="playValue" type="datetimerange" range-separator="至"
-                                start-placeholder="开始日期" end-placeholder="结束日期">
-                            </el-date-picker>
-                            <el-button @click="addPlayEvent" type="primary">添加场次</el-button>
-                        </el-form-item>
+                <!-- <el-tabs v-model="activeName" tab-position="left"> -->
+                <!--活动信息的表单验证  -->
+                <el-form-item label="选择场馆">
+                    <el-select v-model="ruleForm.gymId" placeholder="请选择活动区域">
+                        <el-option v-for="(item, i) in paceData" :label="item.name" :key="i" :value="item.id"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item class="editAc" label="活动名称" prop="name">
+                    <el-input v-model="ruleForm.name"></el-input>
+                </el-form-item>
+                <el-form-item class="editAc" label="活动主题" prop="theme">
+                    <el-input v-model="ruleForm.theme"></el-input>
+                </el-form-item>
+                <el-form-item class="editAc" label="活动时间" required>
+                    <div class="block">
+                        <el-date-picker @change="chooseActiveTime" v-model="activeDate" type="daterange"
+                            range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
+                        </el-date-picker>
+                    </div>
+                </el-form-item>
+                <!-- 活动描述 -->
+                <el-form-item class="editAc" label="活动描述" prop="description">
+                    <el-input type="textarea" v-model="ruleForm.description"></el-input>
+                </el-form-item>
+                <!-- 活动状态 -->
+                <el-form-item label="活动区域">
+                    <el-select v-model="ruleForm.status" placeholder="请选择活动状态">
+                        <el-option label="进行中" value="1"></el-option>
+                        <el-option label="未开始" value="0"></el-option>
+                    </el-select>
+                </el-form-item>
+                <!-- 上传图片 -->
+                <el-form-item label="上传图片">
+                    <el-upload class="upload-demo" :limit='1'
+                        action="http://47.104.128.89:9009/api/v1/FileTransfer/uploadFile" :on-success="onSuccess"
+                        :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList" list-type="picture">
+                        <el-button  type="primary">选择图片</el-button>
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb(仅能上传一张哦)</div>
+                    </el-upload>
+                </el-form-item>
 
-                        <!-- 显示所添加场次的区域 -->
-                        <el-row>
-                            <el-col :span="12">
-                                <el-tag @close="playMove(i)" v-for="(item,i) in palytime" :key="i" closable type="''">
-                                    {{item}}
-                                </el-tag>
-                            </el-col>
-
-                        </el-row>
-                    </el-tab-pane>
-                    <!-- 图片上传 -->
-                    <el-tab-pane label="上传图片" name="2">
-                        <el-upload action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview"
-                            :on-remove="handleRemove" :file-list="ruleForm.fileList" list-type="picture">
-                            <el-button size="small" type="primary">点击上传</el-button>
-                            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-                        </el-upload>
-                    </el-tab-pane>
-
-                </el-tabs>
+                <!-- </el-tabs> -->
+                <div class="sure">
+                    <el-button type="primary" @click="sureAdd">创建活动</el-button>
+                    <!-- <el-button type="primary" @click="sureAdd('ruleForm')">创建活动</el-button> -->
+                </div>
             </el-form>
         </el-card>
     </div>
 </template>
 <script>
+    import qs from "qs";
     export default {
         data() {
             return {
+                // 场馆信息
+                paceData: [],
+                // 活动时间
+                activeDate: null,
+
+                // 上传图片信息
+                fileList: [],
                 // tab和进度条的帮顶属性
                 activeName: '0',
                 // 表单绑定的数据
                 ruleForm: {
+                    // 选择场馆
+                    gymId: '',
+                    // 活动开始时间
+                    beginTime: '',
+                    // 活动结束时间
+                    endTime: '',
                     // 活动名称
-                    name: '',
+                    name: 'test',
                     // 活动主题
-                    theme: '',
+                    theme: 'test',
                     // 活动描述
-                    desc: '123',
-                    // 活动时间
-                    date: null,
-                    // 上传图片信息
-                    fileList: [],
+                    description: '1234567890',
+
+                    // 图片临时路径
+                    picAddress: '',
+                    // 活动状态
+                    status: ''
 
                 },
-                // 场次时间
-                playValue: [],
-                // 场次数组
-                palytime: [],
                 // 表单的验证规则
                 rules: {
                     name: [
@@ -97,45 +97,78 @@
                         { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
                     ],
                     theme: [
-                        { required: true, message: '请输入活动名称', trigger: 'blur' },
+                        { required: true, message: '请输入活动主题', trigger: 'blur' },
                         { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
                     ],
                     date: [
                         { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+                    ],
+                    description: [
+                        { required: true, message: '请输入活动描述', trigger: 'blur' },
+                        { min: 10, message: '长度大于十个字符', trigger: 'blur' }
                     ],
                 },
 
 
             }
         },
+        created() {
+            this.getPlaceData();
+        },
 
         methods: {
-            // 选择活动时间事触发
-            chooseActiveTime(){
-                console.log(this.ruleForm.date);
-                
+            // 获取场馆信息
+            async  getPlaceData() {
+                var data = await this.$http.get('gym/getAllGym')
+                if (data.status == 200) {
+                    this.paceData = data.data
+                    console.log(this.paceData);
+                 
+
+                } else {
+                    this.$message.error('获取场馆数据失败')
+                }
             },
-            // 移除场次
-            playMove(e) {
-                this.palytime.splice(e, 1)
-                console.log(this.palytime);
+            // 图片上传成功的钩子
+            onSuccess(response) {
+                console.log(response);
+                if (response.respBody.isSuccess == "OK") {
+                    this.$message.success('上传图片成功')
+                    this.ruleForm.picAddress = response.respBody.content;
+                } else {
+                    this.$message.error('上传图片失败')
+                }
+
+            },
+            // 点击添加活动
+            async sureAdd() {
+                console.log(this.ruleForm);
+                var data = await this.$http.post('activity/createActivity', qs.stringify(this.ruleForm))
+                console.log(data);
+                if(data.status==200){
+                        this.$message.success('创建活动成功');
+                        setTimeout(() => {
+                            this.$router.push('/management/activityMa')
+                        }, 3000);
+                    }else{
+                        this.$message.error('创建活动失败')
+                    }
+            },
+            // 选择活动时间事触发
+            chooseActiveTime() {
+                // var newTime=[]
+                console.log(this.activeDate);
+                var filterTime = this.$options.filters['format'];
+                this.ruleForm.beginTime = filterTime(this.activeDate[0], 'yyyy-MM-dd ');
+                this.ruleForm.endTime = filterTime(this.activeDate[1], 'yyyy-MM-dd ');
+                console.log(this.ruleForm.beginTime);
+                console.log(this.ruleForm.endTime);
+
             },
             //   图片预览
             handlePreview() { },
             // 图片移除
             handleRemove() { },
-            // 点击添加场次
-            addPlayEvent() {
-                var playdata = '';
-                var filterTime = this.$options.filters['format'];
-                this.playValue.forEach(item => {
-                    playdata += filterTime(item, 'yyyy-MM-dd hh') + "至";
-                });
-                playdata = playdata.substr(0, playdata.length - 1)
-                this.palytime.push(playdata);
-                playdata = [];
-                console.log(this.palytime);
-            }
         },
         // 过滤器
         filters: {
@@ -182,9 +215,16 @@
         }
     }
 </script>
+<style>
+     .el-card__body{
+        padding-left:200px!important ;
+    }
+</style>
 <style lang="less" scoped>
-    .el-tag {
-        margin: 20px;
+   
+    .sure {
+        margin-top: 30px;
+       margin-left: 247px;
     }
 
     .el-form-item {
@@ -195,25 +235,8 @@
         color: #fff !important;
     }
 
-    .el-step__title.is-process {
-        font-weight: 700;
-        color: #409EFF !important;
-    }
-
-    .el-tabs__item {
-        color: #fff !important;
-    }
-
-    .el-tabs__item.is-active {
-        color: #409EFF !important;
-    }
-
     .el-form-item__label {
         color: #fff !important;
-    }
-
-    .el-tabs {
-        margin-top: 20px;
     }
 
     .blue {
@@ -221,20 +244,9 @@
     }
 
     .el-card {
-        color: #fff;
-    }
-
-    .el-card {
         margin-top: 20px;
         background-color: rgba(0, 0, 0, 0.5);
         border: none;
-    }
-
-    .el-steps {
-        text-align: center;
-    }
-
-    .el-tabs__item {
-        color: #fff !important;
+        color: #fff;
     }
 </style>

@@ -13,7 +13,7 @@
             :value="item.value"
             :disabled="item.disabled"
           ></el-option>
-        </el-select>
+        </el-select> 
         <!-- “搜索活动”按钮 -->
         <el-input placeholder="请输入活动名称..." v-model="input3" class="input-with-select">
           <el-button slot="append" icon="el-icon-search"></el-button>
