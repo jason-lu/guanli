@@ -31,7 +31,7 @@ export default {
             const regex = RegExp(/^\/homePages/);
             console.log(this.$route.path)
             console.log(regex.test('/homePages/ssss'))
-            return this.user? this.user.name === 'admin' && !regex.test(this.$route.path): false;
+            return this.user? this.user.name === 'admin' && !regex.test(this.$route.path): true;
         }
     }
 }
