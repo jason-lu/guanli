@@ -7,9 +7,10 @@
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm editA">
                 <!-- <el-tabs v-model="activeName" tab-position="left"> -->
                 <!--活动信息的表单验证  -->
-                <el-form-item label="选择场馆">
-                    <el-select v-model="ruleForm.gymId" placeholder="请选择活动区域">
-                        <el-option v-for="(item, i) in paceData" :label="item.name" :key="i" :value="item.id"></el-option>
+                <el-form-item label="选择场馆" prop="gymId">
+                    <el-select v-model="ruleForm.gymId"  placeholder="请选择场馆">
+                        <el-option v-for="(item, i) in paceData" :label="item.name" :key="i" :value="item.id">
+                        </el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item class="editAc" label="活动名称" prop="name">
@@ -30,18 +31,18 @@
                     <el-input type="textarea" v-model="ruleForm.description"></el-input>
                 </el-form-item>
                 <!-- 活动状态 -->
-                <el-form-item label="活动区域">
+                <el-form-item label="活动状态" prop="status">
                     <el-select v-model="ruleForm.status" placeholder="请选择活动状态">
                         <el-option label="进行中" value="1"></el-option>
                         <el-option label="未开始" value="0"></el-option>
                     </el-select>
                 </el-form-item>
                 <!-- 上传图片 -->
-                <el-form-item label="上传图片">
+                <el-form-item label="上传图片" class="upload">
                     <el-upload class="upload-demo" :limit='1'
                         action="http://47.104.128.89:9009/api/v1/FileTransfer/uploadFile" :on-success="onSuccess"
                         :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList" list-type="picture">
-                        <el-button  type="primary">选择图片</el-button>
+                        <el-button type="primary">选择图片</el-button>
                         <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb(仅能上传一张哦)</div>
                     </el-upload>
                 </el-form-item>
@@ -92,6 +93,12 @@
                 },
                 // 表单的验证规则
                 rules: {
+                    gymId: [
+                        { required: true, message: '请选择场馆', trigger: 'change' }
+                    ],
+                    status: [
+                        { required: true, message: '请选择状态', trigger: 'change' }
+                    ],
                     name: [
                         { required: true, message: '请输入活动名称', trigger: 'blur' },
                         { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
@@ -123,7 +130,7 @@
                 if (data.status == 200) {
                     this.paceData = data.data
                     console.log(this.paceData);
-                 
+
 
                 } else {
                     this.$message.error('获取场馆数据失败')
@@ -141,18 +148,27 @@
 
             },
             // 点击添加活动
-            async sureAdd() {
+            sureAdd() {
                 console.log(this.ruleForm);
-                var data = await this.$http.post('activity/createActivity', qs.stringify(this.ruleForm))
-                console.log(data);
-                if(data.status==200){
-                        this.$message.success('创建活动成功');
-                        setTimeout(() => {
-                            this.$router.push('/management/activityMa')
-                        }, 3000);
-                    }else{
-                        this.$message.error('创建活动失败')
+                this.$refs.ruleForm.validate(async value => {
+                    console.log(value);
+                    if (!value) {
+                        return this.$message.error('请完整表单信息')
+                    } else {
+                        var data = await this.$http.post('activity/createActivity', qs.stringify(this.ruleForm))
+                        console.log(data);
+                        if (data.data.respBody.isSuccess == 'true') {
+                            this.$message.success('创建活动成功');
+                            setTimeout(() => {
+                                this.$router.push('/management/activityMa')
+                            }, 3000);
+                        } else {
+                            this.$message.error('创建活动失败')
+                        }
                     }
+
+                })
+
             },
             // 选择活动时间事触发
             chooseActiveTime() {
@@ -216,15 +232,17 @@
     }
 </script>
 <style>
-     .el-card__body{
-        padding-left:200px!important ;
+    /* .el-card__body {
+        padding-left: 450px !important;
     }
+  .upload .el-upload-list__item{
+      width: 50%!important;
+  } */
 </style>
 <style lang="less" scoped>
-   
     .sure {
         margin-top: 30px;
-       margin-left: 247px;
+        margin-left: 247px;
     }
 
     .el-form-item {

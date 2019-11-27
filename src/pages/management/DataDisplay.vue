@@ -363,7 +363,6 @@
     }
 
     .ringArea {
-        padding:0 40px;
         display: flex;
         justify-content: space-around;
     }
