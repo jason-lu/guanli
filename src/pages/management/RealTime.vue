@@ -60,7 +60,7 @@
             <tr>
               <th>玩家</th>
               <th>枪支</th>
-              <th>状态</th>
+              <th>武器状态</th>
               <th>弹药剩余</th>
             </tr>
           </thead>
@@ -97,11 +97,7 @@
             </tr>
           </tbody>
         </table>
-
       </div>
-
-      <!-- <echart-vue height="300px" width="100%" :options="options" class="charts" id="mycharts-top"/> -->
-
     </div>
     <!-- 红队数据模块 -->
     <div id="container-right">
@@ -121,7 +117,7 @@
             <tr>
               <th>玩家</th>
               <th>枪支</th>
-              <th>状态</th>
+              <th>武器状态</th>
               <th>弹药剩余</th>
             </tr>
           </thead>
