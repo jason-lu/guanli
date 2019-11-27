@@ -49,28 +49,28 @@ export default {
 
 
 <style lang="less">
-.paly.el-form-item .el-form-item__content{
-        margin-left: 20px!important;
-        width: 70%!important;
-    }
-.editA .el-input__inner,
-.editA .el-textarea__inner
-{
-    width: 70%!important;
-}
-.editA .el-form-item__label {
-    color: #fff!important;
-}
- .editTep .el-step__title.is-process {
-    font-weight: 700;
-    color: #409EFF!important;
-}
-.editA .el-tabs__item{
-    color: #fff!important;
-}
-.editA .el-tabs__item.is-active {
-    color: #409EFF!important;
-}
+// .paly.el-form-item .el-form-item__content{
+//         margin-left: 20px!important;
+//         width: 70%!important;
+//     }
+// .editAc .el-input__inner,
+// .editAc .el-textarea__inner
+// {
+//     width: 50%!important;
+// }
+// .editA .el-form-item__label {
+//     color: #fff!important;
+// }
+//  .editTep .el-step__title.is-process {
+//     font-weight: 700;
+//     color: #409EFF!important;
+// }
+// .editA .el-tabs__item{
+//     color: #fff!important;
+// }
+// .editA .el-tabs__item.is-active {
+//     color: #409EFF!important;
+// }
 body {
   margin: 0;
   height: 100vh;
@@ -299,7 +299,7 @@ a {
           position: absolute;
           right: 100px;
           bottom: 20px;
-        }
+        } 
 
         .delBtn {
           position: absolute;
