@@ -148,6 +148,28 @@ a {
   margin-bottom: 20px;
 }
 
+// 修改默认的elementui上传图片样式
+.upload-demo {
+  .el-upload-list--picture .el-upload-list__item-name {
+    display: none;
+  }
+  .el-upload-list--picture .el-upload-list__item {
+    height: 140px;
+    padding: 0px 0px 0px 80px;
+  }
+  .el-upload-list__item {
+    width: 140px;
+  }
+  .el-upload-list--picture .el-upload-list__item-thumbnail {
+    width: 140px;
+    height: 140px;
+  }
+  .el-upload-list--picture .el-upload-list__item-status-label,
+  .el-upload-list__item .el-icon-close {
+    z-index: 1;
+  }
+}
+
 .venue-container,
 .activity-container {
   // 修改默认的elementui的分页器样式

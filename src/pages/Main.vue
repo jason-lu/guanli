@@ -27,7 +27,7 @@ export default {
     submitFile() {
       let formData = new FormData()
       formData.append('file',this.file)
-      axios.post('http://47.104.128.89/api/v1/activity/uploadFile',
+      axios.post('http://47.104.128.89/api/v1/FileTransfer/uploadFile',
         formData,
         {
           headers: {

@@ -17,6 +17,7 @@
           placeholder="请输入场馆名称..."
           v-model="query"
           class="input-with-select"
+          @keyup.enter.native="search"
         >
           <el-button
             slot="append"
@@ -25,8 +26,18 @@
           ></el-button>
         </el-input>
       </div>
+      <!-- 若无搜索结果展示“无此结果”字样 -->
+      <div
+        class="no-content"
+        v-if="!venueList.length"
+      >
+        无此结果
+      </div>
       <!-- 列表展示部分 -->
-      <ul class="venue-list">
+      <ul
+        class="venue-list"
+        v-else
+      >
         <li
           class="box clearfix"
           v-for="item in venueList"
@@ -34,7 +45,7 @@
         >
           <!-- 场馆图片 -->
           <div class="preview">
-            <img :src=item.pictureurl />
+            <img :src=item.pictureUrl />
           </div>
           <div class="content">
             <div class="name">{{item.name}}</div>
@@ -48,12 +59,12 @@
             ></el-rate>
             <div class="desc ellipsis-2">场馆简介：{{item.instruction}}</div>
             <div class="address">地址：{{item.address}}</div>
-            <div class="message">联系方式：{{item.contactInfo}} {{item.contactname}}</div>
+            <div class="message">联系方式：{{item.contactInfo}} {{item.contactName}}</div>
 
             <!-- "删除活动"按钮 -->
             <button
               class="delBtn btn"
-              @click="delAct"
+              @click="delAct(item.id)"
             >
               <i class="el-icon-delete icon"></i>删除
             </button>
@@ -89,6 +100,7 @@
       <el-form
         ref="formData"
         :model="form"
+        :rules="rules"
         label-width="80px"
       >
         <el-form-item
@@ -113,6 +125,12 @@
           <el-input v-model="form.address"></el-input>
         </el-form-item>
         <el-form-item
+          label="场馆评分"
+          prop="score"
+        >
+          <el-input v-model="form.score"></el-input>
+        </el-form-item>
+        <el-form-item
           label="负责人"
           prop="contactName"
         >
@@ -124,22 +142,30 @@
         >
           <el-input v-model="form.contactInfo"></el-input>
         </el-form-item>
-        <!-- <el-form-item label="活动图片"> -->
-        <!-- <el-upload
+        <el-form-item
+          label="活动图片"
+          prop="pictureUrl"
+        >
+          <el-upload
             class="upload-demo"
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :on-preview="handlePreview"
+            action="http://47.104.128.89:9009/api/v1/FileTransfer/uploadFile"
             :on-remove="handleRemove"
-            :before-remove="beforeRemove"
-            multiple
-            :limit="3"
-            :on-exceed="handleExceed"
+            :on-success="handleSuccess"
+            :on-exceed="onExceed"
+            :limit="limit"
             :file-list="fileList"
+            list-type="picture"
           >
-            <el-button size="small" type="primary">点击上传</el-button>
-            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-          </el-upload> -->
-        <!-- </el-form-item> -->
+            <el-button
+              size="small"
+              type="primary"
+            >点击上传</el-button>
+            <div
+              slot="tip"
+              class="el-upload__tip"
+            >只能上传1张jpg/png文件，且不超过500kb</div>
+          </el-upload>
+        </el-form-item>
       </el-form>
       <span
         slot="footer"
@@ -197,18 +223,41 @@ export default {
       query: '', //搜索关键字
       editDialogVisible: false, //显示或隐藏‘编辑/新增’模态框
       currentPage: 1,
-      pageSize: 3,
+      pageSize: 2,
       total: 10,
-      form: {
-        id: 0,
+      form: {  //新增及修改模态框内form表单数据
+        id: "",
         name: "",
         address: "",
+        score: "",
         contactInfo: "",
         instruction: "",
-        contactName: ""
+        contactName: "",
+        pictureUrl: ""
       },
-      imageUrl: "",
-      dialogTitle: '新增场馆'
+      rules: {
+        name: [
+          { required: true, message: '请输入场馆名称', trigger: ['blur', 'change'] }
+        ],
+        address: [
+          { required: true, message: '请输入场馆地址', trigger: ['blur', 'change'] }
+        ],
+        score: [
+          { required: true, message: '请输入场馆评分', trigger: ['blur', 'change'] }
+        ],
+        contactInfo: [
+          { required: true, message: '请输入负责人联系方式', trigger: ['blur', 'change'] }
+        ],
+        instruction: [
+          { required: true, message: '请输入场馆简介', trigger: ['blur', 'change'] }
+        ],
+        contactName: [
+          { required: true, message: '请输入负责人姓名', trigger: ['blur', 'change'] }
+        ]
+      },
+      dialogTitle: '新增场馆', //新增及修改模态框内标题
+      fileList: [{url: ''}],
+      limit: 1,
     };
   },
   created() {
@@ -218,7 +267,7 @@ export default {
   methods: {
     // 渲染列表
     async getVenueMaData() {
-      var { data } = await this.$http.post(
+      let { data } = await this.$http.post(
         "gym/getGymByPage",
         qs.stringify({
           name: this.query,
@@ -237,46 +286,111 @@ export default {
     },
     // 根据关键字点击搜索展示活动
     search() {
+      this.currentPage = 1
       this.getVenueMaData()
     },
     // 点击‘编辑’按钮时弹出模态框并渲染模态框内容
     showModifyDialog(id) {
       this.editDialogVisible = true;
       this.dialogTitle = '编辑场馆'
-      console.log(id)
       // 解决复用时关闭模态框再打开其他模态框时数据回显问题
       this.$nextTick(() => {
         this.form = JSON.parse(JSON.stringify(this.venueList.filter(v => {
           return v.id === id
         })[0]))
+        this.fileList = [{url: ''}]
+        this.fileList[0].url = this.form.pictureUrl
       })
     },
     // 点击‘新增’按钮时弹出模态框并渲染模态框内容
     showAddDialog() {
       this.editDialogVisible = true;
       this.dialogTitle = '新增场馆';
+      this.fileList = []
     },
     // 关闭模态框时重置表单
     closeEditDialog() {
       this.$refs.formData.resetFields()
     },
+    // 上传场馆图片相关操作
+    // 上传成功时存储图片地址至form.pictureurl
+    handleSuccess(response, file, fileList) {
+      console.log(response, file, fileList)
+      if (response.respBody.isSuccess == "OK") {
+        this.form.pictureUrl = response.respBody.content
+      } else {
+        this.$message({
+          type: 'error',
+          message: '图片上传失败，请重试',
+          duration: 1000
+        })
+      }
+    },
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    // 超出limit图片数时的回调
+    onExceed(files, fileList) {
+      this.$message({
+        type: 'info',
+        message: '最多只能上传一个图片',
+        duration: 1000
+      });
+    },
     // 点击‘确定’提交‘编辑’或‘新增’请求
-    edit() {
-
+    async edit() {
+      await this.$refs.formData.validate()
+      let url = this.dialogTitle === '新增场馆' ? 'gym/add' : 'gym/updateGym'
+      let para = this.dialogTitle === "新增场馆" ? qs.stringify(this.form) : JSON.stringify(this.form)
+      let headers = this.dialogTitle === "新增场馆" ? {} : { "Content-Type": "application/json" }
+      let pagenum = this.dialogTitle === "新增场馆" ? Math.ceil(++this.total / this.pageSize) : this.currentPage
+      let { data } = await this.$http.post(url, para, { headers })
+      if (data.respHeader.respCode == 200) {
+        this.$message({
+          type: "success",
+          message: "操作成功!"
+        });
+        this.currentPage = pagenum
+        this.getVenueMaData()
+      }
+      else if (data.respHeader.respCode == '001001001') {
+        this.$message({
+          type: "warning",
+          message: "该场馆已存在"
+        });
+      }
+      else {
+        this.$message({
+          type: "error",
+          message: "操作失败,请重试!"
+        });
+      }
+      this.editDialogVisible = false;
     },
     // 点击‘删除’按钮时弹出确认框，确认则发送删除请求
-    async delAct() {
+    async delAct(id) {
       try {
         await this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
         });
-        // 补：axios发送删除场馆的请求
-        this.$message({
-          type: "success",
-          message: "删除成功!"
-        });
+        // axios发送删除场馆的请求
+        let { data } = await this.$http.post('gym/delete',
+          qs.stringify({
+            gymId: id
+          })
+        )
+        if (data.respHeader.respCode == 200) {
+          this.$message({
+            type: "success",
+            message: "删除成功!"
+          });
+          if (this.venueList.length === 1 && this.currentPage !== 1) {
+            this.currentPage--
+          }
+          this.getVenueMaData()
+        }
       } catch {
         this.$message({
           type: "info",
@@ -287,6 +401,7 @@ export default {
     // 每页显示数改变时
     handleSizeChange(val) {
       this.pageSize = val;
+      this.currentPage = 1;
       this.getVenueMaData()
     },
     // 当前页码改变时
@@ -297,7 +412,6 @@ export default {
   }
 };
 </script>
-
 <style lang="less" scoped>
 .venue-container .venue-list .box .content {
   .name {
@@ -306,5 +420,10 @@ export default {
   .desc {
     margin: 20px 0;
   }
+}
+.venue-container .no-content {
+  width: 100%;
+  text-align: center;
+  margin: 50px 0;
 }
 </style>
