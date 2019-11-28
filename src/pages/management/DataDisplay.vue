@@ -16,18 +16,18 @@
                     <div class="ringArea">
 
                         <!-- 环图1 -->
-                        <ve-ring class="ring" :data="ring_chartData_one" :settings="ringSettings"></ve-ring>
+                        <ve-ring :legend="legend" class="ring" :data="ring_chartData_one" :settings="ringSettings"></ve-ring>
                         <!-- 环图2 -->
-                        <ve-ring class="ring" :data="ring_chartData_two" :settings="ringSettings"></ve-ring>
+                        <ve-ring :legend="legend" class="ring" :data="ring_chartData_two" :settings="ringSettings"></ve-ring>
                     </div>
                 </div>
                 <!-- 红蓝队数据表 -->
                 <div>
-                        <div class="Title">红蓝战队数据</div>
+                    <div class="Title">红蓝战队数据</div>
                     <div class="lineArea">
                         <!-- 条形图 -->
-                    <ve-bar  class="line" :data="lin_chartData_one"></ve-bar>
-                    <ve-bar  class="line" :data="lin_chartData_two"></ve-bar>
+                        <ve-bar :legend="legend" class="line" :data="lin_chartData_one"></ve-bar>
+                        <ve-bar :legend="legend" class="line" :data="lin_chartData_two"></ve-bar>
                     </div>
                 </div>
 
@@ -65,9 +65,10 @@
                     </div>
 
                     <div class="middledataview">
-                        <span>各战区排行</span>
+                        <div class="Title">各战区战力</div>
                         <!-- <echart-vue height="300px" width="100%" :options="activityOptions2" class="charts" -->
                         <!-- id="mycharts-top2" /> -->
+                        <ve-histogram :series="series" :x-axis="hisxAxis" :y-axis="hisyAxis"></ve-histogram>
 
                     </div>
                 </div>
@@ -122,240 +123,150 @@
         methods: {
         },
         data() {
+            // 设置折线图数据
+        
+          this.legend={
+              
+                        textStyle: {
+                            //文字样式
+                            color: "#fff",
+                  
+                        }
+                    },
+            // 设置柱状图
+            this.series = [
+                {
+                    name: "战区战力",
+                    type: "bar",
+                    barWidth: "50%",//这里是改变柱子的宽度
+                    data: [3000, 5200, 3600, 6300, 3900, 4900, 5900],
+
+                    itemStyle: {
+                        //通常情况下：
+                        normal: {
+                            //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                            color: function (params) {
+                                var colorList = [
+                                    "#44F0FF",
+                                    "#FA6E86",
+                                    "#FFB980",
+                                    "#19D4AE",
+                                    "#FFB980",
+                                    "#44F0FF",
+                                ]; //每根柱子的颜色
+                                return colorList[params.dataIndex];
+                            }
+                        },
+                    }
+                }];
+            this.hisyAxis = [
+                {
+                    axisLabel: {
+                        //   show: true,
+                        textStyle: {
+                            color: "white",//这里是改变字体颜色
+                        }
+                    }
+                }
+            ];
+            this.hisxAxis = [
+                {
+                    data: [
+                        "东部战区",
+                        "西部战区",
+                        "北部战区",
+                        "南部战区",
+                        "亚洲战区",
+                        "欧洲战区",
+
+                    ],
+                    name: "战区",
+                    axisLabel: {
+                        //   show: true,
+                        textStyle: {
+                            color: "white",
+                        }
+                    }
+                }
+            ];
+            // 设置环图
             this.ringSettings = {
                 radius: [40, 100],
             }
             return {
+                // 柱状图数据
+                // histogramChartData: {
+                //     columns: ['战区', '战区战力', ],
+                //     rows: [
+                //         { '战区': '东部战区', '战区战力': 1393, },
+                //         { '战区': '西部战区', '战区战力': 3530, },
+                //         { '战区': '北部战区', '战区战力': 2923, },
+                //         { '战区': '南部战区', '战区战力': 1723, },
+                //         { '战区': '亚洲战区', '战区战力': 3792,  },
+                //         { '战区': '欧洲战区', '战区战力': 4593, }
+                //     ]
+                // },
                 // 折线图数据
                 lin_chartData_one: {
-                    columns: ['日期', '访问用户', '下单用户', '下单率'],
-                    rows: [
-                        { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
-                        { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
-                        { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
-                        { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
-                        { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
-                        { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
-                    ]
-                },
-                lin_chartData_two: {
-                    columns: ['日期', '访问用户', '下单用户', '下单率'],
-                    rows: [
-                        { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
-                        { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
-                        { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
-                        { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
-                        { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
-                        { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
-                    ]
-                },
-                // 饼图1数据
-                ring_chartData_one: {
-                    columns: ['日期', '访问用户'],
-                    rows: [
-                        { '日期': '1/1', '访问用户': 1393 },
-                        { '日期': '1/2', '访问用户': 3530 },
-                        { '日期': '1/3', '访问用户': 2923 },
-                        { '日期': '1/4', '访问用户': 1723 },
-                        { '日期': '1/5', '访问用户': 3792 },
-                        { '日期': '1/6', '访问用户': 4593 }
-                    ]
-                },
-                // 饼图2数据
-                ring_chartData_two: {
-                    columns: ['日期', '访问用户'],
-                    rows: [
-                        { '日期': '1/1', '访问用户': 1393 },
-                        { '日期': '1/2', '访问用户': 3530 },
-                        { '日期': '1/3', '访问用户': 2923 },
-                        { '日期': '1/4', '访问用户': 1723 },
-                        { '日期': '1/5', '访问用户': 3792 },
-                        { '日期': '1/6', '访问用户': 4593 }
-                    ]
-                },
-            }
 
-            //         options: {
-            //             title: {
-            //                 text: '热门场馆top5',
-            //                 textStyle: {
-            //                     color: '#fff'
-            //                 },
-            //                 x: 'center',
-            //             },
-            //             backgroundColor: '#2c343c88',
-            //             xAxis: {
-            //                 show: true,
-            //                 axisLabel: {
-            //                     show: true,
-            //                     textStyle: {
-            //                         color: '#fff',
-            //                     }
-            //                 },
-            //                 data: ['游泳馆馆', '体育馆馆', '体育公园', '体育中心', '文化公园']
-            //             },
-            //             yAxis: {
-            //                 text: "人数",
-            //                 axisLabel: {
-            //                     show: true,
-            //                     textStyle: {
-            //                         color: '#fff',
-            //                     }
-            //                 },
-
-            //             },
-            //             series: [{
-            //                 name: '访问来源',
-            //                 type: 'bar',
-            //                 radius: '55%',
-            //                 roseType: 'angle',
-            //                 itemStyle: {
-            //                     // 阴影的大小
-            //                     shadowBlur: 200,
-            //                     // 阴影水平方向上的偏移
-            //                     shadowOffsetX: 0,
-            //                     // 阴影垂直方向上的偏移
-            //                     shadowOffsetY: 0,
-            //                     // 阴影颜色
-            //                     shadowColor: 'rgba(0, 0, 0, 0.5)',
-            //                     emphasis: {
-            //                         shadowBlur: 200,
-            //                         shadowColor: 'rgba(0, 0, 0, 0.5)'
-            //                     },
-            //                 },
-            //                 data: [4001, 3325, 3130, 2744, 2345]
-            //             }]
-            //         },
-            //         activityOptions: {
-            //             title: {
-            //                 text: '活动数量',
-            //                 textStyle: {
-            //                     color: '#fff'
-            //                 },
-            //                 x: 'center'
-            //             },
-            //             backgroundColor: '#2c343c88',
-            //             // legend: {
-            //             //     data:['活动数量']
-            //             // },
-            //             xAxis: {
-            //                 show: true,
-            //                 axisLabel: {
-            //                     show: true,
-            //                     textStyle: {
-            //                         color: '#ffffff',
-            //                     }
-            //                 },
-            //                 data: ['2019/07', '2019/08', '2019/09', '2019/10']
-            //             },
-            //             yAxis: {
-            //                 show: true,
-            //                 axisLabel: {
-            //                     show: true,
-            //                     textStyle: {
-            //                         color: '#ffffff',
-            //                     }
-            //                 },
-            //             },
-            //             series: [{
-            //                 name: '活动数量',
-            //                 type: 'line',
-            //                 data: [200, 300, 500, 300, 100]
-            //             }]
-            //         },
-            //         activityOptions2: {
-            //             title: {
-            //                 text: '各战区排行榜',
-            //                 textStyle: {
-            //                     color: '#fff'
-            //                 },
-            //                 x: 'center',
-            //             },
-            //             backgroundColor: '#2c343c88',
-            //             xAxis: {
-            //                 show: true,
-            //                 axisLabel: {
-            //                     show: true,
-            //                     textStyle: {
-            //                         color: '#fff',
-            //                     }
-            //                 },
-            //                 data: ['A战区', 'B战区', 'C战区', 'D战区', 'E战区']
-            //             },
-            //             yAxis: {
-            //                 text: "人数",
-            //                 axisLabel: {
-            //                     show: true,
-            //                     textStyle: {
-            //                         color: '#fff',
-            //                     }
-            //                 },
-
-            //             },
-            //             series: [{
-            //                 name: '访问来源',
-            //                 type: 'bar',
-            //                 radius: '55%',
-            //                 roseType: 'angle',
-            //                 itemStyle: {
-            //                     // 阴影的大小
-            //                     shadowBlur: 200,
-            //                     // 阴影水平方向上的偏移
-            //                     shadowOffsetX: 0,
-            //                     // 阴影垂直方向上的偏移
-            //                     shadowOffsetY: 0,
-            //                     // 阴影颜色
-            //                     shadowColor: 'rgba(0, 0, 0, 0.5)',
-            //                     emphasis: {
-            //                         shadowBlur: 200,
-            //                         shadowColor: 'rgba(0, 0, 0, 0.5)'
-            //                     },
-            //                 },
-            //                 data: [4001, 3325, 3130, 2744, 2345]
-            //             }]
-
-            //         }
+   
 
 
-        },
-        components: {
-            EchartVue,
-            // Activities,
+                        columns: ['日期', '访问用户', '下单用户', '下单率'],
+                        rows: [
+                            { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
+                            { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
+                            { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
+                            { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
+                            { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
+                            { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
+                        ]
+                    },
+                    lin_chartData_two: {
+                        columns: ['日期', '访问用户', '下单用户', '下单率'],
+                        rows: [
+                            { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
+                            { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
+                            { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
+                            { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
+                            { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
+                            { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
+                        ]
+                    },
+                    // 饼图1数据
+                    ring_chartData_one: {
+                        columns: ['日期', '访问用户'],
+                        rows: [
+                            { '日期': '1/1', '访问用户': 1393 },
+                            { '日期': '1/2', '访问用户': 3530 },
+                            { '日期': '1/3', '访问用户': 2923 },
+                            { '日期': '1/4', '访问用户': 1723 },
+                            { '日期': '1/5', '访问用户': 3792 },
+                            { '日期': '1/6', '访问用户': 4593 }
+                        ]
+                    },
+                    // 饼图2数据
+                    ring_chartData_two: {
+                        columns: ['日期', '访问用户'],
+                        rows: [
+                            { '日期': '1/1', '访问用户': 1393 },
+                            { '日期': '1/2', '访问用户': 3530 },
+                            { '日期': '1/3', '访问用户': 2923 },
+                            { '日期': '1/4', '访问用户': 1723 },
+                            { '日期': '1/5', '访问用户': 3792 },
+                            { '日期': '1/6', '访问用户': 4593 }
+                        ]
+                    },
+                }
+
+            },
+                components: {
+                EchartVue,
         }
-    }
+        }
 </script>
 
 <style scoped>
-    /*.border{
-    width: 500px;
-    height: 100%;
-     border: 1px #a0b9fd solid; 
-     background-color: #43578daa; 
-    
-     box-shadow: 2px 2px 3px a0b9fd; 
-    text-align: center;
-}
-.data-container {
-    position: relative;
-    height: 100%;
-    margin: auto;
-    display: flex;
-}
-.charts {
-    margin-top: 20px;
-    position: relative;
-}
-.summary-title{
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 700;
-}
-.summary-number {
-    color: rgb(253, 165, 51);
-    margin-top: 10px;
-    font-size: 1.4rem;
-    font-weight: 700;
-}*/
     .Title {
         text-align: center;
         font-size: 20px;
@@ -370,11 +281,13 @@
     .ringArea .ring {
         flex: 1;
     }
-    .lineArea{
+
+    .lineArea {
         padding: 20px;
         display: flex;
         justify-content: space-around;
     }
+
     .lineArea .line {
         flex: 1;
     }

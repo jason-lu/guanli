@@ -10,7 +10,7 @@
         <!-- “新增活动”按钮 -->
         <button class="addBtn btn" @click="openAdd">新增活动</button>
         <!-- “搜索活动”按钮 -->
-        <el-input placeholder="请输入活动名称..." v-model="query" class="input-with-select">
+        <el-input placeholder="请输入活动名称..." v-model="queryText" class="input-with-select">
           <el-button slot="append" @click="queryEvent" icon="el-icon-search"></el-button>
         </el-input>
       </div>
@@ -44,6 +44,10 @@
             <!-- "编辑活动"按钮 @click="editActive(item.id)editdialogVisible = true" -->
             <button class="modifyBtn btn" @click="editActive(item.id)">
               <i class="el-icon-edit icon"></i>编辑
+            </button>
+            <!-- 场次管理按钮 -->
+            <button class="placeBtn btn" @click="toPlace(item.id)">
+              <i class="el-icon-setting icon"></i>场次管理
             </button>
           </div>
         </li>
@@ -162,7 +166,7 @@
         <el-form-item class="editAc" label="活动时间" required>
           <div class="block">
             <el-date-picker
-              @change="chooseActiveTime"
+              @change="editchooseActiveTime"
               v-model="editruleForm.activeDate"
               type="daterange"
               range-separator="至"
@@ -213,6 +217,10 @@ import { log } from "util";
 export default {
   data() {
     return {
+      queryText:'',
+      // 跳转到场馆的数据
+      placedata:null,
+      activeEditId:'',
       // 提交编辑时的场馆信息
       editPlace:[],
       beginTime: "",
@@ -322,6 +330,13 @@ export default {
   },
 
   methods: {
+    // 点击跳转到场次管理页面
+    toPlace(e){
+      this.placedata = this.activityList.filter(item => {
+        return item.id == e;
+      });
+      this.$router.push({ path: "/activityMa/activePlace", query: { id: e ,placedata:JSON.stringify(this.placedata)} })
+    },
     // 点击确认编辑
     editSure(){
      
@@ -334,6 +349,7 @@ export default {
           var data = await this.$http.post(
             "activity/updateActivity",
             JSON.stringify({
+              id:this.activeEditId,
               beginTime:this.beginTime,
               endTime:this.endTime,
               gymId: this.editruleForm.gymId,
@@ -344,16 +360,17 @@ export default {
               endTime: this.endTime,
               description: this.editruleForm.description,
               status: this.editruleForm.status,
-              gym:this.editPlace,
+              // gym:this.editPlace,
             }),{headers:{"Content-Type": "application/json"}}
           );
           console.log(data);
-          if (data.data.respBody.isSuccess == "true") {
-            this.$message.success("创建活动成功");
-            this.addDialogVisible = false;
+          if (data.status == 200) {
+            this.$message.success("修改活动成功");
             this.getActiveData();
+           
+             this.editdialogVisible = false;
           } else {
-            this.$message.error("创建活动失败");
+            this.$message.error("修改活动失败");
           }
         }
       });
@@ -365,10 +382,18 @@ export default {
     // 关闭模态框
     closeEditDialog() {
       this.$refs.ruleForm.resetFields();
+      this.picAddress="";
+      this.activeEditId="";
+      this.fileList=[];
     },
     // 关闭编辑模态框
     editcloseEditDialog() {
       this.$refs.editruleForm.resetFields();
+      this.picAddress="";
+      this.activeEditId="";
+      this.fileList=[];
+
+
     },
     // 获取场馆信息
     async getPlaceData() {
@@ -477,6 +502,7 @@ export default {
     handleRemove() {},
     // 搜索事件
     queryEvent() {
+      this.query=this.queryText
       console.log(this.query);
       this.getActiveData();
     },
@@ -506,10 +532,17 @@ export default {
       } else {
         this.activityList = data.data.respBody.queries;
         this.total = data.data.respBody.totalCount;
+        console.log(this.activityList);
+      this.activityList.map(item=>{
+         return item.picAddress=`http://47.104.128.89:8003/resource/${item.picAddress.substr(item.picAddress.lastIndexOf('/'))}`
+        })
+        console.log(this.activityList);
+        
       }
     },
     // 点击新增活动跳转
     // addActive() {
+      
     //   this.$router.push("/activityMa/activeAdd");
     // },
     // 点击编辑活动跳转
@@ -526,6 +559,7 @@ export default {
       });
       console.log(this.editContent);
       // this.editruleForm = this.editContent[0];
+      this.editruleForm.picAddress = this.editContent[0].picAddress;
       this.editruleForm.gymId = this.editContent[0].gymId;
       this.editruleForm.description = this.editContent[0].description;
       this.editruleForm.theme = this.editContent[0].theme;
@@ -537,6 +571,15 @@ export default {
       this.$set(this.editruleForm.activeDate);
       this.beginTime=this.editContent[0].beginTime;
       this.endTime=this.editContent[0].endTime;
+      this.activeEditId=e;
+      if(this.editContent[0].picAddress){
+   this.fileList=[{name:"",url:this.editContent[0].picAddress}];
+      this.$set(this.fileList);
+      }
+   
+      console.log(this.fileList);
+      
+      
 
       console.log(this.editruleForm.activeDate);
 
@@ -548,7 +591,7 @@ export default {
     },
     // 点击删除活动
     delAct(e) {
-      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+      this.$confirm("此操作将删除该活动, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
