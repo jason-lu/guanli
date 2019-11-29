@@ -646,8 +646,5 @@ export default {
     }
   }
 }
-.activity-list {
-  min-width: 1400px !important;
-  min-height: 450px !important;
-}
+
 </style>

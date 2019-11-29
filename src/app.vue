@@ -1,7 +1,7 @@
 <template>
   <div class="main-container clearfix"  :class="{changeBg: isRealtime}">
     <Navbar :user="user" @logout="logout"></Navbar>
-    <Home style="margin-top: 78px;" :user="user" @login="login" />
+    <Home :user="user" @login="login" />
   </div>
 </template>
 
@@ -71,9 +71,9 @@ export default {
 // .editA .el-tabs__item.is-active {
 //     color: #409EFF!important;
 // }
-body {
+body,html {
   margin: 0;
-  height: 100vh;
+  height: 100%;
 }
 * {
   margin: 0;
@@ -87,18 +87,21 @@ body {
   background-image: url("./assets/img/mainbackground.png");
   background-size: cover;
   background-repeat: no-repeat no-repeat;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  // display: flex;
+  // flex-direction: column;
 }
 .changeBg {
   background-image: url("./assets/img/pk_bg22.png");
   background-position: 0 0;
 }
 .content-container {
-  background: #f1f1f12a;
-  flex-grow: 1;
-  display: flex;
+  overflow: auto;
+  height: 100%;
+  padding-top: 78px;
+  box-sizing: border-box;
+  background-color: #f1f1f12a;
+  
 }
 
 ul {
@@ -107,6 +110,7 @@ ul {
 a {
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 // 清除浮动
@@ -178,7 +182,7 @@ a {
     background-color: #51a9f14f;
     padding: 10px 20px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #060c2188;
 
     .el-pagination__total,
     .el-pagination__jump {
@@ -190,7 +194,7 @@ a {
     .el-input__inner {
       line-height: 32px;
       height: 32px;
-      border: 1px solid #fff;
+      border: 1px solid #060c2188;
       background-color: #51a9f14f;
       color: #ccc;
     }
@@ -213,14 +217,14 @@ a {
       background-color: #51a9f14f;
       height: 32px;
       line-height: 30px;
-      border: 1px solid #fff;
+      border: 1px solid #060c2188;
       color: #fff;
     }
 
     .el-input-group__append {
       background: #51a9f18c;
       height: 30px;
-      border: 1px solid #fff;
+      border: 1px solid #060c2188;
 
       .el-icon-search {
         color: #fff;
@@ -251,6 +255,9 @@ a {
   // 活动列表
   .activity-list,
   .venue-list {
+    width: 100%;
+    min-width: 1000px;
+    min-height: 450px;
     padding-left: 0;
     .box {
       position: relative;
@@ -288,7 +295,6 @@ a {
 
       // 右侧具体活动内容
       .content {
-        min-width: 1000px;
         padding: 10px 0px;
         padding-right: 50px;
         position: relative;
@@ -324,7 +330,8 @@ a {
   text-align: center;
   line-height: 30px;
   background-color: #51a9f18c;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
+  border: 1px solid #060c2188;
   cursor: pointer;
   border-radius: 5px;
   transition: all 0.4s;
