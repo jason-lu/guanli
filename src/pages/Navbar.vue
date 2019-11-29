@@ -21,14 +21,14 @@
       </li>
     </ul>
     <div class="right">
-      <a v-if="!user" class="loginbtn" @click="clickHandler('/login',$event)">登录</a>
+      <a v-if="!user" class="loginbtn" @click="clickHandler('/login')">登录</a>
       <div v-else class="dropdown">
         <span class="hello">你好</span>
         <a class="dropbtn">{{user.name}}</a>
         <div class="dropdown-content">
-          <span @click="clickHandler('/profile',$event)">个人中心</span>
+          <span @click="clickHandler('/profile')">个人中心</span>
           <br />
-          <span @click="clickHandler(null,$event)">退出</span>
+          <span @click="clickHandler(null)">退出</span>
         </div>
       </div>
     </div>
@@ -41,14 +41,25 @@ export default {
     user: Object
   },
   methods: {
-    clickHandler(path, event) {
-      event.preventDefault();
+    async clickHandler(path) {
       if (path) {
         this.$router.push(path);
       } else {
+        try {
+        await this.$confirm("确认退出?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        })
         this.$router.push("/homePages");
         localStorage.removeItem("token");
         this.$emit("logout");
+      } catch {
+        this.$message({
+          type: "info",
+          message: "已取消退出"
+        });
+      }
       }
     }
   }
@@ -78,11 +89,7 @@ export default {
     li {
       height: 100%;
       float: left;
-      //   border: 1px solid #ccc;
-      //   background: #61b0f08c;
-      //   border-radius: 5px;
       overflow: hidden;
-      //   background: linear-gradient(to top, #61b0f08c, #98b8d38c);
 
       a {
         height: 100%;
@@ -132,7 +139,7 @@ export default {
   }
 
   .loginbtn {
-    border: 1px solid #f1f1f1;
+    border: 1px solid #060c2188;
     background: #61b0f08c;
     margin-right: 10px;
     border-radius: 5px;

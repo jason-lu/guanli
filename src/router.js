@@ -2,7 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Venue from './pages/Venue.vue';
 import FirstPage from './pages/FirstPage.vue';
-import Login from './pages/Login.vue';
+import Login from './pages/login/Login.vue';
+import Register from './pages/login/Register.vue';
+import ResetPasswd from './pages/login/ResetPasswd.vue';
 import Profile from './pages/Profile.vue';
 import ActivityContainer from './pages/ActivityContainer.vue';
 import activityListDetail from './pages/activity/activityListDetail.vue';
@@ -30,6 +32,8 @@ const routes = [
     { path: '/homePages/navintroduce', component: navintroduce },
     { path: '/venue', component: Venue },//场馆展示
     { path: '/login', component: Login },
+    { path: '/register', component: Register },
+    { path: '/resetpasswd', component: ResetPasswd },
     { path: '/profile', component: Profile },//用户中心
     { path: '/activities', component: ActivityContainer },//活动列表页面
     { path: '/activities/activityListDetail', component: activityListDetail },//活动详情

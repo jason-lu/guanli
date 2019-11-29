@@ -21,7 +21,7 @@ export default {
         { name: "作战训练", url: require("../assets/img/bg1.png") },
         { name: "我的预定", url: require("../assets/img/bg2.png") },
         { name: "设备管理", url: require("../assets/img/bg3.png") },
-        { name: "我的积分", url: require("../assets/img/background1.jpg") }
+        { name: "我的信息", url: require("../assets/img/background1.jpg") }
       ]
     };
   }

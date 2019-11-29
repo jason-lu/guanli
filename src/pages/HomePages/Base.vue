@@ -6,7 +6,7 @@
                     <el-breadcrumb-item>更多基地</el-breadcrumb-item>
                     <el-breadcrumb-item>基地分类</el-breadcrumb-item>
                 </el-breadcrumb>
-                <div class="content">
+                <div class="content clearfix">
                     <div class="leftbox">
                         <div class="content_up">
                             <span class="choose">场馆 - 筛选</span>

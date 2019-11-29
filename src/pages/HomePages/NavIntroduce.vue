@@ -8,7 +8,7 @@
                 <el-breadcrumb-item>全球 · 兵器库</el-breadcrumb-item>
                 <el-breadcrumb-item>枪械与单兵</el-breadcrumb-item>
             </el-breadcrumb>
-            <div class="content">
+            <div class="content clearfix">
                 <div class="leftbox">
                     <div class="content_up">
                         <span class="choose">枪械与单兵 - 筛选</span>

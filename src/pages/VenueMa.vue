@@ -220,10 +220,11 @@ export default {
       //   },
       // ],
       venueList: [],
+      venueList2: [],
       query: '', //搜索关键字
       editDialogVisible: false, //显示或隐藏‘编辑/新增’模态框
       currentPage: 1,
-      pageSize: 2,
+      pageSize: 3,
       total: 10,
       form: {  //新增及修改模态框内form表单数据
         id: "",
@@ -256,7 +257,7 @@ export default {
         ]
       },
       dialogTitle: '新增场馆', //新增及修改模态框内标题
-      fileList: [{url: ''}],
+      fileList: [{ url: '' }],
       limit: 1,
     };
   },
@@ -276,11 +277,17 @@ export default {
         })
       )
       if (data.respHeader.respCode == 200) {
-        this.venueList = data.respBody.queries
+        console.log(data.respBody.queries)
+        this.venueList = JSON.parse(JSON.stringify(data.respBody.queries))
+        this.venueList2 = JSON.parse(JSON.stringify(data.respBody.queries))
+        console.log(this.venueList)
         this.venueList.forEach(v => {
           v.score = +v.score
+          let url = v.pictureUrl.slice(v.pictureUrl.lastIndexOf('pics/')+5)
+          console.log(url)
+          v.pictureUrl = `http://47.104.128.89:8003/resource/${url}`
         })
-        // console.log(this.venueList)
+        console.log(this.venueList)
         this.total = data.respBody.totalCount
       }
     },
@@ -295,11 +302,13 @@ export default {
       this.dialogTitle = '编辑场馆'
       // 解决复用时关闭模态框再打开其他模态框时数据回显问题
       this.$nextTick(() => {
-        this.form = JSON.parse(JSON.stringify(this.venueList.filter(v => {
+        this.form = JSON.parse(JSON.stringify(this.venueList2.filter(v => {
           return v.id === id
         })[0]))
-        this.fileList = [{url: ''}]
-        this.fileList[0].url = this.form.pictureUrl
+        this.fileList = [{ url: '' }]
+        this.fileList[0].url = `http://47.104.128.89:8003/resource/`+this.form.pictureUrl.slice(this.form.pictureUrl.lastIndexOf('pics/')+5)
+        // "/home/dev/pics/58937116-8518-4c78-898c-7279342cef78.jpg"
+        // "http://47.104.128.89:8003/resource/58937116-8518-4c78-898c-7279342cef78.jpg"
       })
     },
     // 点击‘新增’按钮时弹出模态框并渲染模态框内容
@@ -370,7 +379,7 @@ export default {
     // 点击‘删除’按钮时弹出确认框，确认则发送删除请求
     async delAct(id) {
       try {
-        await this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        await this.$confirm("此操作将永久删除该场馆, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

@@ -342,6 +342,7 @@ export default {
 .realtime {
   //   background: url(../../assets/img/pk_bg22.png) center center;
   background-size: cover;
+  min-width: 1120px;
 }
 .live-broadcast {
   position: relative;
@@ -349,7 +350,8 @@ export default {
   transform: translateX(-50%);
   width: 90%;
   background-color: rgba(0, 0, 0, 0.5);
-  height: 600px;
+  height: 75vh;
+  min-width: 1120px;
 }
 
 .container-video {
@@ -362,7 +364,9 @@ export default {
   align-items: center;
 
   video {
-    height: 550px;
+    height: 70vh;
+    width: 60vw;
+  min-width: 760px;
   }
 }
 
