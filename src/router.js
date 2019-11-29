@@ -18,8 +18,9 @@ import main from './pages/Main.vue';
 import ActiveAdd from './pages/activity/activeAdd.vue';
 import ActiveEdit from './pages/activity/activeEdit.vue';
 import ActivePlace from './pages/activity/activePlace.vue';
-
 import ActiveBack from './pages/ActiveBack.vue';
+import PlaceDetail from './pages/activity/placeDetail.vue';
+
 
 Vue.use(VueRouter);
 
@@ -43,9 +44,10 @@ const routes = [
     { path: '/activityMa/activeAdd', component: ActiveAdd},
     { path: '/activityMa/activeEdit', component: ActiveEdit},
     { path: '/activityMa/activePlace', component: ActivePlace},
-
     // { path: '/activityMa/activeAdd/:id', component: ActiveAdd,props: true },
     { path: '/ActiveBack', component: ActiveBack },
+    { path: '/activityMa/placeDetail', component: PlaceDetail},
+
 ];
 
 const router = new VueRouter({
