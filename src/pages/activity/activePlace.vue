@@ -21,7 +21,7 @@
         <el-table-column prop="endTime" label="结束时间"></el-table-column>
         <el-table-column prop="address" label="编辑">
           <template slot-scope="scope">
-            <pre> {{scope.row}}</pre>
+            <!-- <pre> {{scope.row}}</pre> -->
             <el-button size="small" @click="editOpenDialog" type="primary" icon="el-icon-edit">修改场次</el-button>
             <el-button
               size="small"
