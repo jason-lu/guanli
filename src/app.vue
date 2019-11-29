@@ -306,6 +306,12 @@ a {
           right: 100px;
           bottom: 20px;
         } 
+        .placeBtn {
+          position: absolute;
+          right: 320px;
+          bottom: 20px;
+        } 
+
 
         .delBtn {
           position: absolute;
