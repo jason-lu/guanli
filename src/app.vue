@@ -136,6 +136,9 @@ a {
 .ellipsis-3 {
   .ellipsis(3);
 }
+.ellipsis-8 {
+  .ellipsis(8);
+}
 
 // 场馆及活动管理页面标题
 .activity-title,
@@ -173,7 +176,10 @@ a {
     z-index: 1;
   }
 }
-
+.venueContainer,
+.actContainer {
+  min-width: 1055px;
+}
 .venue-container,
 .activity-container {
   // 修改默认的elementui的分页器样式
@@ -303,19 +309,19 @@ a {
 
         .modifyBtn {
           position: absolute;
-          right: 100px;
+          right: 50px;
           bottom: 20px;
         } 
         .placeBtn {
           position: absolute;
-          right: 320px;
+          right: 275px;
           bottom: 20px;
         } 
 
 
         .delBtn {
           position: absolute;
-          right: 210px;
+          right: 163px;
           bottom: 20px;
           background-color: rgba(247, 71, 71, 0.5);
 

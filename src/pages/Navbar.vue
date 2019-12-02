@@ -85,6 +85,7 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
     height: 100%;
+    min-width: 604px;
 
     li {
       height: 100%;

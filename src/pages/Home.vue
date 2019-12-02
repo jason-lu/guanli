@@ -1,7 +1,7 @@
 <template>
     <div class="content-container">
         <LeftPanel v-if="showLeft" />
-        <div style="color:black; margin-left:0; flex-grow:1;" :class="{addLeft: showLeft}">
+        <div style="color:black; margin-left:0; flex-grow:1;height:100%" :class="{addLeft: showLeft}">
             <router-view @login="login"></router-view>
         </div>
     </div>
