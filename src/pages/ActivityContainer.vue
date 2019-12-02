@@ -15,20 +15,45 @@
           ></el-option>
         </el-select> -->
         <!-- “搜索活动”按钮 -->
+<<<<<<< HEAD
+        <el-input
+          placeholder="请输入活动名称..."
+          v-model="queryText"
+          class="input-with-select"
+        >
+          <el-button
+            slot="append"
+            @click="queryActive"
+            icon="el-icon-search"
+          ></el-button>
+=======
         <el-input placeholder="请输入活动主题..." v-model="queryText" class="input-with-select">
           <el-button slot="append" @click="queryActive" icon="el-icon-search"></el-button>
+>>>>>>> 956e041d5ac71437c9d6a4ae417d0378fa867b98
         </el-input>
       </div>
       <ul class="activity-list">
-        <li class="box" v-for="(item, index) in activityList" :key="index">
+        <li
+          class="box"
+          v-for="(item, index) in activityList"
+          :key="index"
+        >
           <div class="preview">
             <img :src="item.picAddress" />
           </div>
           <div class="content">
+<<<<<<< HEAD
+            <div class="name ellipsis-1">活动名称：{{item.name}}</div>
+            <div class="theme">活动类型：{{item.theme}}</div>
+=======
             <div class="name">活动名称：{{item.name}}</div>
             <div class="theme">活动主题：{{item.theme}}</div>
+>>>>>>> 956e041d5ac71437c9d6a4ae417d0378fa867b98
             <div class="desc ellipsis-3">活动描述：{{item.description}}</div>
-            <router-link id="detail" to="/activities/activityListDetail">
+            <router-link
+              id="detail"
+              to="/activities/activityListDetail"
+            >
               <span>>></span> 查看详情
             </router-link>
           </div>
@@ -52,7 +77,7 @@ import qs from "qs";
 export default {
   data() {
     return {
-      queryText:'',
+      queryText: '',
       value5: 3.7,
       total: null,
       // 页面查询信息
@@ -81,19 +106,25 @@ export default {
     this.getActiveData();
   },
   methods: {
+<<<<<<< HEAD
+    queryActive() {
+      this.query = this.queryText;
+      this.getActiveData();
+=======
     queryActive(){
       this.pagenum=1;
       this.query=this.queryText;
        this.getActiveData();
+>>>>>>> 956e041d5ac71437c9d6a4ae417d0378fa867b98
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
-      this.pagesize=val;
+      this.pagesize = val;
       this.getActiveData();
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      this.pagenum=val;
+      this.pagenum = val;
       this.getActiveData();
     },
     // 获取活动信息
@@ -113,8 +144,8 @@ export default {
         this.activityList = data.data.respBody.queries;
         this.total = data.data.respBody.totalCount;
         console.log(this.activityList);
-         this.activityList.map(item => {
-         return item.picAddress=`http://47.104.128.89:8003/resource/${item.picAddress.substr(item.picAddress.lastIndexOf('/'))}`
+        this.activityList.map(item => {
+          return item.picAddress = `http://47.104.128.89:8003/resource/${item.picAddress.substr(item.picAddress.lastIndexOf('/'))}`
         });
         console.log(this.activityList);
       }
@@ -138,26 +169,42 @@ export default {
   //   margin-right: 0px;
   margin-bottom: 20px;
 }
+@media screen and(min-width: 1380px) {
+  .box {
+    // float: left;
+    min-width: 550px;
+    width: 45%;
+    height: 240px;
+  }
+}
+@media screen and(max-width: 1380px) {
+  .box {
+    // float: left;
+    // min-width: 600px;
+    // width: 45%;
+    height: 240px;
+    width: 90%;
+    // min-width: 100%;
+  }
+}
 .activity-container .activity-list {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   .box {
-    float: left;
-    min-width: 600px;
-    width: 45%;
-    height: 240px;
-
     .preview {
       top: 40%;
+      // width: 45%;
+      max-width: 300px;
     }
 
     .content {
       position: relative;
       padding-right: 20px;
       height: 100%;
-      min-width: 45%;
+      // width: 50%;
+      // margin-left: 48%;
 
       .name {
         font-size: 20px;

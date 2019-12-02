@@ -16,9 +16,6 @@
       <li>
         <router-link to="/ActiveBack" class>活动回顾</router-link>
       </li>
-      <li>
-        <router-link to="/management/datadisplay" class>军民大数据</router-link>
-      </li>
     </ul>
     <div class="right">
       <a v-if="!user" class="loginbtn" @click="clickHandler('/login')">登录</a>
@@ -26,8 +23,8 @@
         <span class="hello">你好</span>
         <a class="dropbtn">{{user.name}}</a>
         <div class="dropdown-content">
-          <span @click="clickHandler('/profile')">个人中心</span>
-          <br />
+          <span v-show="isShowProfile" @click="clickHandler('/profile')">个人中心</span>
+          <br v-show="isShowProfile" />
           <span @click="clickHandler(null)">退出</span>
         </div>
       </div>
@@ -37,6 +34,11 @@
 
 <script>
 export default {
+  computed: {
+    isShowProfile() {
+      return this.user.name !== 'admin'
+    }
+  },
   props: {
     user: Object
   },
@@ -85,7 +87,7 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
     height: 100%;
-    min-width: 604px;
+    min-width: 474px;
 
     li {
       height: 100%;
@@ -125,7 +127,7 @@ export default {
 
     .dropdown {
       cursor: pointer;
-      margin-right: 10px;
+      margin-right: 20px;
 
       .dropbtn {
         border: 1px solid #fff;
@@ -153,7 +155,7 @@ export default {
 .dropdown-content {
   cursor: pointer;
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 60px;
   border-radius: 4px;
 
