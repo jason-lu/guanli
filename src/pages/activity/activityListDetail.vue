@@ -29,7 +29,9 @@
                 <td>差3人</td>
                 <td>100</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -38,7 +40,9 @@
                 <td>满人</td>
                 <td>150</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -47,7 +51,9 @@
                 <td>差2人</td>
                 <td>150</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -56,7 +62,9 @@
                 <td>满人</td>
                 <td>100</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
             </tbody>
@@ -80,7 +88,9 @@
                 <td>差3人</td>
                 <td>100</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed" type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -89,7 +99,9 @@
                 <td>满人</td>
                 <td>100</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -98,7 +110,9 @@
                 <td>差4人</td>
                 <td>150</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -107,7 +121,9 @@
                 <td>差1人</td>
                 <td>150</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
             </tbody>
@@ -131,7 +147,9 @@
                 <td>满人</td>
                 <td>100</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -140,7 +158,9 @@
                 <td>满人</td>
                 <td>100</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -149,7 +169,9 @@
                 <td>满人</td>
                 <td>100</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -158,7 +180,9 @@
                 <td>满人</td>
                 <td>100</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
             </tbody>
@@ -182,7 +206,9 @@
                 <td>满人</td>
                 <td>200</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -191,7 +217,9 @@
                 <td>满人</td>
                 <td>200</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -200,7 +228,9 @@
                 <td>满人</td>
                 <td>200</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
               <tr>
@@ -209,7 +239,9 @@
                 <td>差5人</td>
                 <td>200</td>
                 <td>
-                  <router-link to="/activities/joinActivity">加入活动</router-link>
+                    <el-button @click="addBlue" type="primary">加入蓝队</el-button>
+                    <el-button @click="addRed"  type="danger">加入红队</el-button>
+                  <!-- <router-link to="/activities/joinActivity">加入活动</router-link> -->
                 </td>
               </tr>
             </tbody>
@@ -244,6 +276,14 @@ export default {
     };
   },
   methods: {
+    // 假数据
+    addBlue(){
+      this.$message.success('加入蓝队成功')
+    },
+    // 假数据
+      addRed(){
+      this.$message.success('加入红队成功')
+    },
     join() {
       this.$router.push("/activities/joinActivity");
     },
