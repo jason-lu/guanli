@@ -8,6 +8,10 @@
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
       </div>
+      <div class="fr">
+        <el-button @click="start" type="primary">开始</el-button>
+        <el-button @click="end" type="danger">结束</el-button>
+      </div>
     </div>
     <!-- 用户信息 -->
     <div>
@@ -143,23 +147,31 @@ export default {
       ]
     };
   },
-  methods: {}
+  methods: {
+    // 测试数据
+    start(){
+      this.$message.success('本场游戏开始')
+    },
+    end(){
+      this.$message.success('本场游戏结束')
+    },
+  }
 };
 </script>
     <style >
-  .content  .el-input__inner{
-    background-color: rgba(55,105,149,.8);
-    color: #fff;
-  }
-    .content .el-input-group__append{
-    color: #fff;
-  }
- .content .el-input .el-button{
- background-color: rgba(55,105,149,.8);
- }
- .content .el-input{
-   color: #fff!important;
- }
+.content .el-input__inner {
+  background-color: rgba(55, 105, 149, 0.8);
+  color: #fff;
+}
+.content .el-input-group__append {
+  color: #fff;
+}
+.content .el-input .el-button {
+  background-color: rgba(55, 105, 149, 0.8);
+}
+.content .el-input {
+  color: #fff !important;
+}
 .placeDetail .el-table tr,
 .placeDetail .el-table td {
   border: 0;
@@ -226,6 +238,9 @@ export default {
 //   }
 </style>
   <style scoped>
+.fr {
+  float: right;
+}
 .table {
   margin-top: 20px;
 }

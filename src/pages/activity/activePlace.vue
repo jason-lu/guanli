@@ -19,7 +19,7 @@
         <el-table-column type="index" width="50"></el-table-column>
         <el-table-column prop="beginTime" label="开始时间"></el-table-column>
         <el-table-column prop="endTime" label="结束时间"></el-table-column>
-        <el-table-column prop="address" label="编辑">
+        <el-table-column prop="address" label="编辑" width="400" >
           <template slot-scope="scope">
             <!-- <pre>{{scope.row}}</pre> -->
             <el-button
@@ -243,6 +243,8 @@ export default {
       if (data.data.respBody.isSuccess == "OK") {
         this.placeData = data.data.respBody.queries;
         this.toatl = data.data.respBody.totalCount;
+      }else{
+        this.$message.error('获取场馆信息失败')
       }
       console.log(this.placeData);
     },
