@@ -5,6 +5,7 @@
       <router-link class="menu_head" to="/management/VenueMa">场馆管理</router-link>
       <router-link class="menu_head" to="/management/activityMa">活动管理</router-link>
       <router-link class="menu_head" to="/management/realtime">实时战况</router-link>
+        <router-link class="menu_head" to="/management/datadisplay">军民大数据</router-link>
       <!-- <router-link class="menu_head" to="/management/">装备管理</router-link> -->
     </div>
   </div>
@@ -52,7 +53,7 @@ a {
     background-color: #51a9f156;
   }
 
-  &.router-link-exact-active {
+  &.router-link-active {
     background-color: #51a9f136;
   }
 

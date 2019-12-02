@@ -130,6 +130,9 @@ a {
   -webkit-line-clamp: @line;
   overflow: hidden;
 }
+.ellipsis-1 {
+  .ellipsis(1);
+}
 .ellipsis-2 {
   .ellipsis();
 }

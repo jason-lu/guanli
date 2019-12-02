@@ -388,29 +388,43 @@ export default {
           cancelButtonText: "取消",
           type: "warning"
         });
-        // axios发送删除场馆的请求
-        let { data } = await this.$http.post('gym/delete',
+        // axios发送删除场馆的请求前加有没有活动的判断
+        let res = await this.$http.post('activity/queryActivity',
           qs.stringify({
-            gymId: id
+            gym_id: id,
+            pagenum: 1,
+            pagesize: 1
           })
         )
-        console.log(data)
-        if (data.respHeader.respCode == 200) {
-          this.$message({
-            type: "success",
-            message: "删除成功!"
-          });
-          if (this.venueList.length === 1 && this.currentPage !== 1) {
-            this.currentPage--
+        console.log(res)
+        await res.data.respBody.isSuccess === 'OK'
+        if (res.data.respBody.queries.length === 0) {
+          // axios发送删除场馆的请求
+          let { data } = await this.$http.post('gym/delete',
+            qs.stringify({
+              gymId: id
+            })
+          )
+          console.log(data)
+          if (data.respHeader.respCode == 200) {
+            this.$message({
+              type: "success",
+              message: "删除成功!"
+            });
+            if (this.venueList.length === 1 && this.currentPage !== 1) {
+              this.currentPage--
+            }
+            this.getVenueMaData()
           }
-          this.getVenueMaData()
         } else {
           this.$message({
             type: "error",
-            message: "对不起！该场馆下有进行中的活动无法删除，如若要删除该场馆，请先删除该场馆下的所有如下活动！"
+            duration: 6000,
+            message: "对不起！该场馆下有进行中的活动，故无法删除！如若要删除该场馆，请先删除该场馆下的所有如下活动！",
           });
           this.$router.push(`/management/activityMa?gymId=${id}`)
         }
+
       } catch {
         this.$message({
           type: "info",
@@ -447,6 +461,6 @@ export default {
   margin: 50px 0;
 }
 .el-form-item .el-rate {
-  margin-top: 10px
+  margin-top: 10px;
 }
 </style>
