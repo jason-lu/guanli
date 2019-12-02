@@ -29,11 +29,7 @@
             <img :src="item.picAddress" />
           </div>
           <div class="content">
-<<<<<<< HEAD
             <div class="name ellipsis-1">活动名称：{{item.name}}</div>
-=======
-            <div class="name">活动名称：{{item.name}}</div>
->>>>>>> 2459ecb4d0ff5885c95e9092c5e143473e087c2a
             <div class="theme">活动主题：{{item.theme}}</div>
             <div class="desc ellipsis-3">活动描述：{{item.description}}</div>
             <router-link
