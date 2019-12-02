@@ -82,6 +82,7 @@ export default {
   },
   methods: {
     queryActive(){
+      this.pagenum=1;
       this.query=this.queryText;
        this.getActiveData();
     },
