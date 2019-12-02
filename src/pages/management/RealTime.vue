@@ -342,7 +342,7 @@ export default {
 .realtime {
   //   background: url(../../assets/img/pk_bg22.png) center center;
   background-size: cover;
-  min-width: 1120px;
+  min-width: 1055px;
 }
 .live-broadcast {
   position: relative;
@@ -351,7 +351,7 @@ export default {
   width: 90%;
   background-color: rgba(0, 0, 0, 0.5);
   height: 75vh;
-  min-width: 1120px;
+  min-width: 1055px;
 }
 
 .container-video {
@@ -404,7 +404,7 @@ export default {
 }
 #container-right {
   height: 100%;
-  width: 45%;
+  width: 47%;
   // background-color: #5032ff50;
   float: right;
   padding-right: 20px;
@@ -412,7 +412,7 @@ export default {
 }
 #container-left {
   height: 100%;
-  width: 45%;
+  width: 47%;
   // background-color: #5032ff50;
   float: left;
   padding-left: 20px;

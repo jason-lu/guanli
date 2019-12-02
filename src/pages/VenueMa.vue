@@ -128,7 +128,11 @@
           label="场馆评分"
           prop="score"
         >
-          <el-input v-model="form.score"></el-input>
+          <el-rate
+            v-model="form.score"
+            show-score
+            text-color="#ff9900"
+          ></el-rate>
         </el-form-item>
         <el-form-item
           label="负责人"
@@ -283,7 +287,7 @@ export default {
         console.log(this.venueList)
         this.venueList.forEach(v => {
           v.score = +v.score
-          let url = v.pictureUrl.slice(v.pictureUrl.lastIndexOf('pics/')+5)
+          let url = v.pictureUrl.slice(v.pictureUrl.lastIndexOf('pics/') + 5)
           console.log(url)
           v.pictureUrl = `http://47.104.128.89:8003/resource/${url}`
         })
@@ -306,7 +310,7 @@ export default {
           return v.id === id
         })[0]))
         this.fileList = [{ url: '' }]
-        this.fileList[0].url = `http://47.104.128.89:8003/resource/`+this.form.pictureUrl.slice(this.form.pictureUrl.lastIndexOf('pics/')+5)
+        this.fileList[0].url = `http://47.104.128.89:8003/resource/` + this.form.pictureUrl.slice(this.form.pictureUrl.lastIndexOf('pics/') + 5)
         // "/home/dev/pics/58937116-8518-4c78-898c-7279342cef78.jpg"
         // "http://47.104.128.89:8003/resource/58937116-8518-4c78-898c-7279342cef78.jpg"
       })
@@ -390,6 +394,7 @@ export default {
             gymId: id
           })
         )
+        console.log(data)
         if (data.respHeader.respCode == 200) {
           this.$message({
             type: "success",
@@ -399,6 +404,12 @@ export default {
             this.currentPage--
           }
           this.getVenueMaData()
+        } else {
+          this.$message({
+            type: "error",
+            message: "对不起！该场馆下有进行中的活动无法删除，如若要删除该场馆，请先删除该场馆下的所有如下活动！"
+          });
+          this.$router.push(`/management/activityMa?gymId=${id}`)
         }
       } catch {
         this.$message({
@@ -434,5 +445,8 @@ export default {
   width: 100%;
   text-align: center;
   margin: 50px 0;
+}
+.el-form-item .el-rate {
+  margin-top: 10px
 }
 </style>

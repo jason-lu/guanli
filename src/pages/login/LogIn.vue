@@ -77,7 +77,7 @@
           </el-form-item>
           <p class="message">
             <router-link to="/resetpasswd">忘记密码？</router-link>
-            <router-link to="/register">用户注册</router-link>
+            <router-link to="/register">立即注册</router-link>
           </p>
         </el-form>
       </el-tab-pane>
@@ -239,13 +239,13 @@ export default {
         }
         ],
         picCode: [{
-          // required: true,
+          required: true,
           len: 4,
           message: '请输入4位验证码',
           trigger: ['blur', 'change']
         }],
         validateNo: [{
-          // required: true,
+          required: true,
           len: 4,
           message: '请输入4位验证码',
           trigger: ['blur', 'change']
@@ -319,7 +319,7 @@ export default {
         } else {
           this.$message({
             type: 'error',
-            message: '登陆失败',
+            message: data.respHeader.respMessage,
             duration: 3000
           })
         }
@@ -442,7 +442,6 @@ export default {
 <style lang="less" scoped>
 .login {
   width: 100%;
-  height: 100%;
   list-style: none;
   overflow: hidden;
   display: flex;

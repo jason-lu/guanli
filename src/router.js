@@ -5,7 +5,8 @@ import FirstPage from './pages/FirstPage.vue';
 import Login from './pages/login/Login.vue';
 import Register from './pages/login/Register.vue';
 import ResetPasswd from './pages/login/ResetPasswd.vue';
-import Profile from './pages/Profile.vue';
+import Profile from './pages/profile/Profile.vue';
+import Personal from './pages/profile/Personal.vue';
 import ActivityContainer from './pages/ActivityContainer.vue';
 import activityListDetail from './pages/activity/activityListDetail.vue';
 import joinActivity from './pages/activity/joinActivity.vue';
@@ -35,6 +36,7 @@ const routes = [
     { path: '/register', component: Register },
     { path: '/resetpasswd', component: ResetPasswd },
     { path: '/profile', component: Profile },//用户中心
+    { path: '/personal', component: Personal },//用户中心
     { path: '/activities', component: ActivityContainer },//活动列表页面
     { path: '/activities/activityListDetail', component: activityListDetail },//活动详情
     { path: '/activities/joinActivity', component: joinActivity },// 加入活动 即活动组队 

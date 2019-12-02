@@ -136,6 +136,9 @@ a {
 .ellipsis-3 {
   .ellipsis(3);
 }
+.ellipsis-8 {
+  .ellipsis(8);
+}
 
 // 场馆及活动管理页面标题
 .activity-title,
@@ -303,19 +306,19 @@ a {
 
         .modifyBtn {
           position: absolute;
-          right: 100px;
+          right: 50px;
           bottom: 20px;
         } 
         .placeBtn {
           position: absolute;
-          right: 320px;
+          right: 275px;
           bottom: 20px;
         } 
 
 
         .delBtn {
           position: absolute;
-          right: 210px;
+          right: 163px;
           bottom: 20px;
           background-color: rgba(247, 71, 71, 0.5);
 

@@ -92,7 +92,7 @@
         <el-button @click="resetForm">重置</el-button>
       </el-form-item>
       <p class="message">
-        <router-link to="/login">用户登录</router-link>
+        <router-link to="/login">立即登录</router-link>
       </p>
     </el-form>
     <!-- <div v-if="!isShowProfile" class="login-container">
@@ -248,14 +248,14 @@ export default {
         const { data } = res
         console.log(res)
         // const { meta: { status, msg }, data } = res
-        if (data.respBody.isSuccess) {
+        if (data.respBody.isSuccess === 'true') {
           this.$message({
             type: 'success',
             message: '注册成功，请登录!',
             duration: 3000
           })
           // 编程式导航
-          this.$router.push('/login')
+          // this.$router.push('/login')
         } else {
           this.$message({
             type: 'error',

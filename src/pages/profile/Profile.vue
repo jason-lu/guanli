@@ -7,7 +7,7 @@
       :style="{ 'background-image': 'url(' + item.url + ')' }"
     >
       <div class="shadow">
-        <span>{{item.name}}</span>
+        <router-link :to="item.path">{{item.name}}</router-link>
       </div>
     </div>
   </div>
@@ -18,10 +18,10 @@ export default {
   data() {
     return {
       items: [
-        { name: "作战训练", url: require("../assets/img/bg1.png") },
-        { name: "我的预定", url: require("../assets/img/bg2.png") },
-        { name: "设备管理", url: require("../assets/img/bg3.png") },
-        { name: "我的信息", url: require("../assets/img/background1.jpg") }
+        { name: "作战训练", url: require("../../assets/img/bg1.png"), path: '' },
+        { name: "我的预定", url: require("../../assets/img/bg2.png"), path: '' },
+        { name: "设备管理", url: require("../../assets/img/bg3.png"), path: '' },
+        { name: "账号管理", url: require("../../assets/img/background1.jpg"), path: '/personal' }
       ]
     };
   }
@@ -60,12 +60,13 @@ export default {
       background-color: rgba(0, 0, 0, 0);
       }
 
-      span {
+      a {
         display: inline-block;
-        height: 30px;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: #eee;
         text-shadow: 2px 2px 5px #000;
       }

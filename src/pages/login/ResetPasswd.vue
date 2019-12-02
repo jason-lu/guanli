@@ -172,12 +172,15 @@ export default {
         if (data.respBody.isSuccess === 'true') {
           this.$message({
             type: 'success',
-            message: '密码修改成功，请登录！'
+            message: '密码修改成功，请登录！',
+            duration: 3000
           })
+          this.$router.push('/login')
         } else {
           this.$message({
             type: 'error',
-            message: '密码修改失败，请稍后重试！'
+            message: '密码修改失败，请稍后重试！',
+            duration: 3000
           })
         }
       } catch (e) {
