@@ -179,10 +179,7 @@ a {
     z-index: 1;
   }
 }
-.venueContainer,
-.actContainer {
-  min-width: 1055px;
-}
+.activePlace,
 .venue-container,
 .activity-container {
   // 修改默认的elementui的分页器样式

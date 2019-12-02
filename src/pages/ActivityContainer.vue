@@ -15,6 +15,7 @@
           ></el-option>
         </el-select> -->
         <!-- “搜索活动”按钮 -->
+<<<<<<< HEAD
         <el-input
           placeholder="请输入活动名称..."
           v-model="queryText"
@@ -25,6 +26,10 @@
             @click="queryActive"
             icon="el-icon-search"
           ></el-button>
+=======
+        <el-input placeholder="请输入活动主题..." v-model="queryText" class="input-with-select">
+          <el-button slot="append" @click="queryActive" icon="el-icon-search"></el-button>
+>>>>>>> 956e041d5ac71437c9d6a4ae417d0378fa867b98
         </el-input>
       </div>
       <ul class="activity-list">
@@ -37,8 +42,13 @@
             <img :src="item.picAddress" />
           </div>
           <div class="content">
+<<<<<<< HEAD
             <div class="name ellipsis-1">活动名称：{{item.name}}</div>
             <div class="theme">活动类型：{{item.theme}}</div>
+=======
+            <div class="name">活动名称：{{item.name}}</div>
+            <div class="theme">活动主题：{{item.theme}}</div>
+>>>>>>> 956e041d5ac71437c9d6a4ae417d0378fa867b98
             <div class="desc ellipsis-3">活动描述：{{item.description}}</div>
             <router-link
               id="detail"
@@ -96,9 +106,16 @@ export default {
     this.getActiveData();
   },
   methods: {
+<<<<<<< HEAD
     queryActive() {
       this.query = this.queryText;
       this.getActiveData();
+=======
+    queryActive(){
+      this.pagenum=1;
+      this.query=this.queryText;
+       this.getActiveData();
+>>>>>>> 956e041d5ac71437c9d6a4ae417d0378fa867b98
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
