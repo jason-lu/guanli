@@ -7,6 +7,11 @@
     <div class="activity-container">
       <!-- 按钮 -->
       <div class="topBtn">
+        <el-select clearable class="screen theme-select" v-model="screenGymId" @change="selectChange" placeholder="场馆筛选">
+          <el-option
+            v-for="(item, i)  in paceData" :label="item.name" :key="i" :value="item.id"
+          ></el-option>
+        </el-select>
         <!-- “新增活动”按钮 -->
         <button class="addBtn btn" @click="openAdd">新增活动</button>
         <!-- “搜索活动”按钮 -->
@@ -218,6 +223,8 @@ import { log } from "util";
 export default {
   data() {
     return {
+      // 筛选的场馆id
+      screenGymId:'',
       queryText: "",
       // 跳转到场馆的数据
       placedata: null,
@@ -326,11 +333,22 @@ export default {
     };
   },
   created() {
+    if(this.$route.query.gymId){
+      this.screenGymId=this.$route.query.gymId*1;
+    }else{
+      this.screenGymId='';
+    }
     this.getActiveData();
     this.getPlaceData();
   },
 
   methods: {
+    // 筛选改变
+    selectChange(){  
+      this.getActiveData();
+      console.log(this.screenGymId);
+      
+    },
     // 点击跳转到场次管理页面
     toPlace(e) {
       this.placedata = this.activityList.filter(item => {
@@ -504,7 +522,7 @@ export default {
     handleRemove() {},
     // 搜索事件
     queryEvent() {
-      this.pagenum=1;
+      this.pagenum = 1;
       this.query = this.queryText;
       console.log(this.query);
       this.getActiveData();
@@ -524,6 +542,7 @@ export default {
       var data = await this.$http.post(
         "activity/queryActivity",
         qs.stringify({
+          gym_id:this.screenGymId,
           theme: this.query,
           pagenum: this.pagenum,
           pagesize: this.pagesize
@@ -695,5 +714,8 @@ export default {
   width: 100%;
   text-align: center;
   margin: 50px 0;
+}
+.screen {
+  margin-right: 10px;
 }
 </style>
