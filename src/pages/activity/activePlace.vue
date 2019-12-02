@@ -15,20 +15,31 @@
         <el-button @click="addOpenDialog" type="primary">添加场次</el-button>
       </div>
 
-      <el-table border :data="placeData" stripe style="width: 100%">
+      <el-table  border :data="placeData" stripe style="width: 100%">
         <el-table-column type="index" width="50"></el-table-column>
         <el-table-column prop="beginTime" label="开始时间"></el-table-column>
         <el-table-column prop="endTime" label="结束时间"></el-table-column>
         <el-table-column prop="address" label="编辑">
           <template slot-scope="scope">
-            <!-- <pre> {{scope.row}}</pre> -->
-            <el-button size="small" @click="editOpenDialog" type="primary" icon="el-icon-edit">修改场次</el-button>
+            <!-- <pre>{{scope.row}}</pre> -->
             <el-button
               size="small"
-              type="danger"
+              @click="editOpenDialog(scope.row.beginTime,scope.row.endTime,scope.row.id)"
+              type="primary"
+              icon="el-icon-edit"
+            >修改场次</el-button>
+            <el-button
+              size="small"
+              type="info"
               @click="openSureDel(scope.row.id)"
               icon="el-icon-delete"
             >删除场次</el-button>
+            <el-button
+              size="small"
+              type="danger"
+              @click="toDetail(scope.row.id,scope.row.activityId)"
+              icon="el-icon-delete"
+            >查看详情</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -37,11 +48,11 @@
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="currentPage4"
-          :page-sizes="[2, 5, 10,20]"
+          :current-page="pagenum"
+          :page-sizes="[5, 10, 15,20]"
           :page-size="100"
           layout="total, sizes, prev, pager, next, jumper"
-          :total="20"
+          :total="toatl"
         ></el-pagination>
       </div>
 
@@ -91,8 +102,10 @@ export default {
           return this.dealDisabledDate(time);
         }
       },
+      // 场次id
+      id: "",
       // 页码总数
-      toatl:'',
+      toatl: null,
       // 场次开始时间
       beginTime: "",
       // 场次结束时间
@@ -100,8 +113,8 @@ export default {
       // 场次的活动数据
       activeData: null,
       activity_id: "",
-      pagenum: "1",
-      pagesize: "5",
+      pagenum: 1,
+      pagesize: 5,
       // 表单验证规则
       rules: {
         placeTime: [
@@ -116,7 +129,6 @@ export default {
       ruleForm: {
         placeTime: []
       },
-
       dialogTitle: "",
       // 添加和编辑对话框的显示
       dialogVisible: false,
@@ -144,19 +156,31 @@ export default {
     // console.log(this.placedata);
     this.activeData = JSON.parse(this.$route.query.placedata)[0];
     console.log(this.activeData);
-  //  this.toatl= this.activeData.toatl
+    //  this.toatl= this.activeData.toatl
   },
   mounted() {},
   methods: {
+    // 点击进入活动详情
+    toDetail(placeId,activityId){
+      this.$router.push({ path: '/activityMa/placeDetail', query: { placeId,activityId}});
+    },
     // 分页的方法
-         handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
-      },
-    // 关闭对话框是重置表单
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+      this.pagesize = val;
+      this.getPlaceData();
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+      this.pagenum = val;
+      this.getPlaceData();
+    },
+    // 关闭对话框重置表单
     closeDialog() {
+      this.beginTime = "";
+      this.endTime = "";
+      this.ruleForm.placeTime = [];
+      this.$set((this.ruleForm.placeTimee = []));
       this.$refs.ruleForm.resetFields();
     },
     // 确认删除
@@ -168,16 +192,20 @@ export default {
       })
         .then(async () => {
           console.log(id);
-          var data = await this.$http.post(
+          var { data: res } = await this.$http.post(
             "actGame/deleteGame",
-            qs.stringify({ id })
+            qs.stringify({ Id: id })
           );
-          console.log(data);
-
-          this.$message({
-            type: "success",
-            message: "删除成功!"
-          });
+          console.log(res);
+          if (res.respBody.isSuccess == "true") {
+            this.getPlaceData();
+            this.$message({
+              type: "success",
+              message: "删除场次成功!"
+            });
+          } else {
+            this.$message.info("删除场次失败");
+          }
         })
         .catch(() => {
           this.$message({
@@ -196,7 +224,7 @@ export default {
       _start = _start - oneDay;
       return time.getTime() > _end || time.getTime() < _start;
     },
-    //   根据活动id查询场次
+    //  根据活动id查询场次
     async getPlaceData() {
       this.activity_id = this.$route.query.id;
       console.log(this.activity_id);
@@ -213,48 +241,91 @@ export default {
 
       if (data.data.respBody.isSuccess == "OK") {
         this.placeData = data.data.respBody.queries;
+        this.toatl = data.data.respBody.totalCount;
       }
       console.log(this.placeData);
     },
+    // 点击确认对话框
     dialogSure() {
-      this.$refs.ruleForm.validate(async val => {
-        if (val) {
-          var filterTime = this.$options.filters["format"];
-          this.beginTime = filterTime(
-            this.ruleForm.placeTime[0],
-            "yyyy-MM-dd hh:mm"
-          );
-          this.endTime = filterTime(
-            this.ruleForm.placeTime[1],
-            "yyyy-MM-dd hh:mm"
-          );
-          console.log(this.activity_id);
-          var { data: res } = await this.$http.post(
-            "actGame/createGame",
-            qs.stringify({
-              activityId: this.activity_id,
-              beginTime: this.beginTime,
-              endTime: this.endTime
-            })
-          );
-          console.log(res);
-          if (res.respBody.isSuccess == "true") {
-            this.getPlaceData();
-            this.$message.success("添加场次成功");
-            this.dialogVisible = false;
-          } else {
-            this.$message.error("添加场次失败");
+      if (this.dialogTitle == "添加场次") {
+        this.$refs.ruleForm.validate(async val => {
+          if (val) {
+            var filterTime = this.$options.filters["format"];
+            this.beginTime = filterTime(
+              this.ruleForm.placeTime[0],
+              "yyyy-MM-dd hh:mm"
+            );
+            this.endTime = filterTime(
+              this.ruleForm.placeTime[1],
+              "yyyy-MM-dd hh:mm"
+            );
+            console.log(this.activity_id);
+            var { data: res } = await this.$http.post(
+              "actGame/createGame",
+              qs.stringify({
+                activityId: this.activity_id,
+                beginTime: this.beginTime,
+                endTime: this.endTime
+              })
+            );
+            console.log(res);
+            if (res.respBody.isSuccess == "true") {
+              this.getPlaceData();
+              this.$message.success("添加场次成功");
+              this.dialogVisible = false;
+            } else {
+              this.$message.error("添加场次失败");
+            }
           }
-        }
-      });
+        });
+      } else if (this.dialogTitle == "修改场次") {
+        this.$refs.ruleForm.validate(async val => {
+          if (val) {
+            var filterTime = this.$options.filters["format"];
+            this.beginTime = filterTime(
+              this.ruleForm.placeTime[0],
+              "yyyy-MM-dd hh:mm"
+            );
+            this.endTime = filterTime(
+              this.ruleForm.placeTime[1],
+              "yyyy-MM-dd hh:mm"
+            );
+            console.log(this.activity_id);
+            var { data: res } = await this.$http.post(
+              "actGame/updateGame",
+              JSON.stringify({
+                activityId: this.activity_id,
+                beginTime: this.beginTime,
+                endTime: this.endTime,
+                id: this.id
+              }),
+              { headers: { "Content-Type": "application/json" } }
+            );
+            console.log(res);
+            if (res.respBody.isSuccess == "OK") {
+              this.getPlaceData();
+              this.$message.success("修改场次成功");
+              this.dialogVisible = false;
+            } else {
+              this.$message.error("修改场次失败");
+            }
+          }
+        });
+      }
     },
+    // 点击添加场次
     addOpenDialog() {
       this.dialogVisible = true;
+      this.ruleForm.placeTime = [];
       this.dialogTitle = "添加场次";
     },
-    editOpenDialog() {
+    // 点击修改场次
+    editOpenDialog(beginTime, endTime, id) {
       this.dialogVisible = true;
       this.dialogTitle = "修改场次";
+      this.ruleForm.placeTime = [beginTime, endTime];
+      this.id = id;
+      console.log(this.ruleForm.placeTime);
     }
   },
   // 过滤器
@@ -304,28 +375,28 @@ export default {
 </script>
 
   <style >
-.el-table tr,
-.el-table td {
+.activityDetail .el-table tr,
+.activityDetail .el-table td {
   border: 0;
   background-color: transparent !important;
 }
-.el-table th {
+.activityDetail .el-table th {
   background-color: rgba(148, 144, 144, 0.3) !important;
 }
-.el-table--striped .el-table__body tr.el-table__row--striped td {
+.activityDetail .el-table--striped .el-table__body tr.el-table__row--striped td {
   background-color: #fff;
   background-color: rgba(148, 144, 144, 0.3) !important;
   /* 双行 */
 }
-.el-table thead {
+.activityDetail  .el-table thead {
   color: #fff !important;
 }
 </style>
   <style lang="less" scoped>
-  .pagin{
-    margin-top: 30px;
-    text-align: center;
-  }
+.pagin {
+  margin-top: 30px;
+  text-align: center;
+}
 .addPlace {
   text-align: right;
   padding-bottom: 10px;
