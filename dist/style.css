@@ -1434,36 +1434,6 @@ a[data-v-770affdd] {
 }
 
 
-.session[data-v-1baaceb6] {
-  margin-top: 20px;
-  background: rgba(200, 200, 200, 0.2);
-  padding: 20px;
-}
-.activityDetail[data-v-1baaceb6] {
-  width: 90%;
-  margin: 50px auto;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 50px;
-  color: #fff;
-}
-.activityDetail .title[data-v-1baaceb6] {
-  text-align: center;
-  font-size: 24px;
-}
-.activityDetail .parameter span[data-v-1baaceb6] {
-  display: inline-block;
-  width: 32.3%;
-  height: 30px;
-  line-height: 30px;
-  box-sizing: border-box;
-  text-align: center;
-  margin-top: 30px;
-}
-.activityDetail .describe[data-v-1baaceb6] {
-  margin-top: 30px;
-}
-
-
 .content  .el-input__inner{
     background-color: rgba(55,105,149,.8);
     color: #fff;

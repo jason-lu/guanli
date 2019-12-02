@@ -10,10 +10,10 @@
           class="content"
         >
           <ul>
-            <li>姓名： 宋茹怡 <a @click="showInfoDialog">修改</a></li>
-            <li>昵称： ddddddddddsry</li>
+            <li>昵称： ddddddddddsry <a @click="showInfoDialog">修改</a></li>
+            <li>姓名： 宋**</li>
             <li>性别： 女</li>
-            <li>手机号码: 18800266192</li>
+            <li>手机号码: 188*****192</li>
             <li>电子邮箱： songruyi0804@163.com</li>
             <li>身份证号： 310************720</li>
             <li>联系人： 周梅权</li>
@@ -41,10 +41,10 @@
           class="content safetyCenter"
         >
           <ul>
-            <li>用户名: 宋茹怡 <a>修改</a></li>
-            <li>手机号码: 18800266192 <a>修改</a></li>
-            <li>电子邮箱: songruyi0804@163.com<a>修改</a></li>
-            <li>登录密码: 1****6<a>修改</a></li>
+            <li>姓名: 宋** <a @click="showSafeDialog('姓名')">修改</a></li>
+            <li>手机号码: 188*****192 <a @click="showSafeDialog('手机号码')">修改</a></li>
+            <li>电子邮箱: songruyi0804@163.com<a @click="showSafeDialog('电子邮箱')">修改</a></li>
+            <li>登录密码: 1****6<a @click="showSafeDialog('登录密码')">修改</a></li>
           </ul>
         </el-tab-pane>
       </el-tabs>
@@ -97,6 +97,36 @@
         >确 定</el-button>
       </span>
     </el-dialog>
+
+        <!-- 点击安全中心页的‘修改’弹出的模态框 -->
+    <el-dialog
+      :title="safeDialogTitle"
+      :visible.sync="safeDialogVisible"
+      width="30%"
+    >
+      <el-form
+        ref="safeForm"
+        :model="safeForm"
+        label-width="100px"
+      >
+        <el-form-item
+          :label="safeDialogLabel"
+          prop="nickname"
+        >
+          <el-input v-model="safeForm.name"></el-input>
+        </el-form-item>
+      </el-form>
+      <span
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="safeDialogVisible = false">取 消</el-button>
+        <el-button
+          type="primary"
+          @click="modifySafe"
+        >确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -105,9 +135,15 @@ export default {
   data() {
     return {
       infoDialogVisible: false,
+      safeDialogVisible: false,
       infoForm: {
         name: ''
-      }
+      },
+      safeForm: {
+        name: ''
+      },
+      safeDialogTitle: '修改姓名',
+      safeDialogLabel: '姓名'
     }
   },
   methods: {
@@ -115,6 +151,14 @@ export default {
       this.infoDialogVisible = true
     },
     modifyInfo() {
+
+    },
+    showSafeDialog(target) {
+      this.safeDialogVisible = true
+      this.safeDialogTitle = `修改${target}`
+      this.safeDialogLabel = target
+    },
+    modifySafe() {
 
     }
   }
