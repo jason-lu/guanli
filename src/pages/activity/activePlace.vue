@@ -1,5 +1,5 @@
 <template>
-  <div class="activityDetail">
+  <div class="activityDetail activePlace">
     <div class="content">
       <div class="title">{{activeData.name}}</div>
       <div class="parameter">
@@ -87,6 +87,7 @@
         </span>
       </el-dialog>
     </div>
+    
   </div>
 </template>
   
@@ -323,7 +324,10 @@ export default {
     editOpenDialog(beginTime, endTime, id) {
       this.dialogVisible = true;
       this.dialogTitle = "修改场次";
+      
+      this.$nextTick(()=>{
       this.ruleForm.placeTime = [beginTime, endTime];
+      })
       this.id = id;
       console.log(this.ruleForm.placeTime);
     }
@@ -393,9 +397,12 @@ export default {
 }
 </style>
   <style lang="less" scoped>
-.pagin {
-  margin-top: 30px;
+
+.el-pagination{
+   margin-top: 30px;
+  width: 40%;
   text-align: center;
+  transform: translate(60%)
 }
 .addPlace {
   text-align: right;
@@ -451,8 +458,6 @@ export default {
     background-color: #2c67978c;
   }
 }
-</style>
-  <style scoped>
 .session {
   margin-top: 20px;
   background: rgba(200, 200, 200, 0.2);

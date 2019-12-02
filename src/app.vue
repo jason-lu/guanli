@@ -173,7 +173,7 @@ a {
     z-index: 1;
   }
 }
-
+.activePlace,
 .venue-container,
 .activity-container {
   // 修改默认的elementui的分页器样式

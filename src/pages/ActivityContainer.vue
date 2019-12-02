@@ -15,7 +15,7 @@
           ></el-option>
         </el-select> -->
         <!-- “搜索活动”按钮 -->
-        <el-input placeholder="请输入活动名称..." v-model="queryText" class="input-with-select">
+        <el-input placeholder="请输入活动主题..." v-model="queryText" class="input-with-select">
           <el-button slot="append" @click="queryActive" icon="el-icon-search"></el-button>
         </el-input>
       </div>
@@ -26,7 +26,7 @@
           </div>
           <div class="content">
             <div class="name">活动名称：{{item.name}}</div>
-            <div class="theme">活动类型：{{item.theme}}</div>
+            <div class="theme">活动主题：{{item.theme}}</div>
             <div class="desc ellipsis-3">活动描述：{{item.description}}</div>
             <router-link id="detail" to="/activities/activityListDetail">
               <span>>></span> 查看详情

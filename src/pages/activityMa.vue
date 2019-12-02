@@ -10,7 +10,7 @@
         <!-- “新增活动”按钮 -->
         <button class="addBtn btn" @click="openAdd">新增活动</button>
         <!-- “搜索活动”按钮 -->
-        <el-input placeholder="请输入活动名称..." v-model="queryText" class="input-with-select">
+        <el-input placeholder="请输入主题名称..." v-model="queryText" class="input-with-select">
           <el-button slot="append" @click="queryEvent" icon="el-icon-search"></el-button>
         </el-input>
       </div>
@@ -502,7 +502,7 @@ export default {
     handleRemove() {},
     // 搜索事件
     queryEvent() {
-      this.query=this.queryText
+      this.query=this.queryText;
       console.log(this.query);
       this.getActiveData();
     },
@@ -669,7 +669,7 @@ export default {
 <style lang="less" scoped>
 // 页面内容主盒子
 .activity-container .activity-list .box .content {
-  .theme {
+  .title {
     font-size: 20px;
   }
 
