@@ -96,10 +96,6 @@
 </script>
 
 <style lang="less" scoped>
-    // .venuePage {
-    //     width: 1200px;
-    //     margin: 50px auto 0;
-    // }
 
     .venuePage .venueContainer .baseMessage {
         overflow: hidden;
