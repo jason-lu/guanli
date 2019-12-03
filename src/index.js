@@ -9,11 +9,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 // import store from './store/store.js';
 import axios from 'axios';
-<<<<<<< HEAD
 import "babel-polyfill";
-=======
-import 'babel-polyfill'
->>>>>>> 8737cc39f4de8f926bbd9a8e2335e0555b74c644
 axios.defaults.baseURL = process.env.NODE_ENV === 'production'? '/api/v1/':'http://47.104.128.89/api/v1/';
 Vue.prototype.$http= axios;
 Vue.component(Vebar.name, Vebar)

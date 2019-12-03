@@ -31,18 +31,7 @@ module.exports = merge(common,{
                 test: /\.(mp4|qlv)$/,
                 use: 'file-loader',
             },
-<<<<<<< HEAD
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-=======
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: file => (
-                  /node_modules/.test(file) &&
-                  !/\.vue\.js/.test(file)
-                )
-              }
->>>>>>> 8737cc39f4de8f926bbd9a8e2335e0555b74c644
         ]
     },
     plugins:[
