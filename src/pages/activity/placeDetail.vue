@@ -4,8 +4,8 @@
     <div class="clearfix">
       <div class="fl userQuery">用户名查询:</div>
       <div class="fl content">
-        <el-input placeholder="请输入内容" v-model="userQuery" class="input-with-select">
-          <el-button slot="append" icon="el-icon-search"></el-button>
+        <el-input placeholder="请输入用户名" v-model="userQuery" class="input-with-select">
+          <el-button @click="quryUser" slot="append" icon="el-icon-search"></el-button>
         </el-input>
       </div>
       <div class="fr">
@@ -17,11 +17,13 @@
     <div>
       <div class="userInfo">用户信息</div>
       <!-- table表格 -->
-      <el-table class="table" :data="userData" border stripe style="width: 100%">
+      <el-table class="table" :data="userList" border stripe style="width: 100%">
         <el-table-column type="index" width="50"></el-table-column>
-        <el-table-column prop="date" label="日期" width="180"></el-table-column>
-        <el-table-column prop="name" label="姓名" width="180"></el-table-column>
-        <el-table-column prop="address" label="地址"></el-table-column>
+        
+        <el-table-column prop="name" label="姓名"></el-table-column>
+        <el-table-column prop="sex" label="性别" width="80"></el-table-column>
+        <el-table-column prop="email" label="邮箱"></el-table-column>
+        <el-table-column prop="phone" label="手机号"></el-table-column>
         <el-table-column label="操作">
           <el-button @click="addArmDialogVisible = true" type="primary">加入战队</el-button>
         </el-table-column>
@@ -90,9 +92,21 @@
 </template>
   
   <script>
+import qs from "qs";
 export default {
+
   data() {
     return {
+      // 武器识别码，默认空
+      armCode:'',
+      // 武器列表
+      weaponList:[],
+      // 使用状态,0未绑定，1已绑定,2,锁死，3损坏，4等等，分配武器时请使用0查询
+      weaponStatus:0,
+      placeId:null,
+      activityId:null,
+      pagenum:1,
+      pagesize:10000,
       // 添加战队的表单
       addArmRuleForm: {},
       // 添加战队表单验证
@@ -100,29 +114,9 @@ export default {
       // 点击加入战队的对话框显示
       addArmDialogVisible: false,
       // 用户名查询
-      userQuery: "",
-      userData: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
-      ],
+      userQuery: "ddddddddddsry",
+      // 用户信息列表
+      userList:[],
       armData: [
         {
           date: "2016-05-02",
@@ -147,6 +141,13 @@ export default {
       ]
     };
   },
+  created(){
+    this.placeId=this.$route.query.placeId;
+    this.activityId=this.$route.query.activityId;
+    console.log(`场次ID是${this.placeId},活动ID是${this.activityId}`);
+    this.getWeaponList();
+    
+  },
   methods: {
     // 测试数据
     start(){
@@ -154,6 +155,33 @@ export default {
     },
     end(){
       this.$message.success('本场游戏结束')
+    },
+    // 点击搜索，查询用户信息
+  async  quryUser(){
+    var {data:res}=await  this.$http.post('member/queryMember',qs.stringify({
+          name:this.userQuery,
+          pagenum:this.pagenum,
+          pagesize:this.pagesize,
+      }))
+      console.log(res);
+      if(res.respBody.isSuccess=="OK"){
+        this.userList=res.respBody.queries
+      }else{
+        this.$message.info('获取用户信息失败')
+      }
+      console.log(this.userList);
+      
+    },
+    // 获取武器信息
+    async getWeaponList(){
+      var data=await this.$http.post('arm/queryArm',qs.stringify({
+        arm_id:this.armCode,
+        status:this.weaponStatus,
+        pagenum:this.pagenum,
+        pagesize:this.pagesize,
+      }))
+      console.log(data);
+      
     },
   }
 };
@@ -188,54 +216,11 @@ export default {
   color: #fff !important;
 }
 </style>
-//   <style lang="less">
-// .el-input{
-//   background-color: #ccc!important;
-// }
+   <style lang="less">
 .el-table {
   color: #fff !important;
   background-color: #51a9f18c !important;
 }
-//   .session {
-//     .el-tabs__item {
-//       color: #fff;
-//     }
-//   }
-//   .session-table {
-//     width: 100%;
-//     background-color: #3c79ac8c;
-//     border: 1px solid #2149698c;
-//     border-collapse: collapse;
-//     th,
-//     td {
-//       // padding: 15px 0;
-//       height: 55px;
-//       text-align: center;
-//       border: 2px solid #2149698c;
-//       a {
-//       //   text-decoration: underline;
-//         display: inline-block;
-//         background-color: #73bffdb2;
-//         border-radius: 5px;
-//         padding: 7px 15px;
-//         border: 1px solid #2149698c;
-//         color: #fff;
-
-//         &:hover {
-//             background-color: #73bffd54;
-//         }
-//       }
-//     }
-//     th {
-//       background-color: #2c67978c;
-//     }
-//     tr:nth-child(even) {
-//       background-color: #2c67978c;
-//     }
-//     tbody tr:hover {
-//       background-color: #2c67978c;
-//     }
-//   }
 </style>
   <style scoped>
 .fr {

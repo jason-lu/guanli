@@ -48,68 +48,6 @@
             </div>
             <!-- container -->
             <div>
-                <!-- <div class="contentFirst ">
-                    <div>
-                        <p class="content_t  clearfix">
-                            <router-link class=" content_title fl" to="#">国防教育基地</router-link>
-                            <router-link class="content_title fr margin" to="/homePages/base">更多分类</router-link>
-                        </p>
-                        <ul class="contentFirstUl">
-                            <li><a href="#">● 训练基地</a></li>
-                            <li><a href="#">● 国防教育基地</a></li>
-                            <li><a href="#">● 红色教育基地</a></li>
-                            <li><a href="#">● 招募基地</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="content_t clearfix">
-                            <router-link class="content_title fl" to="#">武器装备</router-link>
-                            <router-link class="content_title fr" to="/homePages/navintroduce">更多</router-link>
-
-                        </p>
-
-                        <div>
-                            <div class="clearfix gunContent">
-                                <div class="fl">陆军装备</div>
-                                <div class="fr ">
-                                    <a href="#">陆军装备1</a>
-                                    <a href="#">陆军装备2</a>
-                                    <a href="#">陆军装备3</a>
-
-                                </div>
-                            </div>
-                            <div class="clearfix gunContent">
-
-                                <div class="fl">海军装备</div>
-                                <div class="fr ">
-                                    <a href="#">海军装备1</a>
-                                    <a href="#">海军装备2</a>
-                                    <a href="#">海军装备3</a>
-
-                                </div>
-                            </div>
-                            <div class="clearfix gunContent">
-                                <div class="fl">空军装备</div>
-                                <div class="fr ">
-                                    <a href="#">战斗机</a>
-                                    <a href="#">无人机</a>
-                                    <a href="#">运输机</a>
-
-                                </div>
-                            </div>
-                            <div class="clearfix gunContent">
-                                <div class="fl">海军装备</div>
-                                <div class="fr ">
-                                    <a href="#">海军1</a>
-                                    <a href="#">海军2</a>
-                                    <a href="#">海军3</a>
-                                    <a href="#">海军3</a>
-                                    <a href="#">海军3</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <!-- 国防教育基地 -->
                 <div class="contentFirst">
                     <div>
@@ -118,54 +56,14 @@
                             <router-link class="content_title fr margin" to="/homePages/base">更多</router-link>
                         </p>
                         <div class="content-box">
-                            <div class="div-box">
+                            <div class="div-box" v-for="(item,index) in educateList" :key="item.id">
                                 <router-link to="/homePages/base">
-                                    <div><img src="../assets/img/base1.png" alt=""></div>
+                                    <div><img :src='item.src' alt=""></div>
                                     <div class="content-middle">
-                                        <div class="content-box-m">国防教育基地</div>
+                                        <div class="content-box-m">{{item.name}}</div>
                                         <div class="smallbox-m">></div>
                                     </div>
-                                    <p class="content-end">国防教育基地是指对有组织的中小学生开放的基地，是全民国防教育日向社会开放的有关国防教育的基本阵地。</p>
-                                </router-link>
-                            </div>
-                            <div class="div-box">
-                                <router-link to="/homePages/base">
-                                    <div><img src="../assets/img/base2.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">红色教育基地</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">
-                                        红色教育是指以红色作为时代精神内涵的象征、务实的落点在于教育。呼唤有志青年忧国忧民、挑战自我、超越自我、挑战极限、奉献社会的崇高精神。
-                                    </p>
-                                </router-link>
-                            </div>
-                            <div class="div-box">
-                                <router-link to="/homePages/base">
-                                    <div><img src="../assets/img/base3.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">招募基地</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">全市最大最正规的场地！
-
-                                        最好最专业的设备！
-
-                                        最帅最热情的教练！
-
-                                        体验超炫的射击对战！
-
-                                        玩出不一样青春赛场！</p>
-                                </router-link>
-                            </div>
-                            <div class="div-box">
-                                <router-link to="/homePages/base">
-                                    <div><img src="../assets/img/base4.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">训练基地</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">专业野战拓展训练机构专业提供拓展培训课程,户外拓展培训,军事训练基地,真人CS野战,拓展培训课程,体验式拓展训练，</p>
+                                    <p class="content-end">{{item.desc}}</p>
                                 </router-link>
                             </div>
                         </div>
@@ -175,58 +73,46 @@
                 <!-- 装备介绍 -->
                 <div class="contentFirst">
                     <div>
-                            <p class="content_t  clearfix">
-                                    <router-link class=" content_title fl" to="#">装备介绍</router-link>
-                                    <router-link class="content_title fr margin" to="/homePages/base">更多</router-link>
+                        <p class="content_t  clearfix">
+                            <router-link class=" content_title fl" to="#">装备介绍</router-link>
+                            <router-link class="content_title fr margin" to="/homePages/base">更多</router-link>
                         </p>
                         <div class="content-box">
-                            <div class="div-box">
+                            <div class="div-box" v-for="(item,index) in weaponList" :key="item.id">
                                 <router-link to="/homePages/navintroduce">
-                                    <div><img src="../assets/img/sea.png" alt=""></div>
+                                    <div><img :src="item.src" alt=""></div>
                                     <div class="content-middle">
-                                        <div class="content-box-m">海军武器装备</div>
+                                        <div class="content-box-m">{{item.name}}</div>
                                         <div class="smallbox-m">></div>
                                     </div>
-                                    <p class="content-end">海军武器装备是海军诸兵种执行作战、训练任务和实施勤务保障的各种战斗装备和技术装备的总称。</p>
-                                </router-link>
-                            </div>
-                            <div class="div-box">
-                                <router-link to="/homePages/navintroduce">
-                                    <div><img src="../assets/img/sky.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">空军武器装备</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">
-                                        空军武器装备，装备空军各兵种的武器装备的统称。空军武器装备主要有各种飞机(包括战斗机、轰炸机、歼击轰炸机、强击机、侦察机、运输机、预警机、直升机、其他特种飞机)
-                                    </p>
-                                </router-link>
-                            </div>
-                            <div class="div-box">
-                                <router-link to="/homePages/navintroduce">
-                                    <div><img src="../assets/img/pic-gun4.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">陆军武器装备</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">陆军武器装备体和系、轻武器、火炮与导弹、坦克装甲车辆、直升机、工程装备、陆军武器装备展望等。</p>
-                                </router-link>
-                            </div>
-                            <div class="div-box">
-                                <router-link to="/homePages/navintroduce">
-                                    <div><img src="../assets/img/space.png" alt=""></div>
-                                    <div class="content-middle">
-                                        <div class="content-box-m">太空武器装备</div>
-                                        <div class="smallbox-m">></div>
-                                    </div>
-                                    <p class="content-end">
-                                        空军武器装备，装备空军各兵种的武器装备的统称。空军武器装备主要有各种飞机(包括战斗机、轰炸机、歼击轰炸机、强击机、侦察机、运输机、预警机、直升机、其他特种飞机)
-                                    </p>
+                                    <p class="content-end">{{item.desc}}</p>
                                 </router-link>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- 精英战队 -->
+                <div class="contentFirst">
+                    <div>
+                        <p class="content_t  clearfix">
+                            <router-link class=" content_title fl" to="#">装备介绍</router-link>
+                            <router-link class="content_title fr margin" to="/homePages/base">更多</router-link>
+                        </p>
+                        <div class="content-box">
+                            <div class="div-box" v-for="(item,index) in heroTeam" :key="item.id">
+                                <router-link to="/homePages/navintroduce">
+                                    <div><img :src="item.src" alt=""></div>
+                                    <div class="content-middle">
+                                        <div class="content-box-m">{{item.name}}</div>
+                                        <div class="smallbox-m">></div>
+                                    </div>
+                                    <p class="content-end">{{item.desc}}</p>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 国防教育 -->
                 <div class="contentFirst">
                     <div>
                         <p class="content_t">
@@ -268,13 +154,10 @@
                         Reserved 游侠网 版权所有
                     </div>
                 </div> -->
-                <!-- 底部返回小盒子 -->
-                <!-- <div class="backtop " @click="goback" :class="{showbox:isshowbox}">
-                    <em>返回</em>
-                </div> -->
 
             </div>
         </div>
+        
     </div>
 </template>
 
@@ -293,8 +176,28 @@
                 tabArr: [
                     { title: '国防教育', src: '#' }, { title: "动态信息", src: '#' }, { title: "典型风采", src: '#' },
                     { title: '国防教育基地', src: 'homePages/base' }, { title: '装备介绍', src: 'homePages/navintroduce' }, { title: '师资教材', src: '#' },
-                    { title: '热点专题', src: '#' }, { title: '社会国防教育', src: '#' }, { title: '视频推荐', src: '#' },
-                ]
+                    { title: '精英战队', src: '#' }, { title: '社会国防教育', src: '#' }, { title: '视频推荐', src: '#' },
+                ],
+                // 教育基地的数据
+                educateList: [
+                    { id: 1, src: require('../assets/img/base1.png'), name: '国防教育基地', desc: '国防教育基地是指对有组织的中小学生开放的基地，是全民国防教育日向社会开放的有关国防教育的基本阵地。' },
+                    { id: 2, src: require('../assets/img/activity1.jpg'), name: '红色教育基地', desc: '红色教育是指以红色作为时代精神内涵的象征、务实的落点在于教育。呼唤有志青年忧国忧民、挑战自我、超越自我、挑战极限、奉献社会的崇高精神。' },
+                    { id: 3, src: require('../assets/img/base3.png'), name: '训练基地', desc: '全市最大最正规的场地！最好最专业的设备！最帅最热情的教练！体验超炫的射击对战！玩出不一样青春赛场！' },
+                    { id: 4, src: require('../assets/img/base4.png'), name: '国防教育基地', desc: '专业野战拓展训练机构专业提供拓展培训课程,户外拓展培训,军事训练基地,真人CS野战,拓展培训课程,体验式拓展训练' },
+                ],
+                // 装备介绍数据
+                weaponList: [
+                    { id: 1, src: require('../assets/img/sea.png'), name: '海军武器装备', desc: '海军武器装备是海军诸兵种执行作战、训练任务和实施勤务保障的各种战斗装备和技术装备的总称。' },
+                    { id: 2, src: require('../assets/img/sky.png'), name: '空军武器装备', desc: '空军武器装备，装备空军各兵种的武器装备的统称。空军武器装备主要有各种飞机(包括战斗机、轰炸机、歼击轰炸机、强击机、侦察机、运输机、预警机、直升机、其他特种飞机)' },
+                    { id: 3, src: require('../assets/img/pic-gun4.png'), name: '陆军武器装备', desc: '陆军武器装备体和系、轻武器、火炮与导弹、坦克装甲车辆、直升机、工程装备、陆军武器装备展望等。' },
+                    { id: 4, src: require('../assets/img/space.png'), name: '太空武器装备', desc: '空军武器装备，装备空军各兵种的武器装备的统称。空军武器装备主要有各种飞机(包括战斗机、轰炸机、歼击轰炸机、强击机、侦察机、运输机、预警机、直升机、其他特种飞机)' },
+                ],
+                heroTeam: [
+                    { id: 1, src: require('../assets/img/team1.png'), name: '一杆狙打天下', desc: '一朝战友，一生朋友 ，这是一支让人闻风丧胆的战队，建队到现在3年，成员一共21人，各个是精英。' },
+                    { id: 2, src: require('../assets/img/team2.png'), name: '狂军团', desc: '我们是用激情来诠释明天的一群少年。纵然有过失败，纵然尝过泪水，但没有面对狂风的鸷，就不能拍展翅膀，翱翔云间，没有驰骋荒原的狼，就不会引喉高嗷，震斥山林。' },
+                    { id: 3, src: require('../assets/img/team3.png'), name: '反手就是一枪', desc: '战神优先，绵羊靠边。这是一支弹无虚发的战队，曾保持23场战斗的连胜，队长***更是有着10年的战斗经验' },
+                    { id: 4, src: require('../assets/img/team4.png'), name: '火线敢死队', desc: '我们是能点燃严冬浓雾，趋散乌云的精灵；我们是给荒凉带去生机，注入活力的风铃；我们是擦干流星泪光，映亮天宇的传奇。' },
+                ],
             };
 
 
@@ -302,34 +205,13 @@
 
         mounted() {
 
-            window.addEventListener('scroll', this.handleScroll, true)
+
         },
         methods: {
-            // goback() {
-            //     this.$nextTick(() => {
-            //         window.scrollTo(0, 0)
 
-            // })
-
-
-            // },
-            goback() {
-                // console.log('goback函数被执行')
-                window.scrollTo(0, 0);
-            },
-            handleScroll(e) {
-                // console.log(e.target.scrollTop);
-
-                if (e.target.scrollTop > 300) {
-                    this.isshowbox = false;
-                } else {
-                    this.isshowbox = true;
-                }
-
-            }
         },
         destroyed() {
-            window.removeEventListener('scroll', this.handleScroll, true);
+
         },
     }
 
@@ -338,30 +220,6 @@
 </script>
 
 <style scoped>
-    .showbox {
-        display: none;
-    }
-
-    .backtop {
-        position: fixed;
-        bottom: 100px;
-        right: 140px;
-        height: 45px;
-        width: 45px;
-        background-color: #005541;
-        color: #fff;
-        text-align: center;
-    }
-
-    .backtop:hover {
-        cursor: pointer;
-    }
-
-    .backtop em {
-        line-height: 45px;
-        font-style: normal;
-    }
-
     .glzjfoot {
         text-align: center;
         margin: 50px 0;
@@ -370,17 +228,6 @@
 
     .margin {
         margin-right: 20px;
-    }
-
-    .gunContent {
-        color: #333;
-        margin-top: 45px;
-        font-size: 20px;
-    }
-
-    .gunContent a {
-        color: #333;
-
     }
 
     /* 清除浮动 */
@@ -438,7 +285,7 @@
         padding: 20px;
         margin-top: 25px;
         text-indent: 2rem;
-        color: #999;
+        /* color: #999; */
         font-size: 14px;
     }
 
@@ -446,7 +293,6 @@
         float: left;
         font-size: 18px;
         width: 120px;
-        /* height: 70px; */
         overflow: hidden;
     }
 
@@ -472,6 +318,7 @@
 
     .div-box {
         box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+        background-color:rgba(0, 0, 0, 0.5);
 
     }
 
@@ -498,7 +345,7 @@
     }
 
     .descripte {
-        color: #999999;
+        color: #fff;
     }
 
     .contentFirstUl {
@@ -507,13 +354,13 @@
 
     .contentFirstUl li {
         margin-top: 10px;
-        color: #333;
+        color: #fff;
         height: 30px;
         font-size: 20px;
     }
 
     .content-name-link {
-        color: #333;
+        color: #fff;
         font-size: 20px;
     }
 
@@ -537,7 +384,7 @@
     }
 
     .content_title {
-        color: #42716F;
+        color: #ffF;
         font-size: 24px;
         font-weight: 700;
 
@@ -545,16 +392,11 @@
 
     a {
         text-decoration: none;
-        color: #000;
-    }
-
-    .tabchange {
-        height: 75px;
+        /* color: #000; */
     }
 
     .box {
-        background: #F5F5F5;
-        /* height: 100%; */
+        /* background: #F5F5F5; */
     }
 
     .w {
@@ -572,30 +414,14 @@
         justify-content: space-between;
     }
 
-    .side {
-        width: 180px;
-        flex-grow: 1;
-        margin: 0px 2px;
-    }
-
     .news_right {
         box-sizing: border-box;
         padding: 25px;
         color: #fff;
         background-color: #009C79;
         height: 380px;
-        margin-top: 20px;
+        /* margin-top: 20px; */
         width: 45%;
-    }
-
-    .main {
-        flex-grow: 3;
-    }
-
-    .title {
-        margin-top: 10px;
-        font-size: 1.1rem;
-        text-align: center;
     }
 
     .news-container {
@@ -603,38 +429,7 @@
         height: 380px;
         width: 55%;
         position: relative;
-        margin-top: 20px;
-    }
-
-
-    .title {
-        text-align: center;
-        font-size: 22px;
-        line-height: 30px;
-        margin-top: 20px;
-    }
-
-    .personMsg {
-        display: flex;
-        padding: 0;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-    }
-
-    .personMsg li {
-        margin: 4px;
-        height: auto;
-        list-style: none;
-        background: #fff;
-    }
-
-    .personMsg li img {
-        width: 100%;
-    }
-
-    .personMsg li .name {
-        text-align: center;
-        line-height: 30px;
+        /* margin-top: 20px; */
     }
 
     .navchange {
@@ -655,7 +450,7 @@
 
     .navUl a {
         text-decoration: none;
-        color: #000;
+        /* color: #000; */
     }
 
     * {
