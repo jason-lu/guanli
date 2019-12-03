@@ -62,9 +62,9 @@
     
     .videoContainer .box .cell {
         float: left;
-        width: 310px;
-        margin: 10px;
-        background: #060c2188;
+        width: 350px;
+        margin: 20px;
+        background: rgba(0,0,0,.4);
         border-bottom: 1px solid #d6d6d6;
     }
     

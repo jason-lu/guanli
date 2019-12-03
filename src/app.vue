@@ -101,7 +101,7 @@ body,html {
   height: 100%;
   padding-top: 78px;
   box-sizing: border-box;
-  background-color: #f1f1f12a;
+  background-color: rgba(241, 241, 241, .15);
   
 }
 
@@ -186,10 +186,10 @@ a {
   // 修改默认的elementui的分页器样式
   .el-pagination {
     margin-bottom: 70px;
-    background-color: #51a9f14f;
+    background-color: rgba(81, 169, 241, .3);
     padding: 10px 20px;
     border-radius: 5px;
-    border: 1px solid #060c2188;
+    border: 1px solid rgba(6, 12, 33, .55);
 
     .el-pagination__total,
     .el-pagination__jump {
@@ -201,8 +201,8 @@ a {
     .el-input__inner {
       line-height: 32px;
       height: 32px;
-      border: 1px solid #060c2188;
-      background-color: #51a9f14f;
+      border: 1px solid rgba(6, 12, 33, .55);
+      background-color: rgba(81, 169, 241, .3);
       color: #ccc;
     }
 
@@ -221,17 +221,17 @@ a {
     margin-right: 50px;
 
     .el-input__inner {
-      background-color: #51a9f14f;
+      background-color: rgba(81, 169, 241, .3);
       height: 32px;
       line-height: 30px;
-      border: 1px solid #060c2188;
+      border: 1px solid rgba(6, 12, 33, .55);
       color: #fff;
     }
 
     .el-input-group__append {
-      background: #51a9f18c;
+      background: rgba(81,169,241, .6);
       height: 30px;
-      border: 1px solid #060c2188;
+      border: 1px solid rgba(6, 12, 33, .55);
 
       .el-icon-search {
         color: #fff;
@@ -273,7 +273,7 @@ a {
       // flex-grow: 1;
       // justify-content: center;
       // flex-direction: row;
-      background: #060c2188;
+      background: rgba(0,0,0,.4);
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
       overflow: hidden;
 
@@ -324,7 +324,7 @@ a {
           position: absolute;
           right: 143px;
           bottom: 20px;
-          background-color: rgba(247, 71, 71, 0.5);
+          background-color: rgba(247, 71, 71, 0.6);
 
           &:hover {
             background-color: rgba(247, 71, 71, 0.4);
@@ -342,15 +342,15 @@ a {
   font-size: 14px;
   text-align: center;
   line-height: 30px;
-  background-color: #51a9f18c;
+  background-color: rgba(81,169,241, .6);
   // border: 1px solid #ccc;
-  border: 1px solid #060c2188;
+  border: 1px solid rgba(6, 12, 33, .55);
   cursor: pointer;
   border-radius: 5px;
   transition: all 0.4s;
 
   &:hover {
-    background-color: #51a9f154;
+    background-color: rgba(81,169,241,.4);
   }
 }
 

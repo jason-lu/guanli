@@ -103,12 +103,12 @@ export default {
         box-sizing: border-box;
 
         &:hover {
-          background: linear-gradient(to top, #61b0f08c, rgba(0, 0, 0, 0));
+          background: linear-gradient(to top, rgba(81,169,241, .6), rgba(0, 0, 0, 0));
           color: #fff;
         }
         &.router-link-active {
           color: #fff;
-          background: linear-gradient(to top, #61b0f08c, rgba(0, 0, 0, 0));
+          background: linear-gradient(to top, rgba(81,169,241, .6), rgba(0, 0, 0, 0));
         }
       }
     }
@@ -143,13 +143,13 @@ export default {
 
   .loginbtn {
     border: 1px solid #060c2188;
-    background: #61b0f08c;
+    background: rgba(81,169,241, .6);
     margin-right: 10px;
     border-radius: 5px;
     height: 20px;
     line-height: 20px;
     padding: 5px 25px;
-    color: white;
+    color: #fff;
   }
 }
 .dropdown-content {
@@ -172,11 +172,11 @@ export default {
     display: inline-block;
     height: 100%;
     width: 100%;
-    background-color: #61b0f08c;
+    background-color: rgba(81,169,241, .6);
     transition: all 0.2s;
   }
   span:hover {
-    background-color: #3376ac8c;
+    background-color: rgba(81,169,241, .4);
   }
 }
 .dropdown:hover .dropdown-content {

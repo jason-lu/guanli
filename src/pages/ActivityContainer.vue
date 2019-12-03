@@ -34,9 +34,10 @@
             <div class="desc ellipsis-3">活动描述：{{item.description}}</div>
             <router-link
               id="detail"
+              class="btn"
               to="/activities/activityListDetail"
             >
-              <span>>></span> 查看详情
+              <span>>> </span> 查看详情
             </router-link>
           </div>
         </li>
@@ -191,15 +192,15 @@ export default {
       }
       #detail {
         position: absolute;
-        padding: 5px 15px;
+        padding: 0px 15px;
         right: 25px;
         bottom: 50px;
-        border: 1px solid #234764;
+        border: 1px solid rgba(6, 12, 33, .55);
         border-radius: 5px;
-        background-color: #51a9f18c;
+        background-color: rgba(81,169,241, .6);
 
         &:hover {
-          background-color: #51a9f154;
+          background-color: rgba(81,169,241,.4);
         }
 
         span {
