@@ -7,10 +7,14 @@
     <div class="activity-container">
       <!-- 按钮 -->
       <div class="topBtn">
-        <el-select clearable class="screen theme-select" v-model="screenGymId" @change="selectChange" placeholder="场馆筛选">
-          <el-option
-            v-for="(item, i)  in paceData" :label="item.name" :key="i" :value="item.id"
-          ></el-option>
+        <el-select
+          clearable
+          class="screen theme-select"
+          v-model="screenGymId"
+          @change="selectChange"
+          placeholder="场馆筛选"
+        >
+          <el-option v-for="(item, i)  in paceData" :label="item.name" :key="i" :value="item.id"></el-option>
         </el-select>
         <!-- “新增活动”按钮 -->
         <button class="addBtn btn" @click="openAdd">新增活动</button>
@@ -224,7 +228,7 @@ export default {
   data() {
     return {
       // 筛选的场馆id
-      screenGymId:'',
+      screenGymId: "",
       queryText: "",
       // 跳转到场馆的数据
       placedata: null,
@@ -333,10 +337,10 @@ export default {
     };
   },
   created() {
-    if(this.$route.query.gymId){
-      this.screenGymId=this.$route.query.gymId*1;
-    }else{
-      this.screenGymId='';
+    if (this.$route.query.gymId) {
+      this.screenGymId = this.$route.query.gymId * 1;
+    } else {
+      this.screenGymId = "";
     }
     this.getActiveData();
     this.getPlaceData();
@@ -344,10 +348,9 @@ export default {
 
   methods: {
     // 筛选改变
-    selectChange(){  
+    selectChange() {
       this.getActiveData();
       console.log(this.screenGymId);
-      
     },
     // 点击跳转到场次管理页面
     toPlace(e) {
@@ -542,7 +545,7 @@ export default {
       var data = await this.$http.post(
         "activity/queryActivity",
         qs.stringify({
-          gym_id:this.screenGymId,
+          gym_id: this.screenGymId,
           theme: this.query,
           pagenum: this.pagenum,
           pagesize: this.pagesize
@@ -611,20 +614,31 @@ export default {
       this.editdialogVisible = true;
     },
     // 点击删除活动
-    delAct(e) {
-      this.$confirm("此操作将删除该活动, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      })
-        .then(async () => {
-          var data = await this.$http.post(
+    async delAct(e) {
+      try {
+        await this.$confirm("此操作将永久删除该场馆, 是否继续?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        });
+        var data = await this.$http.post(
+          "actGame/queryGame",
+          qs.stringify({
+            activity_id: e,
+            pagenum: this.pagenum,
+            pagesize: this.pagesize
+          })
+        );
+        if (data.data.respBody.queries.length != 0) {
+          this.$message.error("删除失败,请先删除该活动下的场次");
+        } else {
+          var res = await this.$http.post(
             "activity/deleteActivity",
             qs.stringify({ Id: e })
           );
-          console.log(data);
+          console.log(res);
 
-          if (data.status == 200) {
+          if (res.status == 200) {
             this.getActiveData();
             this.$message({
               type: "success",
@@ -633,13 +647,13 @@ export default {
           } else {
             this.$message.info("删除活动失败");
           }
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消删除"
-          });
+        }
+      } catch {
+        this.$message({
+          type: "info",
+          message: "已取消删除"
         });
+      }
     }
   },
   // 过滤器
