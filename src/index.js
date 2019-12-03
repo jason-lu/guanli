@@ -10,7 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 // import store from './store/store.js';
 import axios from 'axios';
 import "babel-polyfill";
-axios.defaults.baseURL = process.env.NODE_ENV === 'production'? '/api/v1/':'http://47.104.128.89/api/v1/';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production'? '/api/v1/':'http://122.112.247.149/api/v1/';
 Vue.prototype.$http= axios;
 Vue.component(Vebar.name, Vebar)
 Vue.component(Vering.name, Vering)
