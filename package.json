@@ -17,8 +17,12 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
+=======
+    "babel-core": "^6.26.3",
+>>>>>>> 8737cc39f4de8f926bbd9a8e2335e0555b74c644
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^3.0.0",

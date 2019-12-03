@@ -8,6 +8,7 @@
 <script>
 import Home from "./pages/Home.vue";
 import Navbar from "./pages/Navbar.vue";
+import  "babel-polyfill"
 export default {
   mounted() {
     let tokenStr = localStorage.getItem("token");
