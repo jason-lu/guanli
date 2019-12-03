@@ -8,6 +8,7 @@
 <script>
 import Home from "./pages/Home.vue";
 import Navbar from "./pages/Navbar.vue";
+import  "babel-polyfill"
 export default {
   mounted() {
     let tokenStr = localStorage.getItem("token");
@@ -302,26 +303,26 @@ a {
       // 右侧具体活动内容
       .content {
         padding: 10px 0px;
-        padding-right: 50px;
+        padding-right: 30px;
         position: relative;
         margin-left: 320px;
         // float: left;
 
         .modifyBtn {
           position: absolute;
-          right: 50px;
+          right: 30px;
           bottom: 20px;
         } 
         .placeBtn {
           position: absolute;
-          right: 275px;
+          right: 255px;
           bottom: 20px;
         } 
 
 
         .delBtn {
           position: absolute;
-          right: 163px;
+          right: 143px;
           bottom: 20px;
           background-color: rgba(247, 71, 71, 0.5);
 

@@ -75,6 +75,10 @@
             >
               <i class="el-icon-edit icon"></i>编辑
             </button>
+            <!-- 场次管理按钮 -->
+            <button class="placeBtn btn" @click="toActivity(item.id)">
+              <i class="el-icon-s-data icon"></i>所有活动
+            </button>
           </div>
         </li>
       </ul>
@@ -311,7 +315,7 @@ export default {
         })[0]))
         this.fileList = [{ url: '' }]
         this.fileList[0].url = `http://47.104.128.89:8003/resource/` + this.form.pictureUrl.slice(this.form.pictureUrl.lastIndexOf('pics/') + 5)
-        // "/home/dev/pics/58937116-8518-4c78-898c-7279342cef78.jpg"
+        // "/home/dev/pics/58937116-8518-4c78-898c-7279342cef78.jpg"  
         // "http://47.104.128.89:8003/resource/58937116-8518-4c78-898c-7279342cef78.jpg"
       })
     },
@@ -420,7 +424,7 @@ export default {
           this.$message({
             type: "error",
             duration: 6000,
-            message: "对不起！该场馆下有进行中的活动，故无法删除！如若要删除该场馆，请先删除该场馆下的所有如下活动！",
+            message: "对不起！该场馆下有正进行中的活动，故无法删除！如若要删除该场馆，请先删除该场馆下的所有如下活动及其场次！",
           });
           this.$router.push(`/management/activityMa?gymId=${id}`)
         }
@@ -431,6 +435,10 @@ export default {
           message: "已取消删除"
         });
       }
+    },
+    // 
+    toActivity(id){
+      this.$router.push(`/management/activityMa?gymId=${id}`)
     },
     // 每页显示数改变时
     handleSizeChange(val) {

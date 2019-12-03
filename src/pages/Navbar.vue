@@ -53,7 +53,7 @@ export default {
           cancelButtonText: "取消",
           type: "warning"
         })
-        this.$router.push("/homePages");
+        this.$router.push("/login");
         localStorage.removeItem("token");
         this.$emit("logout");
       } catch {
