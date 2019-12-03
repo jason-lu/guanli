@@ -31,6 +31,7 @@ module.exports = merge(common, {
                 test: /\.qlv$/,
                 use: 'file-loader',
             },
+            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
         ]
     },
 })
