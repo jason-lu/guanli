@@ -1434,18 +1434,18 @@ a[data-v-770affdd] {
 }
 
 
-.content  .el-input__inner{
-    background-color: rgba(55,105,149,.8);
-    color: #fff;
+.content .el-input__inner {
+  background-color: rgba(55, 105, 149, 0.8);
+  color: #fff;
 }
-.content .el-input-group__append{
-    color: #fff;
+.content .el-input-group__append {
+  color: #fff;
 }
-.content .el-input .el-button{
- background-color: rgba(55,105,149,.8);
+.content .el-input .el-button {
+  background-color: rgba(55, 105, 149, 0.8);
 }
-.content .el-input{
-   color: #fff!important;
+.content .el-input {
+  color: #fff !important;
 }
 .placeDetail .el-table tr,
 .placeDetail .el-table td {
@@ -1464,6 +1464,9 @@ a[data-v-770affdd] {
 }
 
 
+.fr[data-v-578d53bc] {
+  float: right;
+}
 .table[data-v-578d53bc] {
   margin-top: 20px;
 }
