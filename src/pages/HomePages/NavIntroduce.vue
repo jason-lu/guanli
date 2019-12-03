@@ -1,7 +1,6 @@
 <template>
     <div class="plate">
         <div class="w">
-            <button @click="aaa">点击获取数据</button>
             <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item>装备介绍</el-breadcrumb-item>
