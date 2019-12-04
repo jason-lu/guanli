@@ -41,25 +41,25 @@ export default {
   cursor: pointer;
   color: #ddd;
   text-decoration: none;
-  border: 1px solid #2149698c;
+  border: 1px solid rgba(33, 73, 105, .3);
   // font-weight: bold;
-  background-color: #51a9f18c;
+  background-color: rgba(81,169,241, .6);
 }
 
 a {
   text-decoration: none;
 
   &:hover {
-    background-color: #51a9f156;
+    background-color: rgba(81,169,241, .4);
   }
 
   &.router-link-active {
-    background-color: #51a9f136;
+    background-color: rgba(81,169,241, .25); 
   }
 
 }
 .menu_list .current {
-  background: #51a9f18c;
+  background: rgba(81,169,241, .6);
 }
 
 .menu_nva a:hover {
