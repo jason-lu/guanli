@@ -126,7 +126,7 @@
             <el-upload
               class="upload-demo"
               :limit="1"
-              action="http://47.104.128.89:9009/api/v1/FileTransfer/uploadFile"
+              action="http://122.112.247.149:8004/api/v1/FileTransfer/uploadFile"
               :on-success="onSuccess"
               :on-preview="handlePreview"
               :on-remove="handleRemove"
@@ -201,7 +201,7 @@
           <el-upload
             class="upload-demo"
             :limit="1"
-            action="http://47.104.128.89:9009/api/v1/FileTransfer/uploadFile"
+            action="http://122.112.247.149:8004/api/v1/FileTransfer/uploadFile"
             :on-success="editonSuccess"
             :on-preview="handlePreview"
             :on-remove="handleRemove"
@@ -559,7 +559,7 @@ export default {
         this.total = data.data.respBody.totalCount;
         console.log(this.activityList);
         this.activityList.map(item => {
-          return (item.picAddress = `http://47.104.128.89:8003/resource/${item.picAddress.substr(
+          return (item.picAddress = `http://122.112.247.149:8003/resource/${item.picAddress.substr(
             item.picAddress.lastIndexOf("/")
           )}`);
         });

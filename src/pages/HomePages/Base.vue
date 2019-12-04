@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="classRow_r"></div>
                                 </div>
-                                <div class="classRowend">
+                                <!-- <div class="classRowend">
                                     <div class="classRow_l">更多选项:</div>
                                     <div class="classRow_m">
                                         <el-dropdown>
@@ -98,7 +98,7 @@
     
                                     </div>
                                     <div class="classRow_r"></div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="content_down">
@@ -293,40 +293,53 @@
     
         }
     </script>
-    <style scoped>
-        .h70{
-            height: 74px;
-        }
-        .h70n{
-            height: 74px;
-        }
-        .rightbox_down{
-            padding: 20px;
-            margin-top: 20px;
-           
-            /* border:5px solid rgba(0, 0, 0, 0.2); */
-            box-shadow:0px 15px 30px  rgba(0, 0, 0, 0.2);
-        }
-        .rightbox_up{
-            padding: 20px;
-            padding-bottom: 0;
-            background-color: #444;
-            opacity: 0.7;
+<style scoped>
+        /* .el-breadcrumb .el-breadcrumb-item{
+            color: #fff!important;
+        } */
+        .sortOder {
             color: #fff;
         }
+    
+        .h70 {
+            height: 70px;
+        }
+    
+        .h70n {
+            height: 70px;
+        }
+    
+        .rightbox_down {
+            padding: 20px;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            /* border:5px solid rgba(0, 0, 0, 0.2); */
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+    
+        .rightbox_up {
+            padding: 20px;
+            padding-bottom: 30px;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: #fff;
+    
+        }
+    
         .total {
             height: 50px;
         }
-    .leftContent a{
-        display: block;
+    
+        .leftContent a {
+            display: block;
             height: 50px;
             line-height: 50px;
-    }
+        }
+    
         .rightContent a {
             display: block;
             height: 50px;
             color: #fff;
-            border-bottom: 1px solid #555555;
+            border-bottom: 1px dashed #FEA432;
             line-height: 50px;
     
         }
@@ -336,12 +349,17 @@
             text-align: center;
         }
     
+        .content_up {
+            /* background-color:rgba(0, 0, 0, 0.4); */
+            padding-bottom: 25px;
+        }
+    
         .pagechange {
             text-align: center;
         }
     
         .color999 {
-            color: #999999;
+            color: #fff;
         }
     
         ul {
@@ -361,6 +379,7 @@
             margin-right: 3%;
             float: left;
             height: 270px;
+            background-color: rgba(0, 0, 0, 0.4);
         }
     
         .content_pic_m {
@@ -372,8 +391,8 @@
         }
     
         .content_pic_ul li img {
-            height: 130px;
             width: 100%;
+            height: 139px;
         }
     
         .fr {
@@ -399,15 +418,21 @@
             *zoom: 1;
         }
     
-        .content_down {
+        /* .content_down {
             margin-top: 45px;
-        }
+        } */
     
         .sort button {
-            width: 95px;
+            width: 97px;
             height: 30px;
             border: none;
             background-color: #E7E7E7;
+            border-radius: 3px;
+        }
+    
+        .sort span {
+            color: #fff;
+            margin-right: 25px;
         }
     
         .classRowend {
@@ -418,7 +443,7 @@
     
         a {
             text-decoration: none;
-            color: #000;
+            /* color: #000; */
         }
     
         .classRow_m a {
@@ -443,6 +468,7 @@
         }
     
         .classRow_l {
+            color: #fff;
             float: left;
             width: 70px;
             height: 100%;
@@ -455,10 +481,12 @@
         .classRow {
             padding-top: 5px;
             overflow: hidden;
-            border-bottom: 1px dashed #ccc;
+            /* height: 70px; */
+            border-bottom: 1px dashed #FEA432;
         }
     
         .choose {
+            color: #fff;
             text-align: center;
             height: 30px;
             line-height: 30px;
@@ -468,13 +496,14 @@
     
         .leftbox {
             padding: 20px;
-            box-shadow: 0px 15px 30px  rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.2);
             width: 700px;
             float: left;
         }
     
         .rightbox {
-          
+    
             width: 320px;
             float: right;
         }
@@ -485,7 +514,7 @@
         }
     
         .plate {
-            background-color: #fff;
+            /* background-color: #fff; */
             /* height: 100%; */
         }
     

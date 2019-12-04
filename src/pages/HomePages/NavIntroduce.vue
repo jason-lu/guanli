@@ -35,7 +35,8 @@
 
 
                                 </div>
-                                <div class="classRow_r"><a href="#" @click="changclass">{{ish70==true?"更多":"收起"}}</a></div>
+                                <div class="classRow_r"><a href="#" @click="changclass">{{ish70==true?"更多":"收起"}}</a>
+                                </div>
                             </div>
                             <div class="classRow" :class="{h70n:ish70n}">
                                 <div class="classRow_l">原产国:</div>
@@ -64,7 +65,8 @@
 
 
                                 </div>
-                                <div class="classRow_r"><a href="#" @click="changclass2">{{ish70n==true?"更多":"收起"}}</a></div>
+                                <div class="classRow_r"><a href="#" @click="changclass2">{{ish70n==true?"更多":"收起"}}</a>
+                                </div>
                             </div>
                             <div class="classRowend">
                                 <div class="classRow_l">诞生期:</div>
@@ -78,7 +80,7 @@
                                 </div>
                                 <div class="classRow_r"></div>
                             </div>
-                            <div class="classRowend">
+                            <!-- <div class="classRowend">
                                 <div class="classRow_l">更多选项:</div>
                                 <div class="classRow_m">
                                     <el-dropdown>
@@ -120,7 +122,7 @@
 
                                 </div>
                                 <div class="classRow_r"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="content_down">
@@ -273,20 +275,20 @@
                         </div>
                     </div>
                     <div class="rightbox_down">
-                            <div class="sortOder">枪械与单兵排行</div>
-                            <div class="leftContent">
-                                <a href="#">• 赫克勒-科赫G36自动步枪</a>
-                                <a href="#">• 沙漠之鹰手枪</a>
-                                <a href="#">• 斯太尔-曼利夏AUG自动步枪</a>
-                                <a href="#">• 赫克勒-科赫G3自动步枪</a>
-                                <a href="#">• 塔沃尔突击步枪</a>
-                                <a href="#">• AK-47突击步枪</a>
-                                <a href="#">• 赫克勒-科赫HK 416自动步</a>
-                                <a href="#">• 卡拉什尼科夫1974(AK-74)</a>
-                                <a href="#">• 95式步枪</a> 
-                                <a href="#">• 柯尔特M1911/M1911A1手</a>
-                            </div>
+                        <div class="sortOder">枪械与单兵排行</div>
+                        <div class="leftContent">
+                            <a href="#">• 赫克勒-科赫G36自动步枪</a>
+                            <a href="#">• 沙漠之鹰手枪</a>
+                            <a href="#">• 斯太尔-曼利夏AUG自动步枪</a>
+                            <a href="#">• 赫克勒-科赫G3自动步枪</a>
+                            <a href="#">• 塔沃尔突击步枪</a>
+                            <a href="#">• AK-47突击步枪</a>
+                            <a href="#">• 赫克勒-科赫HK 416自动步</a>
+                            <a href="#">• 卡拉什尼科夫1974(AK-74)</a>
+                            <a href="#">• 95式步枪</a>
+                            <a href="#">• 柯尔特M1911/M1911A1手</a>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -295,66 +297,94 @@
 
 </template>
 <script>
-import qs from 'qs';
+    import qs from 'qs';
     export default {
         methods: {
-            async  aaa (){
-           const data=await  this.$http.post('member/passwdLogin', qs.stringify( {
-                    phone:13212312311,
-                    passwd:123456,
+            async  aaa() {
+                const data = await this.$http.post('member/passwdLogin', qs.stringify({
+                    phone: 13212312311,
+                    passwd: 123456,
                 }));
-                console.log(data);  
+                console.log(data);
             },
-            changclass(){
-                this.ish70=!this.ish70;
+            changclass() {
+                this.ish70 = !this.ish70;
             },
-            changclass2(){
-                this.ish70n=!this.ish70n;
+            changclass2() {
+                this.ish70n = !this.ish70n;
             }
         },
         data() {
             return {
-                ish70:true,
-                ish70n:true,
+                ish70: true,
+                ish70n: true,
             };
         },
 
     }
 </script>
-<style scoped>
-    .h70{
-        height: 70px;
-    }
-    .h70n{
-        height: 70px;
-    }
-    .rightbox_down{
-        padding: 20px;
-        margin-top: 20px;
-       
-        /* border:5px solid rgba(0, 0, 0, 0.2); */
-        box-shadow:0px 15px 30px  rgba(0, 0, 0, 0.2);
-    }
-    .rightbox_up{
-        padding: 20px;
-        padding-bottom: 0;
-        background-color: #444;
-        opacity: 0.7;
+<style>
+    .plate .el-breadcrumb__inner {
         color: #fff;
     }
+
+    .plate .el-breadcrumb__item:last-child .el-breadcrumb__inner,
+    .el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+    .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+    .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+        color: #FEA432;
+    }
+    .plate .el-breadcrumb__inner.is-link{
+        color: #fff;
+    }
+</style>
+<style scoped>
+    /* .el-breadcrumb .el-breadcrumb-item{
+        color: #fff!important;
+    } */
+    .sortOder {
+        color: #fff;
+    }
+
+    .h70 {
+        height: 70px;
+    }
+
+    .h70n {
+        height: 70px;
+    }
+
+    .rightbox_down {
+        padding: 20px;
+        margin-top: 20px;
+        background-color: rgba(0, 0, 0, 0.4);
+        /* border:5px solid rgba(0, 0, 0, 0.2); */
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .rightbox_up {
+        padding: 20px;
+        padding-bottom: 30px;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #fff;
+
+    }
+
     .total {
         height: 50px;
     }
-.leftContent a{
-    display: block;
+
+    .leftContent a {
+        display: block;
         height: 50px;
         line-height: 50px;
-}
+    }
+
     .rightContent a {
         display: block;
         height: 50px;
         color: #fff;
-        border-bottom: 1px solid #555555;
+        border-bottom: 1px dashed #FEA432;
         line-height: 50px;
 
     }
@@ -364,12 +394,17 @@ import qs from 'qs';
         text-align: center;
     }
 
+    .content_up {
+        /* background-color:rgba(0, 0, 0, 0.4); */
+        padding-bottom: 25px;
+    }
+
     .pagechange {
         text-align: center;
     }
 
     .color999 {
-        color: #999999;
+        color: #fff;
     }
 
     ul {
@@ -389,6 +424,7 @@ import qs from 'qs';
         margin-right: 3%;
         float: left;
         height: 270px;
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .content_pic_m {
@@ -426,15 +462,21 @@ import qs from 'qs';
         *zoom: 1;
     }
 
-    .content_down {
+    /* .content_down {
         margin-top: 45px;
-    }
+    } */
 
     .sort button {
-        width: 95px;
+        width: 97px;
         height: 30px;
         border: none;
         background-color: #E7E7E7;
+        border-radius: 3px;
+    }
+
+    .sort span {
+        color: #fff;
+        margin-right: 25px;
     }
 
     .classRowend {
@@ -445,7 +487,7 @@ import qs from 'qs';
 
     a {
         text-decoration: none;
-        color: #000;
+        /* color: #000; */
     }
 
     .classRow_m a {
@@ -470,6 +512,7 @@ import qs from 'qs';
     }
 
     .classRow_l {
+        color: #fff;
         float: left;
         width: 70px;
         height: 100%;
@@ -483,10 +526,11 @@ import qs from 'qs';
         padding-top: 5px;
         overflow: hidden;
         /* height: 70px; */
-        border-bottom: 1px dashed #ccc;
+        border-bottom: 1px dashed #FEA432;
     }
 
     .choose {
+        color: #fff;
         text-align: center;
         height: 30px;
         line-height: 30px;
@@ -496,13 +540,14 @@ import qs from 'qs';
 
     .leftbox {
         padding: 20px;
-        box-shadow: 0px 15px 30px  rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.2);
         width: 700px;
         float: left;
     }
 
     .rightbox {
-      
+
         width: 320px;
         float: right;
     }
@@ -513,7 +558,7 @@ import qs from 'qs';
     }
 
     .plate {
-        background-color: #fff;
+        /* background-color: #fff; */
         /* height: 100%; */
     }
 
