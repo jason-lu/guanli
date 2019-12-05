@@ -122,7 +122,7 @@ export default {
         this.total = data.data.respBody.totalCount;
         console.log(this.activityList);
         this.activityList.map(item => {
-          return item.picAddress = `http://47.104.128.89:8003/resource/${item.picAddress.substr(item.picAddress.lastIndexOf('/'))}`
+          return item.picAddress = `http://122.112.247.149:8003/resource/${item.picAddress.substr(item.picAddress.lastIndexOf('/'))}`
         });
         console.log(this.activityList);
       }

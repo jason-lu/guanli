@@ -16,9 +16,11 @@
                     <div class="ringArea">
 
                         <!-- 环图1 -->
-                        <ve-ring :legend="legend" class="ring" :data="ring_chartData_one" :settings="ringSettings"></ve-ring>
+                        <ve-ring :legend="legend" class="ring" :data="ring_chartData_one" :settings="ringSettings">
+                        </ve-ring>
                         <!-- 环图2 -->
-                        <ve-ring :legend="legend" class="ring" :data="ring_chartData_two" :settings="ringSettings"></ve-ring>
+                        <ve-ring :legend="legend" class="ring" :data="ring_chartData_two" :settings="ringSettings">
+                        </ve-ring>
                     </div>
                 </div>
                 <!-- 红蓝队数据表 -->
@@ -60,7 +62,9 @@
                     <div class="middledataview">
                         <span>战况总览</span>
                         <div class="middleviewimg">
-                            <img class="preview" src="../../assets/img/activities-preview.jpg" />
+                            <!-- <img class="preview" src="../../assets/img/activities-preview.jpg" /> -->
+                            <ve-map :data="mapChartData" :legend="legend" height="480px" width="540px" :settings="GlobalChartSettings">
+                            </ve-map>
                         </div>
                     </div>
 
@@ -68,7 +72,7 @@
                         <div class="Title">各战区战力</div>
                         <!-- <echart-vue height="300px" width="100%" :options="activityOptions2" class="charts" -->
                         <!-- id="mycharts-top2" /> -->
-                        <ve-histogram :series="series" :x-axis="hisxAxis" :y-axis="hisyAxis"></ve-histogram>
+                        <ve-histogram :series="series" height="400px" width="500px" :x-axis="hisxAxis" :y-axis="hisyAxis"></ve-histogram>
 
                     </div>
                 </div>
@@ -77,23 +81,23 @@
             <div class="datamainright">
                 <h2 class="datarighttop">战场实况</h2>
                 <div class="datarightbox">数据数据</div>
-                <div>
-                    <video width="255" height="160" autoplay controls>
+                <div class="video">
+                    <video width="70%"  controls>
                         <source src="../../assets/video/zuozhan4.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
-                    <video width="255" height="160" autoplay controls>
+                    <video width="70%"   controls>
                         <source src="../../assets/video/a.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
-                    <video width="255" height="160" autoplay controls>
+                    <video width="70%" controls>
                         <source src="../../assets/video/zuozhan3.mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
-                    <video width="255" height="160" autoplay controls>
+                    <video width="70%"  controls>
                         <source src="../../assets/video/zuozhan1.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
@@ -123,42 +127,56 @@
         methods: {
         },
         data() {
-            // 设置折线图数据
-        
-          this.legend={
-              
-                        textStyle: {
-                            //文字样式
-                            color: "#fff",
-                  
-                        }
-                    },
-            // 设置柱状图
-            this.series = [
-                {
-                    name: "战区战力",
-                    type: "bar",
-                    barWidth: "50%",//这里是改变柱子的宽度
-                    data: [3000, 5200, 3600, 6300, 3900, 4900, 5900],
-
-                    itemStyle: {
-                        //通常情况下：
-                        normal: {
-                            //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
-                            color: function (params) {
-                                var colorList = [
-                                    "#44F0FF",
-                                    "#FA6E86",
-                                    "#FFB980",
-                                    "#19D4AE",
-                                    "#FFB980",
-                                    "#44F0FF",
-                                ]; //每根柱子的颜色
-                                return colorList[params.dataIndex];
-                            }
-                        },
+            // 地图样式
+            this.GlobalChartSettings = {
+                position: 'china',
+                label: false,
+                itemStyle: {
+                    normal: {
+                        borderColor: '#72F2FF',
+                        areaColor: 'rgba(0, 0, 0, 0.2)',
+                        borderWidth: 2,
+                        shadowBlur: 1
                     }
-                }];
+                },
+                zoom: 1
+            }
+            // 设置折线图数据
+
+            this.legend = {
+
+                textStyle: {
+                    //文字样式
+                    color: "#fff",
+
+                }
+            },
+                // 设置柱状图
+                this.series = [
+                    {
+                        name: "战区战力",
+                        type: "bar",
+                        barWidth: "50%",//这里是改变柱子的宽度
+                        data: [3000, 5200, 3600, 6300, 3900, 4900, 5900],
+
+                        itemStyle: {
+                            //通常情况下：
+                            normal: {
+                                //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                                color: function (params) {
+                                    var colorList = [
+                                        "#44F0FF",
+                                        "#FA6E86",
+                                        "#FFB980",
+                                        "#19D4AE",
+                                        "#FFB980",
+                                        "#44F0FF",
+                                    ]; //每根柱子的颜色
+                                    return colorList[params.dataIndex];
+                                }
+                            },
+                        }
+                    }];
             this.hisyAxis = [
                 {
                     axisLabel: {
@@ -192,8 +210,19 @@
             // 设置环图
             this.ringSettings = {
                 radius: [40, 100],
+                zoom: 0.9,
             }
             return {
+                // 地图数据
+                mapChartData: {
+                    columns: ['位置', '场馆'],
+                    rows: [
+                        { '位置': '吉林', ' 场馆': 5 },
+                        { '位置': '北京', ' 场馆': 6 },
+                        { '位置': '上海', ' 场馆': 12 },
+                        { '位置': '浙江', ' 场馆': 15 }
+                    ]
+                },
                 // 柱状图数据
                 // histogramChartData: {
                 //     columns: ['战区', '战区战力', ],
@@ -209,64 +238,69 @@
                 // 折线图数据
                 lin_chartData_one: {
 
-   
 
 
-                        columns: ['日期', '访问用户', '下单用户', '下单率'],
-                        rows: [
-                            { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
-                            { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
-                            { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
-                            { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
-                            { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
-                            { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
-                        ]
-                    },
-                    lin_chartData_two: {
-                        columns: ['日期', '访问用户', '下单用户', '下单率'],
-                        rows: [
-                            { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
-                            { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
-                            { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
-                            { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
-                            { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
-                            { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
-                        ]
-                    },
-                    // 饼图1数据
-                    ring_chartData_one: {
-                        columns: ['日期', '访问用户'],
-                        rows: [
-                            { '日期': '1/1', '访问用户': 1393 },
-                            { '日期': '1/2', '访问用户': 3530 },
-                            { '日期': '1/3', '访问用户': 2923 },
-                            { '日期': '1/4', '访问用户': 1723 },
-                            { '日期': '1/5', '访问用户': 3792 },
-                            { '日期': '1/6', '访问用户': 4593 }
-                        ]
-                    },
-                    // 饼图2数据
-                    ring_chartData_two: {
-                        columns: ['日期', '访问用户'],
-                        rows: [
-                            { '日期': '1/1', '访问用户': 1393 },
-                            { '日期': '1/2', '访问用户': 3530 },
-                            { '日期': '1/3', '访问用户': 2923 },
-                            { '日期': '1/4', '访问用户': 1723 },
-                            { '日期': '1/5', '访问用户': 3792 },
-                            { '日期': '1/6', '访问用户': 4593 }
-                        ]
-                    },
-                }
 
-            },
-                components: {
-                EchartVue,
+                    columns: ['日期', '访问用户', '下单用户', '下单率'],
+                    rows: [
+                        { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
+                        { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
+                        { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
+                        { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
+                        { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
+                        { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
+                    ]
+                },
+                lin_chartData_two: {
+                    columns: ['日期', '访问用户', '下单用户', '下单率'],
+                    rows: [
+                        { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
+                        { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
+                        { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
+                        { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
+                        { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
+                        { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
+                    ]
+                },
+                // 饼图1数据
+                ring_chartData_one: {
+                    columns: ['日期', '访问用户'],
+                    rows: [
+                        { '日期': '1/1', '访问用户': 1393 },
+                        { '日期': '1/2', '访问用户': 3530 },
+                        { '日期': '1/3', '访问用户': 2923 },
+                        { '日期': '1/4', '访问用户': 1723 },
+                        { '日期': '1/5', '访问用户': 3792 },
+                        { '日期': '1/6', '访问用户': 4593 }
+                    ]
+                },
+                // 饼图2数据
+                ring_chartData_two: {
+                    columns: ['日期', '访问用户'],
+                    rows: [
+                        { '日期': '1/1', '访问用户': 1393 },
+                        { '日期': '1/2', '访问用户': 3530 },
+                        { '日期': '1/3', '访问用户': 2923 },
+                        { '日期': '1/4', '访问用户': 1723 },
+                        { '日期': '1/5', '访问用户': 3792 },
+                        { '日期': '1/6', '访问用户': 4593 }
+                    ]
+                },
+            }
+
+        },
+        components: {
+            EchartVue,
         }
-        }
+    }
 </script>
 
 <style scoped>
+    .data-container{
+        margin: 0 auto;
+        width: 90%;
+        min-width: 1300px;
+    }
     .Title {
         text-align: center;
         font-size: 20px;
@@ -305,7 +339,7 @@
     }
 
     .titletopmain {
-        background-color: rgb(46, 46, 148);
+        /* background-color: rgb(46, 46, 148); */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -313,31 +347,34 @@
         height: 60px;
         border-radius: 2px;
         margin: 0 20px;
-        border-bottom: 1px solid #fff;
+        /* border-bottom: 1px solid #fff; */
         opacity: 0.8;
 
     }
-
+.video{
+    text-align: center;
+}
+.video video{
+    margin-bottom: 20px;
+}
     .titleleft {
         font-size: 1.2rem;
         height: 40px;
-        background-color: rgb(216, 162, 15);
+        background-color: #5AB1EF;
         width: 160px;
         color: #fff;
-        opacity: 0.8;
         border: none;
-        border-radius: 10px;
+        /* border-radius: 10px; */
     }
 
     .titleright {
         font-size: 1.2rem;
         height: 40px;
-        background-color: rgb(39, 54, 141);
+        background-color: #5AB1EF;
         width: 160px;
         color: #fff;
-        opacity: 0.8;
         border: none;
-        border-radius: 10px;
+        /* border-radius: 10px; */
 
     }
 
@@ -352,13 +389,15 @@
     .datamainleft {
         color: #fff;
         ;
-        width: 30%;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 28%;
+        /* 左边 */
+        border: 1px solid #72F2FF;
     }
 
     .datamainmiddle {
-        width: 40%;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 44%;
+        /* 中上的线 */
+        border: 1px solid 72F2FF;
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -378,7 +417,8 @@
         padding-top: 10px;
         font-size: 1.2rem;
         padding-left: 40px;
-        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        /* 中间中间的 */
+        border-top: 1px solid72F2FF;
         min-height: 300px;
         min-width: 300px;
     }
@@ -400,6 +440,7 @@
     }
 
     .middlespanbox {
+      
         width: 25%;
         display: flex;
         align-items: center;
@@ -417,8 +458,10 @@
     }
 
     .datamainright {
-        width: 30%;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 28%;
+        /* width: 500px; */
+        /* 右上的那条线 */
+        border: 1px solid #72F2FF;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -434,9 +477,8 @@
     }
 
     .datarightbox {
-        background-color: rgb(47, 40, 77);
+        /* background-color: rgb(47, 40, 77); */
         width: 100%;
         height: 200px;
-        opacity: 0.8;
     }
 </style>
