@@ -1,23 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="box1">
-
-        <div class="w clearfix">
-            <div class="navchange">
-                <ul class="navUl">
-                    <li v-for="(item,index) in tabArr">
-                        <router-link :to="item.src">{{item.title}}</router-link>
-                    </li>
-                </ul>
-            </div>
-            <div class="first-container">
-
-                <div class="news-container">
-                    <el-carousel height="380px">
-                        <el-carousel-item v-for="(item,index) in newsList" :key="index">
-                            <img :src="item.url" style="width: 100%; height: 380px; margin: auto; display: block;">
-                            <span style="width:50%; position: absolute; padding:  10px; display: block; 
-=======
   <div class="w clearfix" id="box">
     <div class="navchange">
       <ul class="navUl">
@@ -33,7 +14,6 @@
             <img :src="item.url" style="width: 100%; height: 380px; margin: auto; display: block;" />
             <span
               style="width:50%; position: absolute; padding:  10px; display: block; 
->>>>>>> 4e4d7e639cad75538086f7298b7acae55688b256
                                         border-radius: 20px;
                                         text-align: center;
                                         transform: translatex(50%); 

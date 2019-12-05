@@ -18,14 +18,10 @@ Vue.prototype.$http= axios;
 Vue.component(Vebar.name, Vebar)
 Vue.component(Vering.name, Vering)
 Vue.component(Vehistogram.name, Vehistogram)
-<<<<<<< HEAD
-Vue.use(ElementUI)
-=======
 Vue.component(Vemap.name, Vemap)
 Vue.use(ElementUI);
 
 
->>>>>>> 4e4d7e639cad75538086f7298b7acae55688b256
 
 //引入全局echarts
 Vue.prototype.$echarts = echarts;
