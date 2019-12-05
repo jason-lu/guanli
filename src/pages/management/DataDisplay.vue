@@ -63,7 +63,7 @@
                         <span>战况总览</span>
                         <div class="middleviewimg">
                             <!-- <img class="preview" src="../../assets/img/activities-preview.jpg" /> -->
-                            <ve-map :data="mapChartData" :legend="legend" height="480px" width="580px" :settings="GlobalChartSettings">
+                            <ve-map :data="mapChartData" :legend="legend" height="480px" width="540px" :settings="GlobalChartSettings">
                             </ve-map>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="Title">各战区战力</div>
                         <!-- <echart-vue height="300px" width="100%" :options="activityOptions2" class="charts" -->
                         <!-- id="mycharts-top2" /> -->
-                        <ve-histogram :series="series" :x-axis="hisxAxis" :y-axis="hisyAxis"></ve-histogram>
+                        <ve-histogram :series="series" height="400px" width="500px" :x-axis="hisxAxis" :y-axis="hisyAxis"></ve-histogram>
 
                     </div>
                 </div>
@@ -81,23 +81,23 @@
             <div class="datamainright">
                 <h2 class="datarighttop">战场实况</h2>
                 <div class="datarightbox">数据数据</div>
-                <div>
-                    <video width="255" height="160" autoplay controls>
+                <div class="video">
+                    <video width="70%"  controls>
                         <source src="../../assets/video/zuozhan4.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
-                    <video width="255" height="160" autoplay controls>
+                    <video width="70%"   controls>
                         <source src="../../assets/video/a.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
-                    <video width="255" height="160" autoplay controls>
+                    <video width="70%" controls>
                         <source src="../../assets/video/zuozhan3.mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
-                    <video width="255" height="160" autoplay controls>
+                    <video width="70%"  controls>
                         <source src="../../assets/video/zuozhan1.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         您的浏览器不支持 HTML5 video 标签。
@@ -210,6 +210,7 @@
             // 设置环图
             this.ringSettings = {
                 radius: [40, 100],
+                zoom: 0.9,
             }
             return {
                 // 地图数据
@@ -295,6 +296,11 @@
 </script>
 
 <style scoped>
+    .data-container{
+        margin: 0 auto;
+        width: 90%;
+        min-width: 1300px;
+    }
     .Title {
         text-align: center;
         font-size: 20px;
@@ -333,7 +339,7 @@
     }
 
     .titletopmain {
-        background-color: rgb(46, 46, 148);
+        /* background-color: rgb(46, 46, 148); */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -341,31 +347,34 @@
         height: 60px;
         border-radius: 2px;
         margin: 0 20px;
-        border-bottom: 1px solid #fff;
+        /* border-bottom: 1px solid #fff; */
         opacity: 0.8;
 
     }
-
+.video{
+    text-align: center;
+}
+.video video{
+    margin-bottom: 20px;
+}
     .titleleft {
         font-size: 1.2rem;
         height: 40px;
-        background-color: rgb(216, 162, 15);
+        background-color: #5AB1EF;
         width: 160px;
         color: #fff;
-        opacity: 0.8;
         border: none;
-        border-radius: 10px;
+        /* border-radius: 10px; */
     }
 
     .titleright {
         font-size: 1.2rem;
         height: 40px;
-        background-color: rgb(39, 54, 141);
+        background-color: #5AB1EF;
         width: 160px;
         color: #fff;
-        opacity: 0.8;
         border: none;
-        border-radius: 10px;
+        /* border-radius: 10px; */
 
     }
 
@@ -380,13 +389,15 @@
     .datamainleft {
         color: #fff;
         ;
-        width: 30%;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 28%;
+        /* 左边 */
+        border: 1px solid #72F2FF;
     }
 
     .datamainmiddle {
-        width: 40%;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 44%;
+        /* 中上的线 */
+        border: 1px solid 72F2FF;
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -406,7 +417,8 @@
         padding-top: 10px;
         font-size: 1.2rem;
         padding-left: 40px;
-        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        /* 中间中间的 */
+        border-top: 1px solid72F2FF;
         min-height: 300px;
         min-width: 300px;
     }
@@ -428,6 +440,7 @@
     }
 
     .middlespanbox {
+      
         width: 25%;
         display: flex;
         align-items: center;
@@ -445,8 +458,10 @@
     }
 
     .datamainright {
-        width: 30%;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 28%;
+        /* width: 500px; */
+        /* 右上的那条线 */
+        border: 1px solid #72F2FF;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -462,9 +477,8 @@
     }
 
     .datarightbox {
-        background-color: rgb(47, 40, 77);
+        /* background-color: rgb(47, 40, 77); */
         width: 100%;
         height: 200px;
-        opacity: 0.8;
     }
 </style>

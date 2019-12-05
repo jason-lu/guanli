@@ -33,7 +33,12 @@
       </el-table>
     </div>
     <!-- 点击加入战队弹出对话框 -->
-    <el-dialog title="加入战队" @close="closeDialog" :visible.sync="addArmDialogVisible" width="40%">
+    <el-dialog
+      :title="titleDialog"
+      @close="closeDialog"
+      :visible.sync="addArmDialogVisible"
+      width="40%"
+    >
       <!-- 表单信息 -->
       <el-form
         :model="addArmRuleForm"
@@ -119,6 +124,10 @@ import qs from "qs";
 export default {
   data() {
     return {
+      // 战队成员Id
+      teamMemberID:'',
+      // 对话框标题
+      titleDialog: "",
       // 武器识别码，默认空
       armCode: "",
       // 武器列表
@@ -154,28 +163,7 @@ export default {
       userQuery: "ddddddddddsry",
       // 用户信息列表
       userList: [],
-      armData: [
-        // {
-        //   date: "2016-05-02",
-        //   name: "王小虎",
-        //   address: "上海市普陀区金沙江路 1518 弄"
-        // },
-        // {
-        //   date: "2016-05-04",
-        //   name: "王小虎",
-        //   address: "上海市普陀区金沙江路 1517 弄"
-        // },
-        // {
-        //   date: "2016-05-01",
-        //   name: "王小虎",
-        //   address: "上海市普陀区金沙江路 1519 弄"
-        // },
-        // {
-        //   date: "2016-05-03",
-        //   name: "王小虎",
-        //   address: "上海市普陀区金沙江路 1516 弄"
-        // }
-      ]
+      armData: []
     };
   },
   created() {
@@ -190,12 +178,14 @@ export default {
   methods: {
     // 点击编辑弹出模态框
     editOpen(row) {
+      this.titleDialog = "编辑战队";
       this.addArmDialogVisible = true;
       this.addArmRuleForm.uerId = row.memberId;
       this.addArmRuleForm.userName = row.member.name;
       this.addArmRuleForm.chooseWeapon = row.armSn.toString();
       this.addArmRuleForm.armyGrad = row.armyLevel.id;
       this.addArmRuleForm.team = row.teamId;
+      this.teamMemberID=row.id;
     },
     // 点击删除弹出确认框
     sureDel(id) {
@@ -244,27 +234,51 @@ export default {
         console.log(this.armData);
       }
     },
-    // 点击确认加入队伍
+    // 点击确认加入/编辑队伍
     SureJoin() {
       this.$refs.addArmRuleForm.validate(async value => {
         // console.log(value);
         if (value) {
-          var { data: res } = await this.$http.post(
-            "actGame/addGameMember",
-            qs.stringify({
-              gameId: this.placeId,
-              memberId: this.addArmRuleForm.uerId,
-              teamId: this.addArmRuleForm.team,
-              levelId: this.addArmRuleForm.armyGrad,
-              score: 0,
-              armSn: this.addArmRuleForm.chooseWeapon
-            })
-          );
-          console.log(res);
-          if (res.respBody.isSuccess == "true") {
-            this.$message.success("添加战队成功");
+          if (this.titleDialog == "加入战队") {
+            var { data: res } = await this.$http.post(
+              "actGame/addGameMember",
+              qs.stringify({
+                gameId: this.placeId,
+                memberId: this.addArmRuleForm.uerId,
+                teamId: this.addArmRuleForm.team,
+                levelId: this.addArmRuleForm.armyGrad,
+                score: 0,
+                armSn: this.addArmRuleForm.chooseWeapon
+              })
+            );
+            console.log(res);
+            if (res.respBody.isSuccess == "true") {
+              this.getTeamMember();
+              this.$message.success("添加战队成功");
+              this.addArmDialogVisible = false;
+            } else {
+              this.$message.info("添加战队失败");
+            }
           } else {
-            this.$message.info("添加战队失败");
+            console.log("这是编辑");
+            // ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        var {data:res}= await this.$http.post('actGame/updateGameMember',JSON.stringify({
+            id:this.teamMemberID,
+            gameId:this.placeId,
+            memberId:this.addArmRuleForm.uerId,
+            teamId:this.addArmRuleForm.team,
+            levelId:this.addArmRuleForm.armyGrad,
+            score:0,
+            armSn:this.addArmRuleForm.chooseWeapon,
+          }),{ headers: { "Content-Type": "application/json" } })
+          console.log(res);
+          if(res.respBody.isSuccess=="OK"){
+             this.getTeamMember();
+            this.$message.success('编辑战队成功')
+             this.addArmDialogVisible = false;
+          }else{
+            this.$message.info('编辑战队失败')
+          }
           }
         }
       });
@@ -273,17 +287,15 @@ export default {
 
     // 关闭对话框
     closeDialog() {
-      console.log(111);
       this.$refs.addArmRuleForm.resetFields();
       this.$set(this.addArmRuleForm);
-      this.addArmRuleForm.chooseWeapon=null;
-      this.addArmRuleForm.armyGrad='';
-      this.addArmRuleForm.team='';
-
+      this.addArmRuleForm.chooseWeapon = null;
+      this.addArmRuleForm.armyGrad = "";
+      this.addArmRuleForm.team = "";
     },
     // 点击加入战队
     addTeam(uerId, userName) {
-      this.addArmRuleForm.uerId = uerId;
+      (this.titleDialog = "加入战队"), (this.addArmRuleForm.uerId = uerId);
       this.addArmRuleForm.userName = userName;
 
       this.addArmDialogVisible = true;
