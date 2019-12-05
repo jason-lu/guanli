@@ -26,9 +26,6 @@ html {
   box-sizing: border-box;
   background-color: rgba(241, 241, 241, 0.15);
 }
-.content-container::-webkit-scrollbar {
-  display: none;
-}
 ul {
   list-style: none;
 }
