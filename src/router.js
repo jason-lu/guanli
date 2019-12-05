@@ -25,6 +25,8 @@ import ActiveEdit from './pages/activity/activeEdit.vue';
 import ActivePlace from './pages/activity/activePlace.vue';
 import ActiveBack from './pages/ActiveBack.vue';
 import PlaceDetail from './pages/activity/placeDetail.vue';
+import BestTeam from './pages/homePages/BestTeam.vue';
+
 
 
 Vue.use(VueRouter);
@@ -57,6 +59,8 @@ const routes = [
     // { path: '/activityMa/activeAdd/:id', component: ActiveAdd,props: true },
     { path: '/ActiveBack', component: ActiveBack },
     { path: '/activityMa/placeDetail', component: PlaceDetail},
+    { path: '/homePages/bestTeam', component: BestTeam },
+
 
 ];
 

@@ -10,21 +10,26 @@
             v-for="item in options"
             :key="item.value"
             :label="item.label"
-            :value="item.value"
+            :value="item.value" 
             :disabled="item.disabled"
           ></el-option>
-        </el-select> -->
+        </el-select>-->
         <!-- “搜索活动”按钮 -->
         <el-input placeholder="请输入活动主题..." v-model="queryText" class="input-with-select">
           <el-button slot="append" @click="queryActive" icon="el-icon-search"></el-button>
         </el-input>
+        <el-select
+          clearable
+          class="screen theme-select"
+          v-model="screenGymId"
+          @change="selectChange"
+          placeholder="场馆筛选"
+        >
+          <el-option v-for="(item, i)  in paceData" :label="item.name" :key="i" :value="item.id"></el-option>
+        </el-select>
       </div>
       <ul class="activity-list">
-        <li
-          class="box"
-          v-for="(item, index) in activityList"
-          :key="index"
-        >
+        <li class="box" v-for="(item, index) in activityList" :key="index">
           <div class="preview">
             <img :src="item.picAddress" />
           </div>
@@ -32,12 +37,8 @@
             <div class="name ellipsis-1">活动名称：{{item.name}}</div>
             <div class="theme">活动主题：{{item.theme}}</div>
             <div class="desc ellipsis-3">活动描述：{{item.description}}</div>
-            <router-link
-              id="detail"
-              class="btn"
-              to="/activities/activityListDetail"
-            >
-              <span>>> </span> 查看详情
+            <router-link id="detail" class="btn" to="/activities/activityListDetail">
+              <span>>></span> 查看详情
             </router-link>
           </div>
         </li>
@@ -60,7 +61,11 @@ import qs from "qs";
 export default {
   data() {
     return {
-      queryText: '',
+      // 筛选的场馆id
+      screenGymId: "",
+      // 场馆信息
+      paceData: [],
+      queryText: "",
       value5: 3.7,
       total: null,
       // 页面查询信息
@@ -86,13 +91,34 @@ export default {
     };
   },
   created() {
+    if (this.$route.query.gymId) {
+      this.screenGymId = this.$route.query.gymId * 1;
+    } else {
+      this.screenGymId = "";
+    }
     this.getActiveData();
+    this.getPlaceData();
   },
   methods: {
-    queryActive(){
-      this.pagenum=1;
-      this.query=this.queryText;
-       this.getActiveData();
+    // 筛选改变
+    selectChange() {
+      this.getActiveData();
+      console.log(this.screenGymId);
+    },
+    // 获取场馆数据
+    async getPlaceData() {
+      var data = await this.$http.get("gym/getAllGym");
+      if (data.status == 200) {
+        this.paceData = data.data;
+        console.log(this.paceData);
+      } else {
+        this.$message.error("获取场馆数据失败");
+      }
+    },
+    queryActive() {
+      this.pagenum = 1;
+      this.query = this.queryText;
+      this.getActiveData();
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
@@ -109,6 +135,7 @@ export default {
       var data = await this.$http.post(
         "activity/queryActivity",
         qs.stringify({
+          gym_id: this.screenGymId,
           theme: this.query,
           pagenum: this.pagenum,
           pagesize: this.pagesize
@@ -122,7 +149,9 @@ export default {
         this.total = data.data.respBody.totalCount;
         console.log(this.activityList);
         this.activityList.map(item => {
-          return item.picAddress = `http://122.112.247.149:8003/resource/${item.picAddress.substr(item.picAddress.lastIndexOf('/'))}`
+          return (item.picAddress = `http://122.112.247.149:8003/resource/${item.picAddress.substr(
+            item.picAddress.lastIndexOf("/")
+          )}`);
         });
         console.log(this.activityList);
       }
@@ -195,12 +224,12 @@ export default {
         padding: 0px 15px;
         right: 25px;
         bottom: 50px;
-        border: 1px solid rgba(6, 12, 33, .55);
+        border: 1px solid rgba(6, 12, 33, 0.55);
         border-radius: 5px;
-        background-color: rgba(81,169,241, .6);
+        background-color: rgba(81, 169, 241, 0.6);
 
         &:hover {
-          background-color: rgba(81,169,241,.4);
+          background-color: rgba(81, 169, 241, 0.4);
         }
 
         span {

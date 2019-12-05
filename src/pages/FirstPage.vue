@@ -100,11 +100,11 @@
         <div>
           <p class="content_t clearfix">
             <router-link class="content_title fl" to="#">精英战队</router-link>
-            <router-link class="content_title fr margin" to="/homePages/base">更多</router-link>
+            <router-link class="content_title fr margin" to="/homePages/base"></router-link>
           </p>
           <div class="content-box">
             <div class="div-box" v-for="(item,index) in heroTeam" :key="item.id">
-              <router-link to="/homePages/navintroduce">
+              <router-link to="/homePages/bestTeam">
                 <div>
                   <img :src="item.src" alt />
                 </div>
