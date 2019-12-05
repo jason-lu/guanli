@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div class="box1">
 
         <div class="w clearfix">
             <div class="navchange">
@@ -395,8 +395,9 @@
         /* color: #000; */
     }
 
-    .box {
+    .box1 {
         /* background: #F5F5F5; */
+        
     }
 
     .w {

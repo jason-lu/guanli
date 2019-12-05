@@ -251,7 +251,7 @@
             if (username === 'admin') {
               this.$router.push('/management/VenueMa')
             } else {
-              this.$router.push('/profile')
+              this.$router.push('/zone')
             }
 
             this.$router.go(0)
@@ -272,7 +272,7 @@
       },
       // 获得验证码图片
       async getPicCode() {
-        const res = await axios.post('http://47.104.128.89:8001/api/v1/getVerifyCode')
+        const res = await axios.post('http://122.112.247.149:8001/api/v1/getVerifyCode')
         // const res = await this.$http.post('getVerifyCode')
         console.log(res)
         if (res.status === 200) {
