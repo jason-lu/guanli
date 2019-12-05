@@ -46,8 +46,8 @@
                 src="../../assets/img/gun1.jpg"
                 alt=""
               >
-              <div class="name">勃朗宁M2HB 0.50英寸机枪</div>
-              <div class="theme">机枪 | 二战前 | <img
+              <div class="name">M4卡宾枪</div>
+              <div class="theme">自动步枪 | 二战后 | <img
                   src="../../assets/img/america_s.png"
                   alt=""
                 >美国</div>
@@ -79,7 +79,7 @@
                 src="../../assets/img/gun4.jpg"
                 alt=""
               >
-              <div class="name">勃朗宁M2HB 0.50英寸机枪</div>
+              <div class="name">BM-30龙卷风式</div>
               <div class="theme">火箭炮 | 二战后 | <img
                   src="../../assets/img/russia_s.png"
                   alt=""
