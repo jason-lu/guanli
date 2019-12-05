@@ -265,7 +265,7 @@ export default {
         ]
       },
       dialogTitle: '新增场馆', //新增及修改模态框内标题
-      fileList: [{ url: '' }],
+      fileList: [],
       limit: 1,
     };
   },
@@ -313,10 +313,8 @@ export default {
         this.form = JSON.parse(JSON.stringify(this.venueList2.filter(v => {
           return v.id === id
         })[0]))
-        this.fileList = [{ url: '' }]
-        this.fileList[0].url = `http://122.112.247.149:8003/resource/` + this.form.pictureUrl.slice(this.form.pictureUrl.lastIndexOf('pics/') + 5)
-        // "/home/dev/pics/58937116-8518-4c78-898c-7279342cef78.jpg"  
-        // "http://47.104.128.89:8003/resource/58937116-8518-4c78-898c-7279342cef78.jpg"
+        let url = `http://122.112.247.149:8003/resource/` + this.form.pictureUrl.slice(this.form.pictureUrl.lastIndexOf('pics/') + 5)
+        this.$set(this.fileList, 0, { url })
       })
     },
     // 点击‘新增’按钮时弹出模态框并渲染模态框内容
@@ -328,6 +326,8 @@ export default {
     // 关闭模态框时重置表单
     closeEditDialog() {
       this.$refs.formData.resetFields()
+      this.fileList = []
+
     },
     // 上传场馆图片相关操作
     // 上传成功时存储图片地址至form.pictureurl

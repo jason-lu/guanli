@@ -21,7 +21,7 @@ export default {
 
 <style lang="less" scoped>
 #firstpaneDiv {
-  width: 150px;
+  width: 140px;
   position: fixed;
   top: 50%;
   left: 20px;

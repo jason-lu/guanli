@@ -187,7 +187,7 @@ export default {
   .box {
     box-sizing: border-box;
     padding: 50px;
-    background: #060c2188;
+    background: rgba(0, 0, 0, 0.4);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
     width: 80%;
     // height: 100%;

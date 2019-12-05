@@ -40,6 +40,6 @@
 <style lang="less" scoped>
 
     .addLeft {
-        padding-left: 173px;
+        padding-left: 165px;
     }
 </style>

@@ -13,6 +13,7 @@
           placeholder="请输入场馆名称..."
           v-model="name"
           class="input-with-select"
+          @keyup.enter.native="queryActive"
         >
           <el-button
             slot="append"
