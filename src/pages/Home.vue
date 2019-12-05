@@ -1,7 +1,7 @@
 <template>
     <div class="content-container">
         <LeftPanel v-if="showLeft" />
-        <div style="color:black; margin-left:0; flex-grow:1;height:100%" :class="{addLeft: showLeft}">
+        <div class="rightplace" :class="{addLeft: showLeft}">
             <router-view @login="login"></router-view>
         </div>
     </div>
@@ -38,8 +38,14 @@
 </script>
 
 <style lang="less" scoped>
-
     .addLeft {
-        padding-left: 165px;
+        padding-left: 150px;
+    }
+
+    .rightplace {
+        color: #fff;
+        margin-left: 0;
+        flex-grow: 1;
+        height: 100%;
     }
 </style>

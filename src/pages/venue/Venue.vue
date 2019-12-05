@@ -17,19 +17,19 @@
         <h3>附近场馆</h3>
         <ul>
           <li @click.stop="showFlowTop">五棵松拓展基地<span>0.5km</span></li>
-          <li @click.stop="showFlowTop">东方绿舟拓展基地<span>1.2km</span></li>
+          <li @click.stop="showFlowTop">安吉中南百草园景区<span>1.2km</span></li>
           <li @click.stop="showFlowTop">东方绿舟拓展基地<span>1.5km</span></li>
-          <li @click.stop="showFlowTop">五棵松拓展基地<span>2.4km</span></li>
+          <li @click.stop="showFlowTop">佘山国家森林公园拓展基地<span>2.4km</span></li>
         </ul>
       </div>
       <div class="hotVenueList venueList">
         <h3 class="hot">热门场馆推荐 <router-link to="/venue/venuecontainer?name=">全部</router-link>
         </h3>
         <ul>
-          <li @click.stop="showFlowTop">太阳岛拓展培训基地</li>
+          <li @click.stop="showFlowTop">东方绿舟拓展基地</li>
           <li @click.stop="showFlowTop">五棵松拓展基地</li>
+          <li @click.stop="showFlowTop">上海源生体育馆</li>
           <li @click.stop="showFlowTop">太阳岛拓展培训基地</li>
-          <li @click.stop="showFlowTop">安吉中南百草园景区</li>
         </ul>
       </div>
     </div>
