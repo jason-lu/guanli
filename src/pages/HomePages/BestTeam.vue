@@ -129,16 +129,18 @@ export default {
 };
 </script>
 <style lang="less"  scoped>
+
 .fl {
   float: left;
 }
 .team_pepleDesc {
-  width: 800px;
+  width: 60%;
 }
 .box {
+min-width: 1200px;
   height: 100%;
   background: url("../../assets/img/bgIMG.jpg") no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 .remember {
   margin-top: 20px;
@@ -151,11 +153,12 @@ export default {
     margin-top: 20px;
   }
   .team_peple {
-    margin-right: 200px;
+      width: 30%;
+    margin-right: 80px;
     // text-align: center;
     img {
       width: 250px;
-      height: 250px;
+    //   height: 250px;
     }
   }
 }
