@@ -134,7 +134,7 @@ export default {
   .venueDetail,
   .instructors,
   .gun {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px dotted #bbb;
     padding-bottom: 20px;
     position: relative;
 

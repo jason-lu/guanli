@@ -2,25 +2,30 @@
   <div class="zone-container">
     <div class="head-container clearfix">
       <div class="userAvatar"><img
-          src="../../assets/img/avatar3.jpg"
+          src="../../assets/img/avatar2.jpg"
           alt=""
         ></div>
       <div class="rightInfo">
         <div class="username">ddddddddddsry</div>
-        <div class="exp">军衔：列兵 <span>|</span> 总积分：569</div>
+        <div class="exp">军衔：上尉 <span>|</span> 总积分：5569</div>
         <div class="progress-bar-panel">
           <div
             class="progress-bar-count"
             style="width:30%"
           ></div>
-          <span class="count">569/3000</span>
+          <span class="count">5569/30000</span>
         </div>
+      </div>
+      <div class="rightNav">
+        <ul>
+          <li><a>发起活动</a></li>
+          <li><a>我的装备</a></li>
+          <li><a>我的战队</a></li>
+        </ul>
       </div>
     </div>
     <div class="box">
-      <el-tabs
-        tab-position="left"
-      >
+      <el-tabs tab-position="left">
         <el-tab-pane
           label="战圈动态"
           class="content"
@@ -40,7 +45,7 @@
           <div class="review">
             <div class="headInfo clearfix">
               <div class="avatar"><img
-                  src="../../assets/img/avatar2.jpg"
+                  src="../../assets/img/avatar3.jpg"
                   alt=""
                 ></div>
               <div class="rightInfo">
@@ -70,7 +75,7 @@
           <div class="review">
             <div class="headInfo clearfix">
               <div class="avatar"><img
-                  src="../../assets/img/avatar3.jpg"
+                  src="../../assets/img/avatar2.jpg"
                   alt=""
                 ></div>
               <div class="rightInfo">
@@ -157,11 +162,11 @@
           label="我的分享"
           class="content"
         >
-          
+
           <div class="review">
             <div class="headInfo clearfix">
               <div class="avatar"><img
-                  src="../../assets/img/avatar3.jpg"
+                  src="../../assets/img/avatar2.jpg"
                   alt=""
                 ></div>
               <div class="rightInfo">
@@ -183,12 +188,79 @@
             </div>
           </div>
         </el-tab-pane>
-        <!-- <el-tab-pane
-          label="达人广场"
+        <el-tab-pane
+          label="大神广场"
           class="content"
         >
-          3333333
-        </el-tab-pane> -->
+          <div class="elite">
+            <div class="eliteBox">
+              <div class="eliteImg">
+                <img
+                  src="../../assets/img/avatar4.jpg"
+                  alt=""
+                >
+              </div>
+              <div class="name">吃鸡指导员 | 上将</div>
+              <div class="team">战队：黑鹰BY</div>
+              <div class="historyScore clearfix"><a>查看历史战绩</a></div>
+            </div>
+            <div class="eliteBox">
+              <div class="eliteImg">
+                <img
+                  src="../../assets/img/avatar6.jpg"
+                  alt=""
+                >
+              </div>
+              <div class="name">战术阿鲁 | 上将</div>
+              <div class="team">战队：026战队</div>
+              <div class="historyScore clearfix"><a>查看历史战绩</a></div>
+            </div>
+            <div class="eliteBox">
+              <div class="eliteImg">
+                <img
+                  src="../../assets/img/avatar3.jpg"
+                  alt=""
+                >
+              </div>
+              <div class="name">山鹰 | 少将</div>
+              <div class="team">战队：龙魂战队</div>
+              <div class="historyScore clearfix"><a>查看历史战绩</a></div>
+            </div>
+            <div class="eliteBox">
+              <div class="eliteImg">
+                <img
+                  src="../../assets/img/avatar2.jpg"
+                  alt=""
+                >
+              </div>
+              <div class="name">ddddddddddsry | 上尉</div>
+              <div class="team">战队：铁三角突击队</div>
+              <div class="historyScore clearfix"><a>查看历史战绩</a></div>
+            </div>
+            <div class="eliteBox">
+              <div class="eliteImg">
+                <img
+                  src="../../assets/img/avatar5.jpg"
+                  alt=""
+                >
+              </div>
+              <div class="name">无锡校长 | 上尉</div>
+              <div class="team">战队：TMR</div>
+              <div class="historyScore clearfix"><a>查看历史战绩</a></div>
+            </div>
+            <div class="eliteBox">
+              <div class="eliteImg">
+                <img
+                  src="../../assets/img/avatar.jpg"
+                  alt=""
+                >
+              </div>
+              <div class="name">军事霸霸 | 中尉</div>
+              <div class="team">战队：血狼</div>
+              <div class="historyScore clearfix"><a>查看历史战绩</a></div>
+            </div>
+          </div>
+        </el-tab-pane>
       </el-tabs>
     </div>
   </div>
@@ -205,7 +277,7 @@ export default {
 <style lang="less">
 .zone-container {
   .el-tabs {
-    height:100%  !important;
+    height: 100% !important;
   }
 
   .el-tabs__item {
@@ -249,6 +321,7 @@ export default {
   .head-container {
     width: 100%;
     margin-bottom: 30px;
+    position: relative;
     .userAvatar {
       float: left;
       width: 128px;
@@ -273,6 +346,23 @@ export default {
 
         span {
           margin: 0 10px;
+        }
+      }
+    }
+    .rightNav {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      ul {
+        li {
+          float: left;
+          a {
+            display: inline-block;
+            padding: 0px 20px;
+            &:hover {
+              color: #409eff;
+            }
+          }
         }
       }
     }
@@ -402,6 +492,43 @@ export default {
       span:last-child::after {
         display: none;
       }
+    }
+  }
+
+  .elite {
+    .eliteBox {
+      float: left;
+      width: 250px;
+      margin-right: 15px;
+      margin-bottom: 15px;
+      padding: 20px 10px;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.6);
+      .eliteImg {
+        width: 230px;
+        height: 230px;
+        overflow: hidden;
+        img {
+        height: 230px;
+          min-width: 230px;
+          min-height: 230px;
+        }
+      }
+      .name {
+        margin-top: 10px;
+      }
+      .team {
+        margin-top: 10px;
+      }
+      .historyScore {
+        margin-top: 10px;
+      a {
+        float: right;
+        color: #409eff;
+        // text-decoration: underline;
+      }
+        
+      } 
     }
   }
 }

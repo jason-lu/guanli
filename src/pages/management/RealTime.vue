@@ -5,7 +5,6 @@
     <div class="live-broadcast">
       <div class="container-video">
         <video
-          autoplay
           controls
         >
           <source
