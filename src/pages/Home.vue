@@ -1,9 +1,11 @@
 <template>
     <div class="content-container">
-        <LeftPanel v-if="showLeft" />
-        <div class="rightplace" :class="{addLeft: showLeft}">
-            <router-view @login="login"></router-view>
-        </div>
+        <el-scrollbar style="height:100%">
+            <LeftPanel v-if="showLeft" />
+            <div class="rightplace" :class="{addLeft: showLeft}">
+                <router-view @login="login"></router-view>
+            </div>
+        </el-scrollbar>
     </div>
 </template>
 <script>
