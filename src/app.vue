@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container clearfix" :class="{changeBg: isRealtime}">
+  <div class="main-container clearfix" :class="{changeBg: isRealtime, bestTeamBg: isBestTeam}">
     <Navbar :user="user" @logout="logout"></Navbar>
     <Home :user="user" @login="login" />
   </div>
@@ -33,6 +33,9 @@
 
       isRealtime() {
         return this.$route.path === '/management/realtime' ? true : false;
+      },
+      isBestTeam() {
+        return this.$route.path === '/homePages/bestTeam' ? true : false;
       }
     },
     methods: {

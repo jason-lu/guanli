@@ -11,6 +11,7 @@ html {
   overflow: auto;
   width: 100%;
   background-image: url("../img/mainbackground.png");
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat no-repeat;
   height: 100%;
@@ -19,12 +20,16 @@ html {
   background-image: url("../img/pk_bg22.png");
   background-position: 0 0;
 }
+.bestTeamBg {
+  background: url("../../assets/img/bgIMG.jpg");
+  background-position: 0 0;
+}
 .content-container {
   overflow: auto;
   height: 100%;
   padding-top: 78px;
   box-sizing: border-box;
-  background-color: rgba(241, 241, 241, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 ul {
   list-style: none;

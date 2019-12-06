@@ -1,6 +1,5 @@
 <template>
   <div class="box">
-    <el-scrollbar style="height:100%">
       <div class="bestTeam">
         <!-- 面包屑 -->
         <el-breadcrumb separator="/">
@@ -116,7 +115,6 @@
           </div>
         </div>
       </div>
-    </el-scrollbar>
   </div>
 </template>
       
@@ -138,9 +136,6 @@ export default {
 }
 .box {
 min-width: 1200px;
-  height: 100%;
-  background: url("../../assets/img/bgIMG.jpg") no-repeat;
-  background-size: 100% 100%;
 }
 .remember {
   margin-top: 20px;
@@ -168,7 +163,6 @@ min-width: 1200px;
     height: 5px;
 }
 .bestTeam {
-  height: 100%;
   width: 70%;
   margin: 0px auto;
   //   background: rgba(0, 0, 0, 0.4);
