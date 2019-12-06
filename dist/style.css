@@ -2070,12 +2070,17 @@ html {
   overflow: auto;
   width: 100%;
   background-image: url(/36982651e52243747ab9e851c2158fd2.png);
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat no-repeat;
   height: 100%;
 }
 .changeBg {
   background-image: url(/4e8e31c4ed19eb6248b41316f5fd2f28.png);
+  background-position: 0 0;
+}
+.bestTeamBg {
+  background: url(/c90914616b8ab8f390747355c4828022.jpg);
   background-position: 0 0;
 }
 .content-container {

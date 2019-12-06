@@ -254,7 +254,7 @@
               this.$router.push('/zone')
             }
 
-            this.$router.go(0)
+            location.reload()
           } else {
             this.$message({
               type: 'error',
