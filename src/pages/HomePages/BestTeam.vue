@@ -28,7 +28,7 @@
           </div>
           <!-- 图片 -->
           <div class="comtent_img">
-            <img src="../../assets/img/king.png" alt />
+            <img src="../../assets/img/long1.png" alt />
           </div>
           <!-- 战队成员介绍 -->
           <div class="remember">
